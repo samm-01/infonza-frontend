@@ -1,13 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-import Image from "next/image";
-
-// Automatically get all logos in the public/logos folder
-const importLogos = () => {
-    const context = require.context("/public/logos", false, /\.(svg)$/);
-    return context.keys().map((file) => file.replace("./", "/logos/"));
-};
 
 const Hero = () => {
     return (
@@ -24,18 +14,6 @@ const Hero = () => {
             <div className="mt-6 flex space-x-4">
                 <button className="bg-primary text-white px-6 py-3 rounded-lg text-lg">Get Started</button>
                 <button className="border border-primary text-primary px-6 py-3 rounded-lg text-lg">Learn More</button>
-            </div>
-            <div className="relative w-full overflow-hidden bg-gradient-to-b from-black to-[#0a021f] py-6">
-                <motion.div
-                    className="flex space-x-12 animate-marquee"
-                    initial={{ x: "100%" }}
-                    animate={{ x: "-100%" }}
-                    transition={{ repeat: Infinity, ease: "linear", duration: 50 }}
-                >
-                    {[...logos, ...logos].map((logo, index) => (
-                        <Image key={index} src={logo} alt="brand" width={100} height={40} className="grayscale opacity-70 hover:opacity-100 transition filter invert dark:invert-0" />
-                    ))}
-                </motion.div>
             </div>
         </section>
     );
