@@ -26,7 +26,7 @@ const CareersSection = () => {
     const [selectedJob, setSelectedJob] = useState(null);
 
     return ( // ✅ Added return statement
-        <section className="min-h-screen bg-gray-100 text-black py-16 px-6 md:px-16">
+        <section className="h-screen bg-gray-100 text-black py-16 px-6 md:px-16">
             <div className="container mx-auto text-center">
                 <h2 className="text-4xl font-bold text-primary">Join Our Team</h2>
                 <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
