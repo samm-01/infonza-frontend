@@ -1,0 +1,67 @@
+import Link from "next/link";
+import { FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
+
+const Footer = () => {
+    return (
+        <footer className="bg-black text-white py-10 px-6 md:px-16 relative overflow-hidden">
+            {/* Blurry Background Effect in the Center */}
+            <div className="absolute inset-80 flex justify-center items-center">
+                <div className="w-72 h-72 bg-primary opacity-30 blur-3xl"></div>
+            </div>
+
+            <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                {/* Column 1: Logo & About */}
+                <div>
+                    <h2 className="text-2xl font-bold text-primary">infonza</h2>
+                    <p className="text-gray-400 mt-2 text-sm">
+                        Empowering businesses with cutting-edge technology solutions. We simplify IT for a smarter future.
+                    </p>
+                </div>
+
+                {/* Column 2: Quick Links */}
+                <div>
+                    <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
+                    <ul className="space-y-2 text-gray-400 text-sm">
+                        <li><Link href="/about" className="hover:text-primary">About Us</Link></li>
+                        <li><Link href="/services" className="hover:text-primary">Services</Link></li>
+                        <li><Link href="/resources" className="hover:text-primary">Resources</Link></li>
+                        <li><Link href="/careers" className="hover:text-primary">Careers</Link></li>
+                        <li><Link href="/contact" className="hover:text-primary">Contact</Link></li>
+                    </ul>
+                </div>
+
+                {/* Column 3: Services */}
+                <div>
+                    <h3 className="text-lg font-semibold mb-3">Our Services</h3>
+                    <ul className="space-y-2 text-gray-400 text-sm">
+                        <li><Link href="/services/database-management" className="hover:text-primary">Database Management</Link></li>
+                        <li><Link href="/services/cloud-solutions" className="hover:text-primary">Cloud Solutions</Link></li>
+                        <li><Link href="/services/application-development" className="hover:text-primary">App Development</Link></li>
+                        <li><Link href="/services/cybersecurity" className="hover:text-primary">Cybersecurity</Link></li>
+                    </ul>
+                </div>
+
+                {/* Column 4: Contact & Socials */}
+                <div>
+                    <h3 className="text-lg font-semibold mb-3">Get In Touch</h3>
+                    <p className="text-gray-400 text-sm">Email: contact@infonza.com</p>
+                    <p className="text-gray-400 text-sm">Phone: +91 1234 567 890</p>
+                    <div className="flex space-x-4 mt-4">
+                        <FaFacebookF className="text-gray-400 hover:text-primary cursor-pointer text-xl" />
+                        <FaLinkedinIn className="text-gray-400 hover:text-primary cursor-pointer text-xl" />
+                        <FaTwitter className="text-gray-400 hover:text-primary cursor-pointer text-xl" />
+                        <FaYoutube className="text-gray-400 hover:text-primary cursor-pointer text-xl" />
+                        <FaInstagram className="text-gray-400 hover:text-primary cursor-pointer text-xl" />
+                    </div>
+                </div>
+            </div>
+
+            {/* Bottom Footer */}
+            <div className="text-center text-gray-500 text-sm mt-8 border-t border-gray-800 pt-4 relative z-10">
+                &copy; {new Date().getFullYear()} Infonza. All Rights Reserved.
+            </div>
+        </footer>
+    );
+};
+
+export default Footer;
