@@ -14,7 +14,7 @@ const testimonials = [
     {
         text: "They exceeded expectations from start to finish, delivering a website that perfectly captures our brand. Their responsiveness, technical expertise, and innovative approach made the entire experience seamless.",
         name: "John G.",
-        image: "/avatars/john.jpg",
+        image: "/avatars/dineth.jpg",
     },
 ];
 

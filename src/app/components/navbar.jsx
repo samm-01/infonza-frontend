@@ -3,47 +3,47 @@ import { useState } from "react";
 import Link from "next/link";
 import TopBar from "./topbar";
 
-const services = [
-    {
-        title: "Database Management",
-        links: [
-            "Oracle Database Management Services",
-            "MS SQL Database Management",
-            "Open Source Database Management",
-            "NoSQL Database Management",
-        ],
-    },
-    {
-        title: "Middleware & OS Management",
-        links: [
-            "Weblogic Middleware Services",
-            "Websphere Middleware Services",
-            "Jboss Middleware Services",
-            "Apache/Tomcat Middleware Services",
-            "Openshift Middleware Services",
-            "Linux Management Services",
-            "AIX Management Services",
-        ],
-    },
-    {
-        title: "Cloud",
-        links: [
-            "Cloud Migration",
-            "Cloud Assessment",
-            "Cloud Strategy & Planning",
-            "Cloud Security & Compliance",
-            "Cloud Optimization",
-        ],
-    },
-    {
-        title: "Application",
-        links: [
-            "Application Support",
-            "Application Development",
-            "Application Modernization",
-        ],
-    },
-];
+// const services = [
+//     {
+//         title: "Development",
+//         links: [
+//             "Web App Developemt",
+//             "Mobile App Development",
+//             "Software Testing Services",
+//             // "NoSQL Database Management",
+//         ],
+//     },
+//     {
+//         title: "Designing Services",
+//         links: [
+//             "UI/UX Development",
+//             "Graphic Designing",
+//             "Web App Designs",
+//             // "Apache/Tomcat Middleware Services",
+//             // "Openshift Middleware Services",
+//             // "Linux Management Services",
+//             // "AIX Management Services",
+//         ],
+//     },
+//     {
+//         title: "Cloud",
+//         links: [
+//             "Cloud Migration",
+//             "Cloud Assessment",
+//             "Cloud Strategy & Planning",
+//             "Cloud Security & Compliance",
+//             // "Cloud Optimization",
+//         ],
+//     },
+//     // {
+//     //     title: "Application",
+//     //     links: [
+//     //         "Application Support",
+//     //         "Application Development",
+//     //         "Application Modernization",
+//     //     ],
+//     // },
+// ];
 
 const resources = [
     {
@@ -78,18 +78,20 @@ const Navbar = () => {
                 {/* Desktop Menu */}
                 <div className="hidden md:flex space-x-6">
                     <Link href="/" className="hover:text-primary ">About</Link>
-
-                    {/* Services Dropdown */}
-                    <div
+                    {/* <div
                         className="relative cursor-pointer group"
-                        onMouseEnter={() => setDropdownOpen(true)}
-                        onMouseLeave={() => setDropdownOpen(false)}
+                        onMouseOver={() => setDropdownOpen(true)}
+                        onMouseOut={() => setDropdownOpen(false)}
                     >
                         <span className="hover:text-primary">Services +</span>
                         {dropdownOpen && (
-                            <div className="absolute left-0 top-full mt-2 w-[600px] bg-white text-black shadow-lg p-6 rounded-lg grid grid-cols-2 gap-6">
+                            <div
+                                className="absolute left-0 top-full w-[600px] bg-white text-black shadow-lg p-4 rounded-lg grid grid-cols-3 gap-6"
+                                onMouseOver={() => setDropdownOpen(true)}
+                                onMouseOut={() => setDropdownOpen(false)}
+                            >
                                 {services.map((category, index) => (
-                                    <div key={index}>
+                                    <div className="" key={index}>
                                         <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.title}</h3>
                                         <ul className="space-y-1 text-sm text-gray-700">
                                             {category.links.map((link, linkIndex) => (
@@ -102,17 +104,23 @@ const Navbar = () => {
                                 ))}
                             </div>
                         )}
-                    </div>
+                    </div> */}
+
+                    <Link href="/software-development" className="hover:text-primary">Software Development</Link>
+                    <Link href="/designing" className="hover:text-primary">Designing Services</Link>
+                    <Link href="/cloud-services" className="hover:text-primary">Cloud Services</Link>
+
+
 
                     {/* Resources Dropdown */}
-                    <div
+                    {/* <div
                         className="relative cursor-pointer group"
                         onMouseEnter={() => setResourcesDropdownOpen(true)}
                         onMouseLeave={() => setResourcesDropdownOpen(false)}
                     >
                         <span className="hover:text-primary">Resources +</span>
                         {resourcesDropdownOpen && (
-                            <div className="absolute left-0 top-full mt-2 w-[400px] bg-white text-black shadow-lg p-6 rounded-lg grid grid-cols-1 gap-6">
+                            <div className="absolute left-0 top-full w-[400px] bg-white text-black shadow-lg p-6 rounded-lg grid grid-cols-1 gap-6">
                                 {resources.map((category, index) => (
                                     <div key={index}>
                                         <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.title}</h3>
@@ -127,7 +135,7 @@ const Navbar = () => {
                                 ))}
                             </div>
                         )}
-                    </div>
+                    </div> */}
 
                     {/* <Link href="/features" className="hover:text-primary">Features</Link> */}
                     <Link href="/careers" className="hover:text-primary">Careers</Link>

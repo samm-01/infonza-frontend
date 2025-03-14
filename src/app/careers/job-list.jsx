@@ -25,8 +25,8 @@ const jobListings = [
 const CareersSection = () => {
     const [selectedJob, setSelectedJob] = useState(null);
 
-    return ( // ✅ Added return statement
-        <section className="h-screen bg-gray-100 text-black py-16 px-6 md:px-16">
+    return (
+        <section className="h-screen flex flex-col items-center justify-center text-center bg-black bg-gray-100 text-black py-16 px-6 md:px-16 pt-20">
             <div className="container mx-auto text-center">
                 <h2 className="text-4xl font-bold text-primary">Join Our Team</h2>
                 <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
@@ -72,6 +72,24 @@ const CareersSection = () => {
                 </div>
             )}
         </section>
+        // <section className="h-screen flex flex-col items-center justify-center text-center px-6 bg-black text-white">
+        //     <span className="bg-gray-800 text-sm px-4 py-1 rounded-full mb-4">🔵 Update 2.0: AI Integration</span>
+
+
+        //     <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
+        //         AI tools to bring your <br /> vision to life
+        //     </h1>
+        //     <p className="mt-4 text-lg text-gray-300 max-w-2xl">
+        //         Unleash the power of AI to supercharge your creativity. Transform your ideas into stunning content effortlessly and in no time.
+        //     </p>
+
+        //     <div className="mt-6 flex space-x-4">
+        //         <button className="bg-primary text-white px-6 py-3 rounded-lg text-lg">Get Started</button>
+        //         <button className="border border-primary text-primary px-6 py-3 rounded-lg text-lg">Learn More</button>
+        //     </div>
+        //     {/* <div className="absolute top-10 w-96 h-48 bg-primary opacity-30 blur-3xl"></div> */}
+
+        // </section>
     );
 };
 
