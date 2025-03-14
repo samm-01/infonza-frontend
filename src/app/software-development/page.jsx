@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import HeroSection from "../components/services-hero-section";
 
 const steps = [
     { title: "Discovery & Consultation", description: "Understanding business goals, target audience, and defining project scope.", icon: "🔍" },
@@ -19,37 +20,8 @@ export default function HowWeWork() {
         <div className="bg-black text-white min-h-screen relative">
             <Navbar />
 
-            {/* Hero Section with Animated Background & Texture */}
-            <section className="h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
-                {/* Animated Gradient Background */}
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 0.2, scale: 1.2 }}
-                    transition={{ duration: 6, repeat: Infinity, repeatType: "reverse" }}
-                    className="absolute inset-0 bg-gradient-to-r from-purple-600 via-black to-indigo-900 opacity-40 blur-3xl"
-                ></motion.div>
-
-                {/* Subtle Noise/Texture Overlay */}
-                <div className="absolute inset-0 bg-[url('/textures/noise.png')] opacity-10"></div>
-
-                <motion.h1
-                    initial={{ opacity: 0, y: -50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1 }}
-                    className="text-5xl font-bold text-primary relative"
-                >
-                    How We Build Software
-                </motion.h1>
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.3 }}
-                    className="text-gray-400 max-w-3xl mt-4 relative"
-                >
-                    We follow a structured and agile approach to deliver high-quality web & mobile solutions.
-                </motion.p>
-            </section>
-
+            {/* Hero Section */}
+            <HeroSection title="Our Development Process" description="We follow a systematic approach to build high-quality software solutions." />
             {/* Process Timeline */}
             <section className="container mx-auto px-6 py-16">
                 <h2 className="text-4xl font-bold text-center mb-12">Our Development Process</h2>

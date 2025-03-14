@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Navbar from "../components/navbar";
+import HeroSection from "../components/services-hero-section";
 import Footer from "../components/footer";
 
 const cloudSteps = [
@@ -19,10 +20,7 @@ export default function CloudServices() {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="h-screen flex flex-col justify-center items-center text-center px-6">
-                <h1 className="text-5xl font-bold text-primary">Empower Your Business with Cloud</h1>
-                <p className="text-gray-400 max-w-3xl mt-4">We provide cutting-edge cloud solutions that enhance scalability, security, and efficiency.</p>
-            </section>
+            <HeroSection title="Cloud Solutions for Your Business" description="Leverage the power of cloud computing to drive innovation, scalability, and growth." />
 
             {/* Cloud Service Steps */}
             <section className="container mx-auto px-6 py-16">

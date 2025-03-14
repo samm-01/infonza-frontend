@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Navbar from "../components/navbar";
+import HeroSection from "../components/services-hero-section";
 import Footer from "../components/footer";
 
 const designSteps = [
@@ -19,11 +20,7 @@ export default function DesignServices() {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="h-screen flex flex-col justify-center items-center text-center px-6">
-                <h1 className="text-5xl font-bold text-primary">Our Design Process</h1>
-                <p className="text-gray-400 max-w-3xl mt-4">We craft stunning, user-centric designs that elevate brands and enhance experiences.</p>
-            </section>
-
+            <HeroSection title="Professional Design Services" description="Transform your brand with stunning UI/UX designs that captivate and engage your audience." />
             {/* Process Timeline */}
             <section className="container mx-auto px-6 py-16">
                 <h2 className="text-4xl font-bold text-center mb-12">How We Design</h2>
