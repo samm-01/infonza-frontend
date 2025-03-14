@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const testimonials = [
     {
-        text: "Tadbeer and her team delivered an outstanding website. Their willingness to address post-project issues, even a year later, was remarkable. I highly recommend them for top-notch web development.",
+        text: "Tadbeer and her team delivered an outstanding website. Their willingness to address post-project issues, even a year later, was remarkable. I highly recommend them for top-notch web development. Check branch",
         name: "Dineth A.",
         image: "/avatars/dineth.jpg",
     },
@@ -14,7 +14,7 @@ const testimonials = [
     {
         text: "They exceeded expectations from start to finish, delivering a website that perfectly captures our brand. Their responsiveness, technical expertise, and innovative approach made the entire experience seamless.",
         name: "John G.",
-        image: "/avatars/john.jpg",
+        image: "/avatars/dineth.jpg",
     },
 ];
 
