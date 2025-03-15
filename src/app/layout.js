@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Infonza Innovations",
-  description: "Providing IT Solutions to the world",
+  title: "Infonza | Software & Cloud Solutions for Global Businesses",
+  description: "Infonza offers cutting-edge software and cloud solutions for businesses in the USA, Dubai, and Singapore. Innovate faster, scale smarter, and transform your business with our expertise.",
 };
 
 export default function RootLayout({ children }) {
