@@ -12,9 +12,10 @@ const Footer = () => {
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
                 {/* Column 1: Logo & About */}
                 <div>
-                    <h2 className="text-2xl font-bold text-primary">infonza</h2>
-                    <p className="text-gray-400 mt-2 text-sm">
-                        Empowering businesses with cutting-edge technology solutions. We simplify IT for a smarter future.
+                    <h2 className="text-4xl font-bold text-primary">infonza</h2>
+                    <p className="text-gray-400 mt-2 text-md">
+                        Empowering Innovation, Worldwide
+
                     </p>
                 </div>
 
@@ -23,8 +24,8 @@ const Footer = () => {
                     <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
                     <ul className="space-y-2 text-gray-400 text-sm">
                         <li><Link href="/about" className="hover:text-primary">About Us</Link></li>
-                        <li><Link href="/services" className="hover:text-primary">Services</Link></li>
-                        <li><Link href="/resources" className="hover:text-primary">Resources</Link></li>
+                        {/* <li><Link href="/services" className="hover:text-primary">Services</Link></li> */}
+                        {/* <li><Link href="/resources" className="hover:text-primary">Resources</Link></li> */}
                         <li><Link href="/careers" className="hover:text-primary">Careers</Link></li>
                         <li><Link href="/contact" className="hover:text-primary">Contact</Link></li>
                     </ul>
@@ -34,18 +35,18 @@ const Footer = () => {
                 <div>
                     <h3 className="text-lg font-semibold mb-3">Our Services</h3>
                     <ul className="space-y-2 text-gray-400 text-sm">
-                        <li><Link href="/services/database-management" className="hover:text-primary">Database Management</Link></li>
-                        <li><Link href="/services/cloud-solutions" className="hover:text-primary">Cloud Solutions</Link></li>
-                        <li><Link href="/services/application-development" className="hover:text-primary">App Development</Link></li>
-                        <li><Link href="/services/cybersecurity" className="hover:text-primary">Cybersecurity</Link></li>
+                        <li><Link href="/software-development" className="hover:text-primary">Software Development</Link></li>
+                        <li><Link href="/designing" className="hover:text-primary">Designing Services</Link></li>
+                        <li><Link href="/cloud-services" className="hover:text-primary">Cloud Services</Link></li>
+                        {/* <li><Link href="/services/cybersecurity" className="hover:text-primary">Cybersecurity</Link></li> */}
                     </ul>
                 </div>
 
                 {/* Column 4: Contact & Socials */}
                 <div>
                     <h3 className="text-lg font-semibold mb-3">Get In Touch</h3>
-                    <p className="text-gray-400 text-sm">Email: contact@infonza.com</p>
-                    <p className="text-gray-400 text-sm">Phone: +91 1234 567 890</p>
+                    <p className="text-gray-400 text-sm">Email: sameer.infonza@gmail.com</p>
+                    <p className="text-gray-400 text-sm">Phone: +91 9915 820 125</p>
                     <div className="flex space-x-4 mt-4">
                         <FaFacebookF className="text-gray-400 hover:text-primary cursor-pointer text-xl" />
                         <FaLinkedinIn className="text-gray-400 hover:text-primary cursor-pointer text-xl" />

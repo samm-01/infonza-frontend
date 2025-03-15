@@ -26,7 +26,7 @@ const TestimonialSection = () => {
                 <div className="absolute top-10 left-2 w-40 h-40 bg-purple-500 opacity-30 blur-3xl"></div>
 
                 {/* Header */}
-                <h2 className="text-xl font-semibold text-primary mb-2">testimonials</h2>
+                <h2 className="text-6xl font-semibold text-primary mb-2">testimonials</h2>
                 <h3 className="text-4xl font-bold text-black mb-4">
                     the secret to our sauce is empathy!
                 </h3>

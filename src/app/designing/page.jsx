@@ -45,17 +45,6 @@ export default function DesignServices() {
                 </div>
             </section>
 
-            {/* Why Choose Us */}
-            {/* <section className="text-center py-16 bg-gray-800">
-                <h2 className="text-4xl font-bold">Why Choose Our Design Services?</h2>
-                <p className="text-gray-400 max-w-3xl mx-auto mt-4">We create engaging, innovative, and brand-focused designs tailored to your business.</p>
-                <div className="mt-8 flex justify-center space-x-6">
-                    <div className="bg-gray-900 p-6 rounded-lg">✔️ Human-Centered Approach</div>
-                    <div className="bg-gray-900 p-6 rounded-lg">✔️ Pixel-Perfect Execution</div>
-                    <div className="bg-gray-900 p-6 rounded-lg">✔️ Scalable & Future-Ready</div>
-                </div>
-            </section> */}
-
             {/* CTA Section */}
             <CTASection
                 title="Let’s Design Something Amazing!"
