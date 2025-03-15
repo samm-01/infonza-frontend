@@ -16,7 +16,7 @@ const Hero = () => {
                 </p>
 
                 <div className="mt-6 flex space-x-4 justify-center md:justify-start">
-                    <button className="bg-primary text-white px-6 py-3 rounded-lg text-lg">Get Started</button>
+                    <button className="bg-primary text-white px-6 py-3 rounded-lg text-lg">Contact Us</button>
                     <button className="border border-primary text-primary px-6 py-3 rounded-lg text-lg">Learn More</button>
                 </div>
             </div>

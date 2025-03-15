@@ -12,7 +12,7 @@ const cloudSteps = [
 
 export default function cloudStep() {
     return (
-        <div className="bg-slate-200 text-black">
+        <div className="bg-slate-100 text-black">
             {/* Cloud Service Steps */}
             <section className="container mx-auto px-6 py-16">
                 <h2 className="text-4xl font-bold text-center mb-12">Our Cloud Services</h2>
