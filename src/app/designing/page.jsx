@@ -17,11 +17,14 @@ const designSteps = [
 
 export default function DesignServices() {
     return (
-        <div className="bg-black text-white min-h-screen">
+        <div className="bg-white text-black min-h-screen">
             <Navbar />
 
             {/* Hero Section */}
-            <HeroSection title="Professional Design Services" description="Transform your brand with stunning UI/UX designs that captivate and engage your audience." />
+            <HeroSection title="Professional Design Services" description="Transform your brand with stunning UI/UX designs that captivate and engage your audience."
+                image="/images/designing-hero.svg"  // Make sure this file exists in /public/images/
+
+            />
             {/* Process Timeline */}
             <section className="container mx-auto px-6 py-16">
                 <h2 className="text-4xl font-bold text-center mb-12">How We Design</h2>
@@ -32,7 +35,7 @@ export default function DesignServices() {
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.2 }}
-                            className="bg-gray-900 p-6 rounded-xl shadow-lg flex flex-col items-center text-center"
+                            className="bg-slate-900 text-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center"
                         >
                             <div className="text-5xl mb-4">{step.icon}</div>
                             <h3 className="text-xl font-semibold">{step.title}</h3>

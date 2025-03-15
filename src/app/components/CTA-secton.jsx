@@ -10,7 +10,7 @@ const CTASection = ({ title, description, buttonText, buttonLink }) => {
                 <h2 className="text-4xl font-bold text-white">{title}</h2>
 
                 {/* Description */}
-                <p className="text-gray-400 mt-2 max-w-2xl">{description}</p>
+                <p className="text-white mt-2 max-w-2xl">{description}</p>
 
                 {/* CTA Button */}
                 <Link href={buttonLink}>

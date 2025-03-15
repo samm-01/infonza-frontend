@@ -10,11 +10,14 @@ import Footer from "../components/footer";
 
 export default function CloudServices() {
     return (
-        <div className="bg-black text-white min-h-screen">
+        <div className="bg-white text-black min-h-screen">
             <Navbar />
 
             {/* Hero Section */}
-            <HeroSection title="Cloud Solutions for Your Business" description="Leverage the power of cloud computing to drive innovation, scalability, and growth." />
+            <HeroSection title="Cloud Solutions for Your Business" description="Leverage the power of cloud computing to drive innovation, scalability, and growth."
+                image="/images/cloud-hero.svg"  // Make sure this file exists in /public/images/
+
+            />
 
             {/* Cloud Service Steps */}
             <CloudSteps />
