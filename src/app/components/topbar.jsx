@@ -7,7 +7,7 @@ const TopBar = () => {
             <div className="flex space-x-6">
                 <div className="flex items-center space-x-2">
                     <FaEnvelope className="text-primary" />
-                    <span>sales@infonza.com</span>
+                    <span>sameer.infonza@gmail.com</span>
                 </div>
                 <div className="hidden md:flex items-center space-x-2">
                     <FaMapMarkerAlt className="text-primary" />
