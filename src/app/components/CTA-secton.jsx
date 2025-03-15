@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const CTASection = ({ title, description, buttonText, buttonLink }) => {
     return (
-        <div className="bg-slate-200 md:p-20" >
+        <div className="bg-slate-100 md:p-20" >
             <section className="flex flex-col bg-black rounded-3xl items-center text-center py-16 px-6">
                 {/* Title */}
                 <h2 className="text-4xl font-bold text-white">{title}</h2>
