@@ -9,12 +9,12 @@ const HeroSection = ({ title, description }) => {
             <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 0.2, scale: 1.2 }}
-                transition={{ duration: 6, repeat: Infinity, repeatType: "reverse" }}
+                transition={{ duration: 4, repeat: Infinity, repeatType: "reverse" }}
                 className="absolute inset-0 bg-gradient-to-r from-purple-600 via-black to-indigo-900 opacity-40 blur-3xl"
             ></motion.div>
 
             {/* Subtle Noise/Texture Overlay */}
-            <div className="absolute inset-0 bg-[url('/textures/noise.png')] opacity-10"></div>
+            <div className="absolute inset-0 bg-[url('/textures/noise.png')] bg-cover bg-center opacity-15"></div>
 
             <motion.h1
                 initial={{ opacity: 0, y: -50 }}

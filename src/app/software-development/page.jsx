@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import HeroSection from "../components/services-hero-section";
+import TechStack from "../components/tech-stack";
 
 const steps = [
     { title: "Discovery & Consultation", description: "Understanding business goals, target audience, and defining project scope.", icon: "🔍" },
@@ -59,6 +60,9 @@ export default function HowWeWork() {
                 <p className="text-gray-400 max-w-3xl mx-auto mt-4">Get in touch with our experts and start your software development journey today.</p>
                 <a href="/contact" className="mt-6 inline-block bg-primary text-white px-6 py-3 rounded-lg text-lg hover:bg-opacity-80">Get a Free Consultation</a>
             </section>
+
+            {/* Tech Stack */}
+            <TechStack />
 
             <Footer />
         </div>

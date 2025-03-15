@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Navbar from "../components/navbar";
 import HeroSection from "../components/services-hero-section";
+import CTASection from "../components/CTA-secton";
 import Footer from "../components/footer";
 
 const designSteps = [
@@ -42,7 +43,7 @@ export default function DesignServices() {
             </section>
 
             {/* Why Choose Us */}
-            <section className="text-center py-16 bg-gray-800">
+            {/* <section className="text-center py-16 bg-gray-800">
                 <h2 className="text-4xl font-bold">Why Choose Our Design Services?</h2>
                 <p className="text-gray-400 max-w-3xl mx-auto mt-4">We create engaging, innovative, and brand-focused designs tailored to your business.</p>
                 <div className="mt-8 flex justify-center space-x-6">
@@ -50,14 +51,15 @@ export default function DesignServices() {
                     <div className="bg-gray-900 p-6 rounded-lg">✔️ Pixel-Perfect Execution</div>
                     <div className="bg-gray-900 p-6 rounded-lg">✔️ Scalable & Future-Ready</div>
                 </div>
-            </section>
+            </section> */}
 
             {/* CTA Section */}
-            <section className="text-center py-16">
-                <h2 className="text-4xl font-bold">Let’s Design Something Amazing!</h2>
-                <p className="text-gray-400 max-w-3xl mx-auto mt-4">Partner with us to create exceptional UI/UX experiences for your brand.</p>
-                <a href="/contact" className="mt-6 inline-block bg-primary text-white px-6 py-3 rounded-lg text-lg hover:bg-opacity-80">Get a Free Design Consultation</a>
-            </section>
+            <CTASection
+                title="Let’s Design Something Amazing!"
+                description="Partner with us to create exceptional UI/UX experiences for your brand."
+                buttonText="Get a Free Design Consultation"
+                buttonLink="/contact"
+            />
 
             <Footer />
         </div>
