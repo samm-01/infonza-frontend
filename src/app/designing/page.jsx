@@ -50,7 +50,7 @@ export default function DesignServices() {
                 title="Let’s Design Something Amazing!"
                 description="Partner with us to create exceptional UI/UX experiences for your brand."
                 buttonText="Get a Free Design Consultation"
-                buttonLink="/contact"
+                buttonLink="https://docs.google.com/forms/d/e/1FAIpQLSdLBYxeALTTwSYYaMhB_1UJHMyi-KFzMJznYnSPln3xLcvrkw/viewform"
             />
 
             <Footer />

@@ -45,7 +45,7 @@ const Footer = () => {
                 {/* Column 4: Contact & Socials */}
                 <div>
                     <h3 className="text-lg font-semibold mb-3">Get In Touch</h3>
-                    <p className="text-gray-400 text-sm">Email: sameer.infonza@gmail.com</p>
+                    <p className="text-gray-400 text-sm">Email: contact.infonza@gmail.com</p>
                     <p className="text-gray-400 text-sm">Phone: +91 9915 820 125</p>
                     <div className="flex space-x-4 mt-4">
                         <FaFacebookF className="text-gray-400 hover:text-primary cursor-pointer text-xl" />
