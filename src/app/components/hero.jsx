@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import BannerImage from "/public/images/hero.svg"; // Place your SVG inside the public folder
 
 const Hero = () => {
@@ -16,7 +17,12 @@ const Hero = () => {
                 </p>
 
                 <div className="mt-6 flex space-x-4 justify-center md:justify-start">
-                    <button className="bg-primary text-white px-6 py-3 rounded-lg text-lg">Contact Us</button>
+                    {/* Contact Us Button */}
+                    <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdLBYxeALTTwSYYaMhB_1UJHMyi-KFzMJznYnSPln3xLcvrkw/viewform" target="_blank" rel="noopener noreferrer">
+                        <button className="bg-primary text-white px-6 py-3 rounded-lg text-lg">
+                            Contact Us
+                        </button>
+                    </Link>
                     <button className="border border-primary text-primary px-6 py-3 rounded-lg text-lg">Learn More</button>
                 </div>
             </div>

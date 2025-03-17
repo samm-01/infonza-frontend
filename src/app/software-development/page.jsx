@@ -63,7 +63,7 @@ export default function HowWeWork() {
                 title="Ready to Build with Us?"
                 description="Get in touch with our experts and start your software development journey today."
                 buttonText="Get a Free Consultation"
-                buttonLink="/contact"
+                buttonLink="https://docs.google.com/forms/d/e/1FAIpQLSdLBYxeALTTwSYYaMhB_1UJHMyi-KFzMJznYnSPln3xLcvrkw/viewform"
             />
             <Footer />
         </div>

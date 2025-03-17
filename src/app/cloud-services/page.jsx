@@ -37,7 +37,7 @@ export default function CloudServices() {
                 title="Transform Your Business with Cloud"
                 description="Get in touch with our cloud experts to discuss the best solution for your business."
                 buttonText="Get a Free Cloud Consultation"
-                buttonLink="/contact"
+                buttonLink="https://docs.google.com/forms/d/e/1FAIpQLSdLBYxeALTTwSYYaMhB_1UJHMyi-KFzMJznYnSPln3xLcvrkw/viewform"
             />
 
             <Footer />

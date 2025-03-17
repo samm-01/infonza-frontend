@@ -28,7 +28,7 @@ export default function Careers() {
                 title="Join Our Team & Shape the Future!"
                 description="Be a part of our innovative team, work on exciting projects, and grow your career with us."
                 buttonText="Apply Now"
-                buttonLink="https://forms.gle/your-google-form-link"
+                buttonLink="https://docs.google.com/forms/d/e/1FAIpQLSesRmBQi8ogoyR0p1AiD7nZFVJ3uDqBx2GkhvU7pCEgNA2FRA/viewform"
             />
             {/* <CareersSection /> */}
             <Footer />

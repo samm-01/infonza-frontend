@@ -22,7 +22,7 @@ export default function HowWeWork() {
                 title="Let's Connect & Collaborate!"
                 description="Reach out to our team for inquiries, partnerships, or support. We're here to help you innovate and grow."
                 buttonText="Contact Us Now"
-                buttonLink="/contact"
+                buttonLink="https://docs.google.com/forms/d/e/1FAIpQLSdLBYxeALTTwSYYaMhB_1UJHMyi-KFzMJznYnSPln3xLcvrkw/viewform"
             />
             <Footer />
         </div>
