@@ -14,7 +14,7 @@ const Footer = () => {
                 <div>
                     <h2 className="text-4xl font-bold text-primary">infonza</h2>
                     <p className="text-gray-400 mt-2 text-md">
-                        Empowering Innovation, Worldwide
+                        Software & Cloud Solutions for Global Businesses
 
                     </p>
                 </div>
@@ -45,14 +45,21 @@ const Footer = () => {
                 {/* Column 4: Contact & Socials */}
                 <div>
                     <h3 className="text-lg font-semibold mb-3">Get In Touch</h3>
-                    <p className="text-gray-400 text-sm">Email: contact.infonza@gmail.com</p>
-                    <p className="text-gray-400 text-sm">Phone: +91 9915 820 125</p>
+                    <p className="text-gray-400 text-sm">Email: support@infonza.com</p>
+                    {/* <p className="text-gray-400 text-sm">Phone: +91 9915 820 125</p> */}
                     <div className="flex space-x-4 mt-4">
-                        <FaFacebookF className="text-gray-400 hover:text-primary cursor-pointer text-xl" />
-                        <FaLinkedinIn className="text-gray-400 hover:text-primary cursor-pointer text-xl" />
-                        <FaTwitter className="text-gray-400 hover:text-primary cursor-pointer text-xl" />
-                        <FaYoutube className="text-gray-400 hover:text-primary cursor-pointer text-xl" />
-                        <FaInstagram className="text-gray-400 hover:text-primary cursor-pointer text-xl" />
+                        <a href="https://www.linkedin.com/company/infonza-innovations/?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3BPwZ2Y157R0OmSpn0VqPoPA%3D%3D" target="_blank" rel="noopener noreferrer">
+                            <FaFacebookF className="hover:text-primary cursor-pointer" />
+                        </a>
+                        <a href="https://www.linkedin.com/company/infonza-innovations/?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3BPwZ2Y157R0OmSpn0VqPoPA%3D%3D" target="_blank" rel="noopener noreferrer">
+                            <FaLinkedinIn className="hover:text-primary cursor-pointer" />
+                        </a>
+                        <a href="https://www.linkedin.com/company/infonza-innovations/?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3BPwZ2Y157R0OmSpn0VqPoPA%3D%3D" target="_blank" rel="noopener noreferrer">
+                            <FaYoutube className="hover:text-primary cursor-pointer" />
+                        </a>
+                        <a href="https://www.linkedin.com/company/infonza-innovations/?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3BPwZ2Y157R0OmSpn0VqPoPA%3D%3D" target="_blank" rel="noopener noreferrer">
+                            <FaInstagram className="hover:text-primary cursor-pointer" />
+                        </a>
                     </div>
                 </div>
             </div>
