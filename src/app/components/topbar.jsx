@@ -17,6 +17,7 @@ const TopBar = () => {
 
             {/* Right Side: Social Icons + CTA */}
             <div className="flex items-center space-x-4">
+                {/* Follow us on : */}
                 <a href="https://www.linkedin.com/company/infonza-innovations/?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3BPwZ2Y157R0OmSpn0VqPoPA%3D%3D" target="_blank" rel="noopener noreferrer">
                     <FaFacebookF className="hover:text-primary cursor-pointer" />
                 </a>
@@ -26,9 +27,9 @@ const TopBar = () => {
                 <a href="https://www.linkedin.com/company/infonza-innovations/?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3BPwZ2Y157R0OmSpn0VqPoPA%3D%3D" target="_blank" rel="noopener noreferrer">
                     <FaYoutube className="hover:text-primary cursor-pointer" />
                 </a>
-                <a href="https://www.linkedin.com/company/infonza-innovations/?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3BPwZ2Y157R0OmSpn0VqPoPA%3D%3D" target="_blank" rel="noopener noreferrer">
+                {/* <a href="https://www.linkedin.com/company/infonza-innovations/?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3BPwZ2Y157R0OmSpn0VqPoPA%3D%3D" target="_blank" rel="noopener noreferrer">
                     <FaInstagram className="hover:text-primary cursor-pointer" />
-                </a>
+                </a> */}
                 {/* <button className="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-2 rounded-lg font-semibold">
                     GET A QUOTE
                 </button> */}

@@ -77,7 +77,7 @@ const Navbar = () => {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex space-x-6">
-                    <Link href="/" className="hover:text-primary ">About</Link>
+                    <Link href="/about" className="hover:text-primary ">About</Link>
                     {/* <div
                         className="relative cursor-pointer group"
                         onMouseOver={() => setDropdownOpen(true)}
@@ -138,6 +138,7 @@ const Navbar = () => {
                     </div> */}
 
                     {/* <Link href="/features" className="hover:text-primary">Features</Link> */}
+                    <Link href="/portfolio" className="hover:text-primary">Portfolio</Link>
                     <Link href="/careers" className="hover:text-primary">Careers</Link>
                 </div>
 

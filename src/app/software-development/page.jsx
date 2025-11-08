@@ -25,7 +25,7 @@ export default function HowWeWork() {
             <HeroSection
                 title="Our Development Process"
                 description="We follow a systematic approach to build high-quality software solutions."
-                image="/images/softwareDev-hero.svg"  // Make sure this file exists in /public/images/
+                image="/images/softwareDev-hero.svg"
 
             />
             {/* Process Timeline */}
