@@ -8,33 +8,34 @@ import CTASection from "../components/CTA-secton";
 
 const projects = [
     {
-        title: "GloveBox",
+        title: "GloveBox CRM",
         description:
-            "CRM for insurance agencies with lead tracking, workflow automation, and policy management features.",
+            "A comprehensive SaaS based CRM solution tailored for small and medium-sized insurance agencies to manage customer relationships effectively.",
         image: "/images/portfolio-glovebox.png",
         link: "https://glovebox.io/gloveboxcrm/",
     },
     {
-        title: "BetterAgency.io",
+        title: "Readybuild ERP",
         description:
-            "CRM for insurance agencies with lead tracking, workflow automation, and policy management features.",
-        image: "/images/yuvahire.png",
-        link: "#",
+            "An ERP solution designed for construction companies to streamline project management, accounting, and resource planning.",
+        image: "/images/portfolio-readybuild.png",
+        link: "https://readybuild.com",
     },
     {
-        title: "Paperless Pipeline Clone",
+        title: "DNH Training",
         description:
-            "A real estate transaction and commission management system tailored for agent teams, built from scratch for internal demos.",
-        image: "/images/yuvahire.png",
-        link: "#",
+            "An e-learning platform offering professional courses and certifications for various industries.",
+        image: "/images/portfolio-dnh.png",
+        link: "https://www.dnhtraining.com",
     },
     {
-        title: "Paperless Pipeline Clone",
+        title: "BuilderWing Marketplace",
         description:
-            "A real estate transaction and commission management system tailored for agent teams, built from scratch for internal demos.",
-        image: "/images/yuvahire.png",
-        link: "#",
+            "A marketplace platform connecting homeowners with trusted contractors for home improvement projects.",
+        image: "/images/portfolio-builderwing.png",
+        link: "https://www.builderwing.com/",
     },
+
 ];
 
 export default function Portfolio() {
