@@ -25,7 +25,7 @@ const products = [
         title: "YuvaTrack (Ongoing)",
         description:
             "A web-based employee attendance and payroll management solution designed for small and medium businesses.",
-        image: "/images/yuvatrack.png",
+        image: "/images/product-yuvatrack.png",
         link: "#",
     },
 ];
