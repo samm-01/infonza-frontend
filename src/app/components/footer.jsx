@@ -37,7 +37,7 @@ const Footer = () => {
                     <ul className="space-y-2 text-gray-400 text-sm">
                         <li><Link href="/software-development" className="hover:text-primary">Software Development</Link></li>
                         <li><Link href="/designing" className="hover:text-primary">Designing Services</Link></li>
-                        <li><Link href="/cloud-services" className="hover:text-primary">Cloud Services</Link></li>
+                        <li><Link href="/cloud-solutions" className="hover:text-primary">Cloud Solutions</Link></li>
                         {/* <li><Link href="/services/cybersecurity" className="hover:text-primary">Cybersecurity</Link></li> */}
                     </ul>
                 </div>

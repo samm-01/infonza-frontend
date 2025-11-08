@@ -108,7 +108,7 @@ const Navbar = () => {
 
                     <Link href="/software-development" className="hover:text-primary">Software Development</Link>
                     <Link href="/designing" className="hover:text-primary">Designing Services</Link>
-                    <Link href="/cloud-services" className="hover:text-primary">Cloud Services</Link>
+                    <Link href="/cloud-solutions" className="hover:text-primary">Cloud Services</Link>
 
 
 
