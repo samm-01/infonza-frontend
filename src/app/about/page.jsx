@@ -11,14 +11,14 @@ const products = [
         title: "YuvaHire",
         description:
             "A SaaS platform connecting students, institutions, and employers. It offers placement automation and resume screening for smooth recruitment workflows.",
-        image: "/images/yuvahire.png",
+        image: "/images/product-yuvahire.png",
         link: "https://yuvahire.com",
     },
     {
         title: "Select",
         description:
             "A recruitment automation tool for agencies, simplifying candidate sourcing, screening, and interview scheduling in one place.",
-        image: "/images/select.png",
+        image: "/images/product-select.png",
         link: "https://select.yuvahire.com/",
     },
     {
