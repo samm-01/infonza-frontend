@@ -143,6 +143,14 @@ export default function Footer() {
             >
               Terms of Service
             </Link>
+            <a
+              href="/sitemap.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-slate-500 hover:text-slate-400 transition-colors"
+            >
+              Sitemap
+            </a>
           </div>
         </div>
       </div>
