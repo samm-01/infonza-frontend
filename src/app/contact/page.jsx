@@ -47,16 +47,35 @@ const faqs = [
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [openFaq, setOpenFaq] = useState(null);
+  const [formData, setFormData] = useState({
+    name: "", email: "", company: "", projectType: "", budget: "", message: "",
+  });
 
-  function handleSubmit(e) {
+  function handleChange(e) {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    // Redirect to Google Form or handle form submission
-    window.open(
-      "https://docs.google.com/forms/d/e/1FAIpQLSdLBYxeALTTwSYYaMhB_1UJHMyi-KFzMJznYnSPln3xLcvrkw/viewform",
-      "_blank"
-    );
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -132,6 +151,8 @@ export default function ContactPage() {
                         autoComplete="name"
                         placeholder="Alex Johnson"
                         aria-required="true"
+                        value={formData.name}
+                        onChange={handleChange}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-colors"
                       />
                     </div>
@@ -147,6 +168,8 @@ export default function ContactPage() {
                         autoComplete="email"
                         placeholder="alex@company.com"
                         aria-required="true"
+                        value={formData.email}
+                        onChange={handleChange}
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-colors"
                       />
                     </div>
@@ -163,6 +186,8 @@ export default function ContactPage() {
                       name="company"
                       autoComplete="organization"
                       placeholder="Acme Inc."
+                      value={formData.company}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-colors"
                     />
                   </div>
@@ -175,7 +200,14 @@ export default function ContactPage() {
                     <div className="flex flex-wrap gap-2">
                       {projectTypes.map((type) => (
                         <label key={type} className="cursor-pointer">
-                          <input type="radio" name="projectType" value={type} className="sr-only peer" />
+                          <input
+                            type="radio"
+                            name="projectType"
+                            value={type}
+                            className="sr-only peer"
+                            checked={formData.projectType === type}
+                            onChange={handleChange}
+                          />
                           <span className="block px-4 py-2 rounded-lg border border-slate-200 text-sm font-medium text-slate-600 peer-checked:border-teal-500 peer-checked:bg-teal-50 peer-checked:text-teal-700 hover:border-slate-300 transition-all">
                             {type}
                           </span>
@@ -192,7 +224,14 @@ export default function ContactPage() {
                     <div className="flex flex-wrap gap-2">
                       {budgetRanges.map((range) => (
                         <label key={range} className="cursor-pointer">
-                          <input type="radio" name="budget" value={range} className="sr-only peer" />
+                          <input
+                            type="radio"
+                            name="budget"
+                            value={range}
+                            className="sr-only peer"
+                            checked={formData.budget === range}
+                            onChange={handleChange}
+                          />
                           <span className="block px-4 py-2 rounded-lg border border-slate-200 text-sm font-medium text-slate-600 peer-checked:border-teal-500 peer-checked:bg-teal-50 peer-checked:text-teal-700 hover:border-slate-300 transition-all">
                             {range}
                           </span>
@@ -213,15 +252,24 @@ export default function ContactPage() {
                       rows={5}
                       aria-required="true"
                       placeholder="Tell us what you're building, the problem it solves, and where you're at today..."
+                      value={formData.message}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-colors resize-none"
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-sm text-red-500 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                      {error}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-xl bg-gradient-to-r from-teal-600 to-blue-600 text-white font-semibold text-base hover:opacity-90 transition-all hover:shadow-lg hover:shadow-teal-500/20"
+                    disabled={loading}
+                    className="w-full py-4 rounded-xl bg-gradient-to-r from-teal-600 to-blue-600 text-white font-semibold text-base hover:opacity-90 transition-all hover:shadow-lg hover:shadow-teal-500/20 disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    Send Message →
+                    {loading ? "Sending…" : "Send Message →"}
                   </button>
 
                   <p className="text-xs text-center text-slate-400">
