@@ -26,11 +26,11 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-5">
               <Image
-                src="/infonza-logo.jpg"
+                src="/infonza-logo-transparent.png"
                 alt="Infonza Innovations"
                 width={130}
                 height={50}
-                className="h-10 w-auto rounded-md brightness-0 invert"
+                className="h-10 w-auto brightness-0 invert"
               />
             </Link>
             <p className="text-sm leading-relaxed mb-6">

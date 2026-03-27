@@ -39,11 +39,11 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/infonza-logo.jpg"
+              src="/infonza-logo-transparent.png"
               alt="Infonza Innovations"
               width={130}
               height={50}
-              className="h-10 w-auto rounded-md"
+              className={`h-10 w-auto transition-all duration-300 ${isTransparent ? "brightness-0 invert" : ""}`}
               priority
             />
           </Link>
