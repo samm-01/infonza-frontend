@@ -245,7 +245,7 @@ export default function AboutPage() {
                   <p className="text-sm text-slate-500 leading-relaxed mb-5">
                     {product.description}
                   </p>
-                  {product.link !== "#" && (
+                  {product.status === "Live" ? (
                     <a
                       href={product.link}
                       target="_blank"
@@ -254,6 +254,8 @@ export default function AboutPage() {
                     >
                       Visit site →
                     </a>
+                  ) : (
+                    <span className="text-sm text-slate-400 italic">Coming soon</span>
                   )}
                 </div>
               </motion.div>

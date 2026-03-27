@@ -121,24 +121,32 @@ export default function ContactPage() {
                   {/* Name + Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
                         Your Name <span className="text-red-400">*</span>
                       </label>
                       <input
                         type="text"
+                        id="name"
+                        name="name"
                         required
+                        autoComplete="name"
                         placeholder="Alex Johnson"
+                        aria-required="true"
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-colors"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
                         Work Email <span className="text-red-400">*</span>
                       </label>
                       <input
                         type="email"
+                        id="email"
+                        name="email"
                         required
+                        autoComplete="email"
                         placeholder="alex@company.com"
+                        aria-required="true"
                         className="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-colors"
                       />
                     </div>
@@ -146,11 +154,14 @@ export default function ContactPage() {
 
                   {/* Company */}
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
+                    <label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-2">
                       Company / Startup Name
                     </label>
                     <input
                       type="text"
+                      id="company"
+                      name="company"
+                      autoComplete="organization"
                       placeholder="Acme Inc."
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-colors"
                     />
@@ -192,12 +203,15 @@ export default function ContactPage() {
 
                   {/* Message */}
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
                       Describe your project <span className="text-red-400">*</span>
                     </label>
                     <textarea
+                      id="message"
+                      name="message"
                       required
                       rows={5}
+                      aria-required="true"
                       placeholder="Tell us what you're building, the problem it solves, and where you're at today..."
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/30 focus:border-teal-500 transition-colors resize-none"
                     />

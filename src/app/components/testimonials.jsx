@@ -22,7 +22,7 @@ const testimonials = [
       "Our insurance onboarding used to take 3 hours per client. After the system Infonza built, it's down to under 45 minutes — fully automated. The ROI was clear within 60 days.",
     name: "John G.",
     role: "Operations Director, Insurance Agency",
-    image: "/avatars/dineth.jpg",
+    image: "/avatars/john.jpg",
   },
 ];
 

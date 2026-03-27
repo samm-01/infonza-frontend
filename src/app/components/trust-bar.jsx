@@ -1,5 +1,6 @@
 "use client";
 
+// Duplicated intentionally for seamless infinite scroll animation
 const techBadges = [
   "React & Next.js",
   "Node.js & Express",
@@ -9,8 +10,11 @@ const techBadges = [
   "REST & GraphQL APIs",
   "Stripe & Payments",
   "Insurance APIs",
-  "Framer Motion",
   "Tailwind CSS",
+  "Docker & DevOps",
+  "TypeScript",
+  "Redis & Caching",
+  // Duplicate set for seamless loop
   "React & Next.js",
   "Node.js & Express",
   "Laravel & PHP",
@@ -19,8 +23,10 @@ const techBadges = [
   "REST & GraphQL APIs",
   "Stripe & Payments",
   "Insurance APIs",
-  "Framer Motion",
   "Tailwind CSS",
+  "Docker & DevOps",
+  "TypeScript",
+  "Redis & Caching",
 ];
 
 const industries = [

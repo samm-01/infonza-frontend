@@ -6,21 +6,119 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const baseUrl = "https://infonza.com";
+
 export const metadata = {
-  title: "Infonza Innovations | Custom Software & Product Development",
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: "Infonza Innovations | Custom Software & Product Development",
+    template: "%s | Infonza Innovations",
+  },
   description:
     "We build custom web apps, SaaS products, CRM/ERP systems, and automation workflows for US-based startups, agencies, and SMEs. Book a free strategy call.",
+  keywords: [
+    "custom software development",
+    "SaaS development",
+    "CRM ERP systems",
+    "web application development",
+    "API integration",
+    "workflow automation",
+    "Next.js development",
+    "React development",
+    "US software company",
+    "insurance software",
+    "construction ERP",
+  ],
+  authors: [{ name: "Infonza Innovations" }],
+  creator: "Infonza Innovations",
+  publisher: "Infonza Innovations",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: baseUrl,
+    siteName: "Infonza Innovations",
+    title: "Infonza Innovations | Custom Software & Product Development",
+    description:
+      "We build custom web apps, SaaS products, CRM/ERP systems, and automation workflows for US-based startups, agencies, and SMEs.",
+    images: [
+      {
+        url: "/infonza-logo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Infonza Innovations — Custom Software Development",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Infonza Innovations | Custom Software & Product Development",
+    description:
+      "We build custom web apps, SaaS products, CRM/ERP systems, and automation workflows for US-based startups, agencies, and SMEs.",
+    images: ["/infonza-logo.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/infonza-logo.jpg",
+    apple: "/infonza-logo.jpg",
+    shortcut: "/infonza-logo.jpg",
+  },
+  alternates: {
+    canonical: baseUrl,
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Infonza Innovations",
+  url: baseUrl,
+  logo: `${baseUrl}/infonza-logo.jpg`,
+  description:
+    "Custom software development company building web apps, SaaS products, CRM/ERP systems, and automation workflows for US-based businesses.",
+  email: "support@infonza.com",
+  sameAs: ["https://www.linkedin.com/company/infonza-innovations/"],
+  areaServed: { "@type": "Country", name: "United States" },
+  knowsAbout: [
+    "Web Application Development",
+    "SaaS Product Development",
+    "CRM/ERP Systems",
+    "API Integration",
+    "Workflow Automation",
+    "Insurance Software",
+    "Construction ERP",
+  ],
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <link rel="icon" type="image/png" href="/infonza-logo.jpg" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
       </head>
-      <body className={`${geistSans.variable} antialiased`}>{children}</body>
+      <body className={`${geistSans.variable} antialiased`}>
+        {/* Skip to main content — accessibility */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-teal-600 focus:text-white focus:rounded-lg focus:text-sm focus:font-semibold"
+        >
+          Skip to main content
+        </a>
+        <div id="main-content">{children}</div>
+      </body>
     </html>
   );
 }
