@@ -1,5 +1,6 @@
 import { Geist } from "next/font/google";
 import "./globals.css";
+import ISTClock from "./components/ist-clock";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -117,6 +118,7 @@ export default function RootLayout({ children }) {
         >
           Skip to main content
         </a>
+        <ISTClock />
         <div id="main-content">{children}</div>
       </body>
     </html>

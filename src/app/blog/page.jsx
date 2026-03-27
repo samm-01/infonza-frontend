@@ -5,69 +5,7 @@ import Link from "next/link";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import CTABanner from "../components/cta-banner";
-
-const posts = [
-  {
-    slug: "how-we-cut-insurance-onboarding-from-3-hours-to-45-minutes",
-    title: "How We Cut Insurance Onboarding from 3 Hours to 45 Minutes",
-    excerpt:
-      "A deep dive into the workflow automation system we built for a US insurance agency — what we built, why we built it that way, and the results.",
-    category: "Case Study",
-    date: "March 18, 2025",
-    readTime: "7 min read",
-    featured: true,
-  },
-  {
-    slug: "why-most-saas-mvps-fail-and-how-to-avoid-it",
-    title: "Why Most SaaS MVPs Fail (And How to Avoid It)",
-    excerpt:
-      "After building 50+ products, we've seen the same mistakes over and over. Here's what separates MVPs that get traction from ones that get scrapped.",
-    category: "Product",
-    date: "February 28, 2025",
-    readTime: "5 min read",
-    featured: false,
-  },
-  {
-    slug: "choosing-the-right-stack-for-your-crm-project",
-    title: "Choosing the Right Stack for Your CRM Project",
-    excerpt:
-      "React + Node vs Laravel vs low-code: a practical framework for picking the right stack based on scale, team, and long-term maintenance cost.",
-    category: "Engineering",
-    date: "February 10, 2025",
-    readTime: "6 min read",
-    featured: false,
-  },
-  {
-    slug: "api-integrations-that-actually-hold-up-in-production",
-    title: "API Integrations That Actually Hold Up in Production",
-    excerpt:
-      "Rate limits, retries, webhooks, and error handling — the unglamorous work that separates a demo-ready integration from a production-ready one.",
-    category: "Engineering",
-    date: "January 22, 2025",
-    readTime: "8 min read",
-    featured: false,
-  },
-  {
-    slug: "what-us-startups-get-wrong-about-offshore-development",
-    title: "What US Startups Get Wrong About Offshore Development",
-    excerpt:
-      "Bad offshore experiences usually come down to three things: unclear specs, no accountability structure, and treating developers as order-takers.",
-    category: "Business",
-    date: "January 8, 2025",
-    readTime: "4 min read",
-    featured: false,
-  },
-  {
-    slug: "erp-implementation-lessons-from-a-construction-company",
-    title: "ERP Implementation Lessons from a Construction Company",
-    excerpt:
-      "Building Readybuild taught us that ERP projects live or die on change management, not technology. Here's what actually mattered.",
-    category: "Case Study",
-    date: "December 15, 2024",
-    readTime: "6 min read",
-    featured: false,
-  },
-];
+import { posts } from "./posts";
 
 const categoryColors = {
   "Case Study": "bg-teal-50 text-teal-700 border-teal-100",
