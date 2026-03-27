@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -6,14 +6,10 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata = {
-  title: "Infonza | Software & Cloud Solutions for Global Businesses",
-  description: "Infonza offers cutting-edge software and cloud solutions for businesses in the USA, Dubai, and Singapore. Innovate faster, scale smarter, and transform your business with our expertise.",
+  title: "Infonza Innovations | Custom Software & Product Development",
+  description:
+    "We build custom web apps, SaaS products, CRM/ERP systems, and automation workflows for US-based startups, agencies, and SMEs. Book a free strategy call.",
 };
 
 export default function RootLayout({ children }) {
@@ -24,11 +20,7 @@ export default function RootLayout({ children }) {
         <meta name="description" content={metadata.description} />
         <link rel="icon" type="image/png" href="/infonza-logo.jpg" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${geistSans.variable} antialiased`}>{children}</body>
     </html>
   );
 }
