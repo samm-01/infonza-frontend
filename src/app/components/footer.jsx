@@ -1,3 +1,5 @@
+"use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { FaLinkedinIn, FaYoutube, FaFacebookF } from "react-icons/fa";
 
@@ -12,8 +14,36 @@ const footerLinks = {
     { href: "/about", label: "About Us" },
     { href: "/case-studies", label: "Case Studies" },
     { href: "/portfolio", label: "Portfolio" },
+    { href: "/blog", label: "Blog" },
   ],
 };
+
+function ISTClock() {
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    function update() {
+      setTime(
+        new Date().toLocaleTimeString("en-IN", {
+          timeZone: "Asia/Kolkata",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+        })
+      );
+    }
+    update();
+    const id = setInterval(update, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <span className="inline-flex items-center gap-1.5 text-xs text-slate-400">
+      <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse" />
+      🇮🇳 India · {time} IST
+    </span>
+  );
+}
 
 export default function Footer() {
   return (
@@ -42,7 +72,10 @@ export default function Footer() {
               We build software that powers business operations — from MVPs to
               enterprise ERP systems.
             </p>
-            <p className="text-xs text-slate-500 mb-5">support@infonza.com</p>
+            <p className="text-xs text-slate-500 mb-3">support@infonza.com</p>
+            <div className="mb-5">
+              <ISTClock />
+            </div>
             <div className="flex gap-3">
               <a
                 href="https://www.linkedin.com/company/infonza-innovations/"
