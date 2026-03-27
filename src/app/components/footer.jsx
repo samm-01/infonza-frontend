@@ -12,7 +12,6 @@ const footerLinks = {
     { href: "/about", label: "About Us" },
     { href: "/case-studies", label: "Case Studies" },
     { href: "/portfolio", label: "Portfolio" },
-    { href: "/careers", label: "Careers" },
   ],
 };
 
@@ -132,13 +131,13 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-6">
             <Link
-              href="#"
+              href="/privacy-policy"
               className="text-xs text-slate-500 hover:text-slate-400 transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
-              href="#"
+              href="/terms-of-service"
               className="text-xs text-slate-500 hover:text-slate-400 transition-colors"
             >
               Terms of Service

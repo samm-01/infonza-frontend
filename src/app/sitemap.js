@@ -41,12 +41,6 @@ export default function sitemap() {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/careers`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
       url: `${baseUrl}/privacy-policy`,
       lastModified,
       changeFrequency: "yearly",
