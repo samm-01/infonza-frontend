@@ -1,169 +1,157 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import TopBar from "./topbar";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
-// const services = [
-//     {
-//         title: "Development",
-//         links: [
-//             "Web App Developemt",
-//             "Mobile App Development",
-//             "Software Testing Services",
-//             // "NoSQL Database Management",
-//         ],
-//     },
-//     {
-//         title: "Designing Services",
-//         links: [
-//             "UI/UX Development",
-//             "Graphic Designing",
-//             "Web App Designs",
-//             // "Apache/Tomcat Middleware Services",
-//             // "Openshift Middleware Services",
-//             // "Linux Management Services",
-//             // "AIX Management Services",
-//         ],
-//     },
-//     {
-//         title: "Cloud",
-//         links: [
-//             "Cloud Migration",
-//             "Cloud Assessment",
-//             "Cloud Strategy & Planning",
-//             "Cloud Security & Compliance",
-//             // "Cloud Optimization",
-//         ],
-//     },
-//     // {
-//     //     title: "Application",
-//     //     links: [
-//     //         "Application Support",
-//     //         "Application Development",
-//     //         "Application Modernization",
-//     //     ],
-//     // },
-// ];
-
-const resources = [
-    {
-        title: "Whitepapers",
-        links: ["Industry Reports", "Technical Guides", "Best Practices"],
-    },
-    {
-        title: "Case Studies",
-        links: ["Customer Success Stories", "Project Insights"],
-    },
-    {
-        title: "Blogs & Articles",
-        links: ["Tech Insights", "Company News", "AI Trends"],
-    },
+const navLinks = [
+  { href: "/services", label: "Services" },
+  { href: "/case-studies", label: "Case Studies" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/blog", label: "Blog" },
+  { href: "/about", label: "About" },
 ];
 
-const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isDarkPage = pathname === "/";
 
-    return (
-        <nav className="bg-white text-black fixed w-full top-0 z-50">
-            <TopBar />
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-            <div className="py-2 container mx-auto flex justify-between items-center">
-                {/* Logo */}
-                <Link href="/">
-                    <span className="text-2xl font-bold text-primary">infonza</span>
-                </Link>
+  const isTransparent = isDarkPage && !scrolled;
 
-                {/* Desktop Menu */}
-                <div className="hidden md:flex space-x-6">
-                    <Link href="/about" className="hover:text-primary ">About</Link>
-                    {/* <div
-                        className="relative cursor-pointer group"
-                        onMouseOver={() => setDropdownOpen(true)}
-                        onMouseOut={() => setDropdownOpen(false)}
-                    >
-                        <span className="hover:text-primary">Services +</span>
-                        {dropdownOpen && (
-                            <div
-                                className="absolute left-0 top-full w-[600px] bg-white text-black shadow-lg p-4 rounded-lg grid grid-cols-3 gap-6"
-                                onMouseOver={() => setDropdownOpen(true)}
-                                onMouseOut={() => setDropdownOpen(false)}
-                            >
-                                {services.map((category, index) => (
-                                    <div className="" key={index}>
-                                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.title}</h3>
-                                        <ul className="space-y-1 text-sm text-gray-700">
-                                            {category.links.map((link, linkIndex) => (
-                                                <li key={linkIndex} className="hover:text-primary transition cursor-pointer">
-                                                    {link}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div> */}
-
-                    <Link href="/software-development" className="hover:text-primary">Software Development</Link>
-                    <Link href="/designing" className="hover:text-primary">Designing Services</Link>
-                    <Link href="/cloud-solutions" className="hover:text-primary">Cloud Services</Link>
-
-
-
-                    {/* Resources Dropdown */}
-                    {/* <div
-                        className="relative cursor-pointer group"
-                        onMouseEnter={() => setResourcesDropdownOpen(true)}
-                        onMouseLeave={() => setResourcesDropdownOpen(false)}
-                    >
-                        <span className="hover:text-primary">Resources +</span>
-                        {resourcesDropdownOpen && (
-                            <div className="absolute left-0 top-full w-[400px] bg-white text-black shadow-lg p-6 rounded-lg grid grid-cols-1 gap-6">
-                                {resources.map((category, index) => (
-                                    <div key={index}>
-                                        <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.title}</h3>
-                                        <ul className="space-y-1 text-sm text-gray-700">
-                                            {category.links.map((link, linkIndex) => (
-                                                <li key={linkIndex} className="hover:text-primary transition cursor-pointer">
-                                                    {link}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div> */}
-
-                    {/* <Link href="/features" className="hover:text-primary">Features</Link> */}
-                    <Link href="/portfolio" className="hover:text-primary">Portfolio</Link>
-                    <Link href="/careers" className="hover:text-primary">Careers</Link>
-                </div>
-
-                {/* CTA Button */}
-                <Link href="/contact" className="hidden md:block bg-primary text-white px-4 py-2 rounded-lg">
-                    Contact Us
-                </Link>
-
-                {/* Mobile Menu Button */}
-                <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
-                    ☰
-                </button>
+  return (
+    <header
+      className={`fixed top-[41px] left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled || !isDarkPage
+          ? "bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 lg:h-20">
+          {/* Logo */}
+          <Link href="/" className="flex-shrink-0">
+            <div className={`transition-all duration-300 rounded-xl ${isTransparent ? "bg-white/95 px-3 py-1.5" : ""}`}>
+              <Image
+                src="/infonza-logo-transparent.png"
+                alt="Infonza Innovations"
+                width={130}
+                height={44}
+                className="h-9 w-auto"
+                priority
+              />
             </div>
+          </Link>
 
-            {/* Mobile Menu */}
-            {isOpen && (
-                <div className="md:hidden mt-4 space-y-2 text-center">
-                    <Link href="/" className="block py-2 hover:text-primary">About</Link>
-                    {/* <Link href="/features" className="block py-2 hover:text-primary">Features</Link> */}
-                    <Link href="/faq" className="block py-2 hover:text-primary">FAQ</Link>
-                    <Link href="/contact" className="block py-2 bg-primary text-white rounded-lg">Contact Us</Link>
-                </div>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  pathname === link.href
+                    ? isTransparent
+                      ? "text-white bg-white/10"
+                      : "text-teal-600 bg-teal-50"
+                    : isTransparent
+                    ? "text-slate-200 hover:text-white hover:bg-white/10"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center gap-4">
+            <Link
+              href="/contact"
+              className={`text-sm font-medium transition-colors ${
+                isTransparent
+                  ? "text-slate-300 hover:text-white"
+                  : "text-slate-500 hover:text-slate-900"
+              }`}
+            >
+              Contact
+            </Link>
+            <Link
+              href="/contact"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-teal-600 to-blue-600 text-white text-sm font-semibold hover:opacity-90 transition-all hover:shadow-lg hover:shadow-teal-500/25 hover:-translate-y-px"
+            >
+              Book a Call →
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className={`md:hidden p-2 rounded-lg transition-colors ${
+              isTransparent
+                ? "text-white hover:bg-white/10"
+                : "text-slate-600 hover:bg-slate-100"
+            }`}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? (
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  fillRule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  fillRule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  clipRule="evenodd"
+                />
+              </svg>
             )}
-        </nav>
-    );
-};
+          </button>
+        </div>
+      </div>
 
-export default Navbar;
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-white border-t border-slate-100">
+          <div className="px-4 py-4 space-y-1">
+            {[...navLinks, { href: "/contact", label: "Contact" }].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                  pathname === link.href
+                    ? "text-teal-600 bg-teal-50"
+                    : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="pt-2">
+              <Link
+                href="/contact"
+                onClick={() => setMenuOpen(false)}
+                className="block px-4 py-3 rounded-xl bg-gradient-to-r from-teal-600 to-blue-600 text-white text-sm font-semibold text-center"
+              >
+                Book a Call →
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}

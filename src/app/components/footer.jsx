@@ -1,75 +1,153 @@
 import Link from "next/link";
-import { FaFacebookF, FaLinkedinIn, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
+import Image from "next/image";
+import { FaLinkedinIn, FaYoutube, FaFacebookF } from "react-icons/fa";
 
-const Footer = () => {
-    return (
-        <footer className="bg-black text-white py-10 px-6 md:px-16 relative overflow-hidden">
-            {/* Blurry Background Effect in the Center */}
-            <div className="absolute inset-80 flex justify-center items-center">
-                <div className="w-72 h-72 bg-primary opacity-30 blur-3xl"></div>
-            </div>
-
-            <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-                {/* Column 1: Logo & About */}
-                <div>
-                    <h2 className="text-4xl font-bold text-primary">infonza</h2>
-                    <p className="text-gray-400 mt-2 text-md">
-                        Software & Cloud Solutions for Global Businesses
-
-                    </p>
-                </div>
-
-                {/* Column 2: Quick Links */}
-                <div>
-                    <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
-                    <ul className="space-y-2 text-gray-400 text-sm">
-                        <li><Link href="/about" className="hover:text-primary">About Us</Link></li>
-                        {/* <li><Link href="/services" className="hover:text-primary">Services</Link></li> */}
-                        {/* <li><Link href="/resources" className="hover:text-primary">Resources</Link></li> */}
-                        <li><Link href="/careers" className="hover:text-primary">Careers</Link></li>
-                        <li><Link href="/contact" className="hover:text-primary">Contact</Link></li>
-                    </ul>
-                </div>
-
-                {/* Column 3: Services */}
-                <div>
-                    <h3 className="text-lg font-semibold mb-3">Our Services</h3>
-                    <ul className="space-y-2 text-gray-400 text-sm">
-                        <li><Link href="/software-development" className="hover:text-primary">Software Development</Link></li>
-                        <li><Link href="/designing" className="hover:text-primary">Designing Services</Link></li>
-                        <li><Link href="/cloud-solutions" className="hover:text-primary">Cloud Solutions</Link></li>
-                        {/* <li><Link href="/services/cybersecurity" className="hover:text-primary">Cybersecurity</Link></li> */}
-                    </ul>
-                </div>
-
-                {/* Column 4: Contact & Socials */}
-                <div>
-                    <h3 className="text-lg font-semibold mb-3">Get In Touch</h3>
-                    <p className="text-gray-400 text-sm">Email: support@infonza.com</p>
-                    {/* <p className="text-gray-400 text-sm">Phone: +91 9915 820 125</p> */}
-                    <div className="flex space-x-4 mt-4">
-                        <a href="https://www.linkedin.com/company/infonza-innovations/?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3BPwZ2Y157R0OmSpn0VqPoPA%3D%3D" target="_blank" rel="noopener noreferrer">
-                            <FaFacebookF className="hover:text-primary cursor-pointer" />
-                        </a>
-                        <a href="https://www.linkedin.com/company/infonza-innovations/?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3BPwZ2Y157R0OmSpn0VqPoPA%3D%3D" target="_blank" rel="noopener noreferrer">
-                            <FaLinkedinIn className="hover:text-primary cursor-pointer" />
-                        </a>
-                        <a href="https://www.linkedin.com/company/infonza-innovations/?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3BPwZ2Y157R0OmSpn0VqPoPA%3D%3D" target="_blank" rel="noopener noreferrer">
-                            <FaYoutube className="hover:text-primary cursor-pointer" />
-                        </a>
-                        {/* <a href="https://www.linkedin.com/company/infonza-innovations/?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3BPwZ2Y157R0OmSpn0VqPoPA%3D%3D" target="_blank" rel="noopener noreferrer">
-                            <FaInstagram className="hover:text-primary cursor-pointer" />
-                        </a> */}
-                    </div>
-                </div>
-            </div>
-
-            {/* Bottom Footer */}
-            <div className="text-center text-gray-500 text-sm mt-8 border-t border-gray-800 pt-4 relative z-10">
-                &copy; {new Date().getFullYear()} Infonza. All Rights Reserved.
-            </div>
-        </footer>
-    );
+const footerLinks = {
+  services: [
+    { href: "/services#web-development", label: "Web Development" },
+    { href: "/services#saas", label: "SaaS Development" },
+    { href: "/services#crm-erp", label: "CRM & ERP Systems" },
+    { href: "/services#api-automation", label: "API & Automation" },
+  ],
+  company: [
+    { href: "/about", label: "About Us" },
+    { href: "/case-studies", label: "Case Studies" },
+    { href: "/portfolio", label: "Portfolio" },
+    { href: "/blog", label: "Blog" },
+  ],
 };
 
-export default Footer;
+export default function Footer() {
+  return (
+    <footer className="bg-slate-900 text-slate-400">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="inline-block mb-5">
+              <div className="bg-white/95 rounded-xl px-3 py-1.5 inline-block">
+                <Image
+                  src="/infonza-logo-transparent.png"
+                  alt="Infonza Innovations"
+                  width={130}
+                  height={44}
+                  className="h-9 w-auto"
+                />
+              </div>
+            </Link>
+            <p className="text-sm leading-relaxed mb-6">
+              We build software that powers business operations — from MVPs to
+              enterprise ERP systems.
+            </p>
+            <p className="text-xs text-slate-500 mb-5">support@infonza.com</p>
+            <div className="flex gap-3">
+              <a
+                href="https://www.linkedin.com/company/infonza-innovations/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-teal-600 transition-colors"
+              >
+                <FaLinkedinIn size={13} className="text-slate-300" />
+              </a>
+              <a
+                href="#"
+                className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-teal-600 transition-colors"
+              >
+                <FaFacebookF size={13} className="text-slate-300" />
+              </a>
+              <a
+                href="#"
+                className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-teal-600 transition-colors"
+              >
+                <FaYoutube size={13} className="text-slate-300" />
+              </a>
+            </div>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-5">
+              Services
+            </h4>
+            <ul className="space-y-3">
+              {footerLinks.services.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-5">
+              Company
+            </h4>
+            <ul className="space-y-3">
+              {footerLinks.company.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* CTA Column */}
+          <div>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-5">
+              Start a Project
+            </h4>
+            <p className="text-sm leading-relaxed mb-6">
+              Have a project in mind? Let&apos;s talk about what you&apos;re
+              building.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-teal-600 to-blue-600 text-white text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              Book a Free Call →
+            </Link>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="py-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-slate-500">
+            © {new Date().getFullYear()} Infonza Innovations. All rights
+            reserved.
+          </p>
+          <div className="flex items-center gap-6">
+            <Link
+              href="/privacy-policy"
+              className="text-xs text-slate-500 hover:text-slate-400 transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms-of-service"
+              className="text-xs text-slate-500 hover:text-slate-400 transition-colors"
+            >
+              Terms of Service
+            </Link>
+            <Link
+              href="/sitemap-page"
+              className="text-xs text-slate-500 hover:text-slate-400 transition-colors"
+            >
+              Sitemap
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
