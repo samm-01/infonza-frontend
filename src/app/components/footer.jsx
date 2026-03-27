@@ -25,13 +25,15 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-5">
-              <Image
-                src="/infonza-logo-transparent.png"
-                alt="Infonza Innovations"
-                width={130}
-                height={50}
-                className="h-10 w-auto brightness-0 invert"
-              />
+              <div className="bg-white/95 rounded-xl px-3 py-1.5 inline-block">
+                <Image
+                  src="/infonza-logo-transparent.png"
+                  alt="Infonza Innovations"
+                  width={130}
+                  height={44}
+                  className="h-9 w-auto"
+                />
+              </div>
             </Link>
             <p className="text-sm leading-relaxed mb-6">
               We build software that powers business operations — from MVPs to

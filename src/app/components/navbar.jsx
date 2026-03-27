@@ -38,14 +38,16 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <Image
-              src="/infonza-logo-transparent.png"
-              alt="Infonza Innovations"
-              width={130}
-              height={50}
-              className={`h-10 w-auto transition-all duration-300 ${isTransparent ? "brightness-0 invert" : ""}`}
-              priority
-            />
+            <div className={`transition-all duration-300 rounded-xl ${isTransparent ? "bg-white/95 px-3 py-1.5" : ""}`}>
+              <Image
+                src="/infonza-logo-transparent.png"
+                alt="Infonza Innovations"
+                width={130}
+                height={44}
+                className="h-9 w-auto"
+                priority
+              />
+            </div>
           </Link>
 
           {/* Desktop Nav */}
