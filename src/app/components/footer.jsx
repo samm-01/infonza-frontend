@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { FaLinkedinIn, FaYoutube, FaFacebookF } from "react-icons/fa";
 
 const footerLinks = {
@@ -23,21 +24,14 @@ export default function Footer() {
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-blue-600 flex items-center justify-center">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path
-                    d="M2 7h10M7 2l5 5-5 5"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <span className="font-bold text-lg text-white tracking-tight">
-                Infonza
-              </span>
+            <Link href="/" className="inline-block mb-5">
+              <Image
+                src="/infonza-logo.jpg"
+                alt="Infonza Innovations"
+                width={130}
+                height={50}
+                className="h-10 w-auto rounded-md brightness-0 invert"
+              />
             </Link>
             <p className="text-sm leading-relaxed mb-6">
               We build software that powers business operations — from MVPs to

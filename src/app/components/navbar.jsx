@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
@@ -36,25 +37,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-500 to-blue-600 flex items-center justify-center">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path
-                  d="M2 7h10M7 2l5 5-5 5"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <span
-              className={`font-bold text-lg tracking-tight transition-colors ${
-                isTransparent ? "text-white" : "text-slate-900"
-              }`}
-            >
-              Infonza
-            </span>
+          <Link href="/" className="flex-shrink-0">
+            <Image
+              src="/infonza-logo.jpg"
+              alt="Infonza Innovations"
+              width={130}
+              height={50}
+              className="h-10 w-auto rounded-md"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
