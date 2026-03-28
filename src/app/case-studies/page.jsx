@@ -95,6 +95,72 @@ const caseStudies = [
     duration: "16 weeks",
     teamSize: "4 engineers",
   },
+  {
+    id: "theloadoff",
+    tag: "Operations · SaaS · US Client",
+    client: "US-based Service Provider",
+    title: "Five disconnected tools replaced by one unified operations platform",
+    summary:
+      "A US-based service provider was managing customer requests, task assignments, team communication, time tracking, and billing across five separate tools. Admins had no single view of business operations, leading to missed tasks, delayed invoices, and fragmented client communication.",
+    challenge:
+      "Build a unified platform with clear role separation for admins, service managers, and clients — covering the full service lifecycle from request intake through task execution to invoice generation, without any tool-switching.",
+    solution:
+      "We designed and built a custom operations platform with six tightly integrated modules: client management with request intake, task management with priority and due-date tracking, time logging per task, task-based messaging with a centralized inbox, automated invoice generation from logged hours, and a reporting dashboard covering workload, overdue tasks, and team performance.",
+    results: [
+      { metric: "5 → 1", label: "Tools replaced by one platform" },
+      { metric: "100%", label: "Visibility on all active service requests" },
+      { metric: "3 roles", label: "Admin, Manager, Client — fully separated" },
+      { metric: "Auto", label: "Invoice generation from tracked time" },
+    ],
+    stack: ["React", "Node.js", "PostgreSQL", "Stripe", "AWS", "Socket.io"],
+    image: "/images/portfolio-glovebox.png",
+    duration: "12 weeks",
+    teamSize: "3 engineers",
+  },
+  {
+    id: "darren",
+    tag: "Logistics · SaaS · Multi-role Platform",
+    client: "Logistics Startup",
+    title: "From MVP to commercial SaaS — a logistics platform built to scale",
+    summary:
+      "A logistics startup needed a platform that could connect cargo owners with verified fleet operators and drivers for transparent, end-to-end freight coordination. The existing process relied on phone calls, WhatsApp groups, and manual paperwork — with no accountability or visibility.",
+    challenge:
+      "Build a multi-role logistics ecosystem where cargo owners post jobs, fleet owners bid and assign drivers, and drivers manage pickups, deliveries, and proof-of-delivery uploads — with a super admin layer governing the entire platform.",
+    solution:
+      "We shipped an MVP in Phase 1 covering cargo job posting, bidding workflows, vehicle and driver assignment, basic document handling, and POD uploads. After gathering real user feedback from cargo companies and fleet operators, we evolved the platform into a commercial SaaS in Phase 2 — adding live GPS-based tracking, structured bid revision support, driver verification and vehicle compliance checks, cancellation workflows with full audit trail, and a super admin dashboard with complete operational visibility.",
+    results: [
+      { metric: "2-phase", label: "MVP to commercial SaaS delivery" },
+      { metric: "5 roles", label: "Super Admin, Admin, Cargo Owner, Fleet Owner, Driver" },
+      { metric: "Live GPS", label: "Real-time route tracking per shipment" },
+      { metric: "100%", label: "Timestamped audit trail on all actions" },
+    ],
+    stack: ["React.js", "Node.js", "MongoDB", "Google Maps API", "SendGrid", "FCM", "TailwindCSS"],
+    image: "/images/portfolio-readybuild.png",
+    duration: "16 weeks (MVP + Phase 2)",
+    teamSize: "4 engineers",
+  },
+  {
+    id: "eurotile",
+    tag: "B2B Marketplace · E-Commerce · Multi-vendor",
+    client: "European Tile Manufacturer",
+    title: "Two platforms, one product line — B2B marketplace and B2C storefront for a tile business",
+    summary:
+      "A European tile manufacturer needed two distinct platforms: a B2B marketplace to connect manufacturers, distributors, and retailers for bulk trade, and a separate B2C storefront for direct retail sales to consumers and interior designers.",
+    challenge:
+      "The B2B platform required tiered pricing by square footage, multi-vendor ordering, supplier approval workflows, sample ordering before bulk commitment, and dynamic order windows aligned to supply cycles. The B2C platform needed to be simpler — clean catalog, real-time inventory, and a smooth checkout — but fully admin-controlled.",
+    solution:
+      "We built EuroTile Pro (B2B) with vendor and buyer approval flows, tiered volume pricing, a multi-vendor cart with structured checkout, sample and demo ordering, and shipping reference tracking since fulfillment is handled off-platform. In parallel, we built EuroTile B2C as a retail-focused storefront with attribute-based filtering, sample ordering, real-time inventory visibility, and a centralized admin backend for managing products, pricing, and orders.",
+    results: [
+      { metric: "2", label: "Platforms built (B2B + B2C) in parallel" },
+      { metric: "Tiered", label: "Pricing by order volume in sq ft" },
+      { metric: "Real-time", label: "Inventory visibility across both platforms" },
+      { metric: "Sample", label: "Ordering workflow before full purchase" },
+    ],
+    stack: ["React", "Node.js", "PostgreSQL", "Stripe", "AWS", "REST APIs"],
+    image: "/images/portfolio-dnh.png",
+    duration: "14 weeks",
+    teamSize: "3 engineers",
+  },
 ];
 
 export default function CaseStudiesPage() {
@@ -117,7 +183,8 @@ export default function CaseStudiesPage() {
             </h1>
             <p className="text-xl text-slate-500 leading-relaxed">
               We don&apos;t do vague case studies. Here are the actual problems our clients
-              faced, what we built, and what changed after launch.
+              faced, what we built, and what changed — across insurance, construction,
+              logistics, operations, e-commerce, and more.
             </p>
           </div>
         </div>
