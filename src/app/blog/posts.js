@@ -5,7 +5,7 @@ export const posts = [
     excerpt:
       "A deep dive into the workflow automation system we built for a US insurance agency — what we built, why we built it that way, and the results.",
     category: "Case Study",
-    date: "March 18, 2025",
+    date: "March 18, 2026",
     readTime: "7 min read",
     featured: true,
     content: [
@@ -77,7 +77,7 @@ export const posts = [
     excerpt:
       "After building 50+ products, we've seen the same mistakes over and over. Here's what separates MVPs that get traction from ones that get scrapped.",
     category: "Product",
-    date: "February 28, 2025",
+    date: "February 28, 2026",
     readTime: "5 min read",
     featured: false,
     content: [
@@ -137,7 +137,7 @@ export const posts = [
     excerpt:
       "React + Node vs Laravel vs low-code: a practical framework for picking the right stack based on scale, team, and long-term maintenance cost.",
     category: "Engineering",
-    date: "February 10, 2025",
+    date: "February 10, 2026",
     readTime: "6 min read",
     featured: false,
     content: [
@@ -205,7 +205,7 @@ export const posts = [
     excerpt:
       "Rate limits, retries, webhooks, and error handling — the unglamorous work that separates a demo-ready integration from a production-ready one.",
     category: "Engineering",
-    date: "January 22, 2025",
+    date: "January 22, 2026",
     readTime: "8 min read",
     featured: false,
     content: [
@@ -277,7 +277,7 @@ export const posts = [
     excerpt:
       "Bad offshore experiences usually come down to three things: unclear specs, no accountability structure, and treating developers as order-takers.",
     category: "Business",
-    date: "January 8, 2025",
+    date: "January 8, 2026",
     readTime: "4 min read",
     featured: false,
     content: [
@@ -345,7 +345,7 @@ export const posts = [
     excerpt:
       "Building Readybuild taught us that ERP projects live or die on change management, not technology. Here's what actually mattered.",
     category: "Case Study",
-    date: "December 15, 2024",
+    date: "December 15, 2025",
     readTime: "6 min read",
     featured: false,
     content: [
