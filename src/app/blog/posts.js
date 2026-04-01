@@ -1,5 +1,89 @@
 export const posts = [
   {
+    slug: "building-ai-voice-ordering-with-twilio-and-deepgram",
+    title: "Building AI Voice Ordering with Twilio and DeepGram",
+    excerpt:
+      "We've integrated AI voice ordering into two restaurant platforms. Here's what the architecture looks like, where it breaks, and what actually works in production.",
+    category: "Engineering",
+    date: "April 1, 2026",
+    readTime: "7 min read",
+    featured: false,
+    content: [
+      {
+        type: "p",
+        text: "When a restaurant client asked us to add phone ordering to their multi-restaurant platform, our first instinct was to build a simple IVR menu. Press 1 for pizza, press 2 for pasta. That conversation lasted about ten minutes before we all agreed it was a terrible experience and started looking at AI voice ordering properly.",
+      },
+      {
+        type: "h2",
+        text: "The Architecture at a Glance",
+      },
+      {
+        type: "p",
+        text: "The core pipeline is: Twilio handles the inbound call and streams audio in real time via its Media Streams API. DeepGram receives the audio stream and returns a transcript with word-level confidence scores. Our NLP layer — spaCy in one project, a fine-tuned intent classifier in the other — extracts the order intent, items, quantities, and modifiers. A state machine manages the conversation, confirms the order, and pushes it into the order management system.",
+      },
+      {
+        type: "p",
+        text: "On paper, this is clean. In practice, there are at least a dozen places this pipeline can go wrong, and most of them only show up under real-world conditions.",
+      },
+      {
+        type: "h2",
+        text: "Where DeepGram Surprised Us",
+      },
+      {
+        type: "p",
+        text: "DeepGram's transcription accuracy is genuinely impressive for clean audio. The problem is restaurant phone calls are not clean audio. Kitchen noise in the background, callers on speakerphone while driving, accented English from non-native speakers. We saw accuracy drop from ~95% in test conditions to the low 80s on real calls in noisy environments.",
+      },
+      {
+        type: "p",
+        text: "Two things helped significantly: switching to DeepGram's Nova-2 model and enabling the punctuation and smart formatting options. More importantly, we added a confidence threshold — if DeepGram returned a word confidence below 0.7, we treated that segment as unclear and had the system ask for a repeat rather than guessing. It slows down the conversation slightly but eliminates the failure mode where the system confidently processes a wrong order.",
+      },
+      {
+        type: "h2",
+        text: "Intent Extraction: spaCy vs a Classifier",
+      },
+      {
+        type: "p",
+        text: "On ConnectWithChain, we used spaCy with custom entity patterns to extract menu items, quantities, and modifiers. This works well when the menu vocabulary is constrained and consistent. Training custom NER models for each restaurant's menu is tedious but the inference is fast and predictable. The system doesn't hallucinate items that aren't on the menu.",
+      },
+      {
+        type: "p",
+        text: "On Meals on Wheels 4U, the menu variability was higher and we moved to a small fine-tuned intent classifier. The trade-off is worth understanding: classifier-based approaches handle natural language variation better but they're harder to debug when they fail, and they fail in less predictable ways. For any production voice ordering system, you need a logging layer that captures every transcript and its parsed output so you can audit failures and retrain.",
+      },
+      {
+        type: "h2",
+        text: "The Hardest Part: Conversational State",
+      },
+      {
+        type: "p",
+        text: "Transcription and intent extraction are solved problems. Managing the state of a multi-turn conversation is where the real complexity lives. A caller might say \"actually, make that two burgers\" after already confirming one. They might ask about allergens mid-order. They might go quiet for thirty seconds because someone walked in.",
+      },
+      {
+        type: "p",
+        text: "We model conversation state as an explicit state machine: idle, collecting order, confirming, payment, done. Every user utterance is processed relative to the current state. The machine handles interruptions, corrections, and the common case where the caller says something entirely off-script. Timeouts are handled gracefully — if there's no audio for 8 seconds, the system prompts rather than hanging. If the call drops, the partial order is preserved so staff can follow up.",
+      },
+      {
+        type: "h2",
+        text: "What We'd Do Differently",
+      },
+      {
+        type: "p",
+        text: "Build the human handoff before you build the AI. Every voice ordering system needs a smooth path to a human agent. Don't treat it as an edge case — callers will use it. We initially built handoff as an afterthought and had to retrofit it. Now we design it first.",
+      },
+      {
+        type: "p",
+        text: "Also: don't try to handle payments over voice unless you have strong compliance requirements to do so. Asking callers to read a card number is slow, error-prone, and feels like 2005. Both our implementations route to an SMS payment link instead. Conversion is better and the implementation is simpler.",
+      },
+      {
+        type: "h2",
+        text: "When This Architecture Makes Sense",
+      },
+      {
+        type: "p",
+        text: "AI voice ordering is not right for every restaurant. It makes sense when call volume is high enough to justify the build cost, when the menu is structured enough for intent extraction to be reliable, and when the operator has the bandwidth to monitor and improve the system over time. It doesn't replace human staff — it handles the routine repeat orders so staff can focus on the calls that actually need attention.",
+      },
+    ],
+  },
+  {
     slug: "how-we-cut-insurance-onboarding-from-3-hours-to-45-minutes",
     title: "How We Cut Insurance Onboarding from 3 Hours to 45 Minutes",
     excerpt:
