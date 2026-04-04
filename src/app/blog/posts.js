@@ -7,7 +7,7 @@ export const posts = [
     category: "Engineering",
     date: "April 1, 2026",
     readTime: "7 min read",
-    featured: false,
+    featured: true,
     content: [
       {
         type: "p",
@@ -91,7 +91,7 @@ export const posts = [
     category: "Case Study",
     date: "March 18, 2026",
     readTime: "7 min read",
-    featured: true,
+    featured: false,
     content: [
       {
         type: "p",
