@@ -1,5 +1,185 @@
 export const posts = [
   {
+    slug: "designing-multi-role-platforms-lessons-from-darren",
+    title: "Designing Multi-Role Platforms: Lessons from Building Darren",
+    excerpt:
+      "When every user type has different goals and different mental models, product design gets hard fast. Here's how we approached it building a logistics coordination platform with three distinct roles.",
+    category: "Product",
+    date: "April 15, 2026",
+    readTime: "7 min read",
+    featured: true,
+    content: [
+      {
+        type: "p",
+        text: "When we started building Darren, a logistics coordination platform for a US client, the brief looked straightforward: cargo owners post jobs, fleet owners bid on them, drivers execute deliveries. Three roles, one platform. Simple enough on a whiteboard.",
+      },
+      {
+        type: "p",
+        text: "Six months into the project, we'd rebuilt the bidding interface twice and the driver app once. Not because we made technical mistakes — because we kept discovering that our assumptions about how each role thought about the same data were wrong. Multi-role platforms have a failure mode that single-role products don't: you can solve the UX for one role while actively breaking it for another.",
+      },
+      {
+        type: "h2",
+        text: "Start with the Core Transaction, Not the Roles",
+      },
+      {
+        type: "p",
+        text: "The mistake we almost made: designing three separate apps that happened to share a backend. The right framing turned out to be: design the core transaction first (a job moving from posted to delivered), then ask what each role needs to do and see at each stage of that transaction. This reframing kept the three interfaces coherent because they were all built around the same workflow spine.",
+      },
+      {
+        type: "p",
+        text: "Every feature decision became easier when we asked: which stage of the job lifecycle does this touch, and which roles are active at that stage? Features that looked complex in isolation became obvious once we mapped them to the transaction flow.",
+      },
+      {
+        type: "h2",
+        text: "Same Data, Different Information Architectures",
+      },
+      {
+        type: "p",
+        text: "Cargo owners think about shipments — weight, dimensions, pickup location, delivery deadline, price. Fleet owners think about jobs — distance, truck availability, margin. Drivers think about stops — address, time window, proof of delivery. These are three different mental models applied to the same underlying data.",
+      },
+      {
+        type: "p",
+        text: "We built three genuinely separate information architectures on top of a shared data model. The cargo owner sees a shipment dashboard. The fleet owner sees a job board with bidding tools. The driver sees a route with milestone checkpoints. None of these are simplifications of each other — they're different views designed for different cognitive modes. Trying to unify them into a single \"universal\" view would have served nobody.",
+      },
+      {
+        type: "h2",
+        text: "The Bidding UI: Information Asymmetry Is the Product",
+      },
+      {
+        type: "p",
+        text: "The bidding interface was the most technically interesting design problem. Fleet owners need enough information to bid accurately without exposing cargo owners to unsolicited contact or revealing their logistics details beyond what's necessary. We had to design a structured information disclosure model: what a fleet owner sees before bidding, what they see after their bid is accepted, and what they never see.",
+      },
+      {
+        type: "p",
+        text: "We also discovered that fleet owners were making bad bids because the job posting didn't surface the information they actually needed — specifically, whether the pickup and delivery points were easy to access with a full-sized truck. We added a structured location notes field that cargo owners could fill out. This small addition reduced bid revisions by a significant margin and improved cargo owner ratings of fleet owner reliability.",
+      },
+      {
+        type: "h2",
+        text: "Driver Experience: Constraints Are Features",
+      },
+      {
+        type: "p",
+        text: "The driver-facing app had to work under conditions the other two interfaces didn't: mobile only, often running on mid-range Android devices, sometimes in areas with intermittent cellular coverage. These weren't obstacles to work around — they were design constraints that forced good decisions.",
+      },
+      {
+        type: "p",
+        text: "Offline-first architecture for the driver app meant that milestone updates and POD uploads queue locally and sync when connectivity returns. This forced us to think carefully about what data the driver actually needed in advance of each delivery versus what could be fetched on demand. The result was a leaner, faster app than we would have built otherwise. The constraint of designing for low connectivity eliminated a lot of features that looked useful on a whiteboard but weren't worth the connection dependency.",
+      },
+      {
+        type: "h2",
+        text: "Conflicting Incentives Are a Product Problem, Not a Policy Problem",
+      },
+      {
+        type: "p",
+        text: "Cargo owners want the lowest price. Fleet owners want the highest margin. Drivers want efficient routes with minimal waiting at pickup points. These incentives conflict. Our instinct early on was to treat this as something the business rules would sort out. It isn't — it's a product design problem.",
+      },
+      {
+        type: "p",
+        text: "The rating system became our primary mechanism for aligning incentives. Cargo owners rate fleet owners on reliability and driver professionalism. Fleet owners rate cargo owners on accuracy of job descriptions and pickup readiness. Drivers rate stops on wait time and access. When everyone is rated by the people they affect, the incentive to game any one metric is reduced. We designed the rating prompts to surface specific behaviors rather than ask for a general score — this made ratings more actionable and less susceptible to emotional variance.",
+      },
+      {
+        type: "h2",
+        text: "When to Build One App vs Three",
+      },
+      {
+        type: "p",
+        text: "Darren ended up as three separate frontend applications sharing an API. This was the right call for a platform with genuinely distinct role experiences, but it's not always the right call. We've built platforms where the roles are similar enough that a single app with role-based view switching is sufficient. The decision point: if the core workflows for two roles share less than 50% of their UI surfaces, build separate apps. If they share more than 50%, shared app with role switching. Separate apps have a real maintenance cost — three codebases, three deployment pipelines, three sets of user feedback to process.",
+      },
+      {
+        type: "h2",
+        text: "The Practical Takeaway",
+      },
+      {
+        type: "p",
+        text: "If you're building a multi-role platform, resist the temptation to start with role-specific design. Start by mapping the core transaction from end to end. Identify every stage, every decision point, every state change. Then ask: who is active at this stage, what do they need to know, and what do they need to do? That transaction map becomes your design spec. Every feature you add will be grounded in the workflow, and every role's interface will be coherent because it's built on the same foundation.",
+      },
+    ],
+  },
+  {
+    slug: "building-ai-voice-ordering-with-twilio-and-deepgram",
+    title: "Building AI Voice Ordering with Twilio and DeepGram",
+    excerpt:
+      "We've integrated AI voice ordering into two restaurant platforms. Here's what the architecture looks like, where it breaks, and what actually works in production.",
+    category: "Engineering",
+    date: "April 1, 2026",
+    readTime: "7 min read",
+    featured: false,
+    content: [
+      {
+        type: "p",
+        text: "When a restaurant client asked us to add phone ordering to their multi-restaurant platform, our first instinct was to build a simple IVR menu. Press 1 for pizza, press 2 for pasta. That conversation lasted about ten minutes before we all agreed it was a terrible experience and started looking at AI voice ordering properly.",
+      },
+      {
+        type: "h2",
+        text: "The Architecture at a Glance",
+      },
+      {
+        type: "p",
+        text: "The core pipeline is: Twilio handles the inbound call and streams audio in real time via its Media Streams API. DeepGram receives the audio stream and returns a transcript with word-level confidence scores. Our NLP layer — spaCy in one project, a fine-tuned intent classifier in the other — extracts the order intent, items, quantities, and modifiers. A state machine manages the conversation, confirms the order, and pushes it into the order management system.",
+      },
+      {
+        type: "p",
+        text: "On paper, this is clean. In practice, there are at least a dozen places this pipeline can go wrong, and most of them only show up under real-world conditions.",
+      },
+      {
+        type: "h2",
+        text: "Where DeepGram Surprised Us",
+      },
+      {
+        type: "p",
+        text: "DeepGram's transcription accuracy is genuinely impressive for clean audio. The problem is restaurant phone calls are not clean audio. Kitchen noise in the background, callers on speakerphone while driving, accented English from non-native speakers. We saw accuracy drop from ~95% in test conditions to the low 80s on real calls in noisy environments.",
+      },
+      {
+        type: "p",
+        text: "Two things helped significantly: switching to DeepGram's Nova-2 model and enabling the punctuation and smart formatting options. More importantly, we added a confidence threshold — if DeepGram returned a word confidence below 0.7, we treated that segment as unclear and had the system ask for a repeat rather than guessing. It slows down the conversation slightly but eliminates the failure mode where the system confidently processes a wrong order.",
+      },
+      {
+        type: "h2",
+        text: "Intent Extraction: spaCy vs a Classifier",
+      },
+      {
+        type: "p",
+        text: "On ConnectWithChain, we used spaCy with custom entity patterns to extract menu items, quantities, and modifiers. This works well when the menu vocabulary is constrained and consistent. Training custom NER models for each restaurant's menu is tedious but the inference is fast and predictable. The system doesn't hallucinate items that aren't on the menu.",
+      },
+      {
+        type: "p",
+        text: "On Meals on Wheels 4U, the menu variability was higher and we moved to a small fine-tuned intent classifier. The trade-off is worth understanding: classifier-based approaches handle natural language variation better but they're harder to debug when they fail, and they fail in less predictable ways. For any production voice ordering system, you need a logging layer that captures every transcript and its parsed output so you can audit failures and retrain.",
+      },
+      {
+        type: "h2",
+        text: "The Hardest Part: Conversational State",
+      },
+      {
+        type: "p",
+        text: "Transcription and intent extraction are solved problems. Managing the state of a multi-turn conversation is where the real complexity lives. A caller might say \"actually, make that two burgers\" after already confirming one. They might ask about allergens mid-order. They might go quiet for thirty seconds because someone walked in.",
+      },
+      {
+        type: "p",
+        text: "We model conversation state as an explicit state machine: idle, collecting order, confirming, payment, done. Every user utterance is processed relative to the current state. The machine handles interruptions, corrections, and the common case where the caller says something entirely off-script. Timeouts are handled gracefully — if there's no audio for 8 seconds, the system prompts rather than hanging. If the call drops, the partial order is preserved so staff can follow up.",
+      },
+      {
+        type: "h2",
+        text: "What We'd Do Differently",
+      },
+      {
+        type: "p",
+        text: "Build the human handoff before you build the AI. Every voice ordering system needs a smooth path to a human agent. Don't treat it as an edge case — callers will use it. We initially built handoff as an afterthought and had to retrofit it. Now we design it first.",
+      },
+      {
+        type: "p",
+        text: "Also: don't try to handle payments over voice unless you have strong compliance requirements to do so. Asking callers to read a card number is slow, error-prone, and feels like 2005. Both our implementations route to an SMS payment link instead. Conversion is better and the implementation is simpler.",
+      },
+      {
+        type: "h2",
+        text: "When This Architecture Makes Sense",
+      },
+      {
+        type: "p",
+        text: "AI voice ordering is not right for every restaurant. It makes sense when call volume is high enough to justify the build cost, when the menu is structured enough for intent extraction to be reliable, and when the operator has the bandwidth to monitor and improve the system over time. It doesn't replace human staff — it handles the routine repeat orders so staff can focus on the calls that actually need attention.",
+      },
+    ],
+  },
+  {
     slug: "how-we-cut-insurance-onboarding-from-3-hours-to-45-minutes",
     title: "How We Cut Insurance Onboarding from 3 Hours to 45 Minutes",
     excerpt:
@@ -7,7 +187,7 @@ export const posts = [
     category: "Case Study",
     date: "March 18, 2026",
     readTime: "7 min read",
-    featured: true,
+    featured: false,
     content: [
       {
         type: "p",
