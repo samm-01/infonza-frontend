@@ -1,5 +1,101 @@
 export const posts = [
   {
+    slug: "designing-multi-role-platforms-lessons-from-darren",
+    title: "Designing Multi-Role Platforms: Lessons from Building Darren",
+    excerpt:
+      "When every user type has different goals and different mental models, product design gets hard fast. Here's how we approached it building a logistics coordination platform with three distinct roles.",
+    category: "Product",
+    date: "April 15, 2026",
+    readTime: "7 min read",
+    featured: true,
+    content: [
+      {
+        type: "p",
+        text: "When we started building Darren, a logistics coordination platform for a US client, the brief looked straightforward: cargo owners post jobs, fleet owners bid on them, drivers execute deliveries. Three roles, one platform. Simple enough on a whiteboard.",
+      },
+      {
+        type: "p",
+        text: "Six months into the project, we'd rebuilt the bidding interface twice and the driver app once. Not because we made technical mistakes — because we kept discovering that our assumptions about how each role thought about the same data were wrong. Multi-role platforms have a failure mode that single-role products don't: you can solve the UX for one role while actively breaking it for another.",
+      },
+      {
+        type: "h2",
+        text: "Start with the Core Transaction, Not the Roles",
+      },
+      {
+        type: "p",
+        text: "The mistake we almost made: designing three separate apps that happened to share a backend. The right framing turned out to be: design the core transaction first (a job moving from posted to delivered), then ask what each role needs to do and see at each stage of that transaction. This reframing kept the three interfaces coherent because they were all built around the same workflow spine.",
+      },
+      {
+        type: "p",
+        text: "Every feature decision became easier when we asked: which stage of the job lifecycle does this touch, and which roles are active at that stage? Features that looked complex in isolation became obvious once we mapped them to the transaction flow.",
+      },
+      {
+        type: "h2",
+        text: "Same Data, Different Information Architectures",
+      },
+      {
+        type: "p",
+        text: "Cargo owners think about shipments — weight, dimensions, pickup location, delivery deadline, price. Fleet owners think about jobs — distance, truck availability, margin. Drivers think about stops — address, time window, proof of delivery. These are three different mental models applied to the same underlying data.",
+      },
+      {
+        type: "p",
+        text: "We built three genuinely separate information architectures on top of a shared data model. The cargo owner sees a shipment dashboard. The fleet owner sees a job board with bidding tools. The driver sees a route with milestone checkpoints. None of these are simplifications of each other — they're different views designed for different cognitive modes. Trying to unify them into a single \"universal\" view would have served nobody.",
+      },
+      {
+        type: "h2",
+        text: "The Bidding UI: Information Asymmetry Is the Product",
+      },
+      {
+        type: "p",
+        text: "The bidding interface was the most technically interesting design problem. Fleet owners need enough information to bid accurately without exposing cargo owners to unsolicited contact or revealing their logistics details beyond what's necessary. We had to design a structured information disclosure model: what a fleet owner sees before bidding, what they see after their bid is accepted, and what they never see.",
+      },
+      {
+        type: "p",
+        text: "We also discovered that fleet owners were making bad bids because the job posting didn't surface the information they actually needed — specifically, whether the pickup and delivery points were easy to access with a full-sized truck. We added a structured location notes field that cargo owners could fill out. This small addition reduced bid revisions by a significant margin and improved cargo owner ratings of fleet owner reliability.",
+      },
+      {
+        type: "h2",
+        text: "Driver Experience: Constraints Are Features",
+      },
+      {
+        type: "p",
+        text: "The driver-facing app had to work under conditions the other two interfaces didn't: mobile only, often running on mid-range Android devices, sometimes in areas with intermittent cellular coverage. These weren't obstacles to work around — they were design constraints that forced good decisions.",
+      },
+      {
+        type: "p",
+        text: "Offline-first architecture for the driver app meant that milestone updates and POD uploads queue locally and sync when connectivity returns. This forced us to think carefully about what data the driver actually needed in advance of each delivery versus what could be fetched on demand. The result was a leaner, faster app than we would have built otherwise. The constraint of designing for low connectivity eliminated a lot of features that looked useful on a whiteboard but weren't worth the connection dependency.",
+      },
+      {
+        type: "h2",
+        text: "Conflicting Incentives Are a Product Problem, Not a Policy Problem",
+      },
+      {
+        type: "p",
+        text: "Cargo owners want the lowest price. Fleet owners want the highest margin. Drivers want efficient routes with minimal waiting at pickup points. These incentives conflict. Our instinct early on was to treat this as something the business rules would sort out. It isn't — it's a product design problem.",
+      },
+      {
+        type: "p",
+        text: "The rating system became our primary mechanism for aligning incentives. Cargo owners rate fleet owners on reliability and driver professionalism. Fleet owners rate cargo owners on accuracy of job descriptions and pickup readiness. Drivers rate stops on wait time and access. When everyone is rated by the people they affect, the incentive to game any one metric is reduced. We designed the rating prompts to surface specific behaviors rather than ask for a general score — this made ratings more actionable and less susceptible to emotional variance.",
+      },
+      {
+        type: "h2",
+        text: "When to Build One App vs Three",
+      },
+      {
+        type: "p",
+        text: "Darren ended up as three separate frontend applications sharing an API. This was the right call for a platform with genuinely distinct role experiences, but it's not always the right call. We've built platforms where the roles are similar enough that a single app with role-based view switching is sufficient. The decision point: if the core workflows for two roles share less than 50% of their UI surfaces, build separate apps. If they share more than 50%, shared app with role switching. Separate apps have a real maintenance cost — three codebases, three deployment pipelines, three sets of user feedback to process.",
+      },
+      {
+        type: "h2",
+        text: "The Practical Takeaway",
+      },
+      {
+        type: "p",
+        text: "If you're building a multi-role platform, resist the temptation to start with role-specific design. Start by mapping the core transaction from end to end. Identify every stage, every decision point, every state change. Then ask: who is active at this stage, what do they need to know, and what do they need to do? That transaction map becomes your design spec. Every feature you add will be grounded in the workflow, and every role's interface will be coherent because it's built on the same foundation.",
+      },
+    ],
+  },
+  {
     slug: "building-ai-voice-ordering-with-twilio-and-deepgram",
     title: "Building AI Voice Ordering with Twilio and DeepGram",
     excerpt:
@@ -7,7 +103,7 @@ export const posts = [
     category: "Engineering",
     date: "April 1, 2026",
     readTime: "7 min read",
-    featured: true,
+    featured: false,
     content: [
       {
         type: "p",
