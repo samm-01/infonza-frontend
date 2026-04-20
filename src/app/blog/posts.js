@@ -1,5 +1,89 @@
 export const posts = [
   {
+    slug: "the-true-cost-of-tool-sprawl",
+    title: "The True Cost of Tool Sprawl (And Why Custom Software Is Often Cheaper)",
+    excerpt:
+      "We built an operations platform that replaced five disconnected tools for a US service company. Here's what tool sprawl actually costs — and when consolidating into custom software makes business sense.",
+    category: "Business",
+    date: "April 20, 2026",
+    readTime: "6 min read",
+    featured: true,
+    content: [
+      {
+        type: "p",
+        text: "When a US-based service company came to us, they were running their business across five separate platforms: one for client management, one for task tracking, one for time logging, one for internal messaging, and one for billing. Each tool was fine on its own. Together, they were quietly destroying their operations team.",
+      },
+      {
+        type: "h2",
+        text: "What Tool Sprawl Actually Looks Like",
+      },
+      {
+        type: "p",
+        text: "The symptoms are easy to recognise. An account manager finishes a client call, opens three tabs to log the time, create a follow-up task, and send an internal message. A billing run requires pulling data from the time tracker into a spreadsheet, cross-referencing it with the project tool, then manually entering totals into the billing platform. A new hire needs accounts on five systems before they can do their first task.",
+      },
+      {
+        type: "p",
+        text: "None of these steps are hard. But they add up. Every context switch costs time. Every manual data transfer introduces error. Every separate login is a potential failure point. What looked like five affordable SaaS subscriptions turned out to be a hidden tax on every hour worked.",
+      },
+      {
+        type: "h2",
+        text: "The Costs Nobody Puts in a Spreadsheet",
+      },
+      {
+        type: "p",
+        text: "The subscription costs for five mid-tier SaaS tools might run $400–$800 per month for a 10-person team. That number is visible. What isn't visible: the 45 minutes per day each team member spends switching between tools, duplicating data entry, or looking for information that exists in a different system. For a 10-person team, that's roughly 75 hours a week — nearly two full-time employees — spent on the friction between tools rather than on the actual work.",
+      },
+      {
+        type: "p",
+        text: "There's also the error cost. When data lives in five places, it drifts out of sync. The time tracker says 12 hours on a project; the billing platform says 10. The task tool shows a milestone completed; the client portal still shows it pending. Reconciling these discrepancies is a management problem that consumes senior time disproportionate to its importance.",
+      },
+      {
+        type: "h2",
+        text: "Why Off-the-Shelf Consolidation Tools Don't Solve It",
+      },
+      {
+        type: "p",
+        text: "The obvious answer is a platform that does everything — something like Monday, ClickUp, or HubSpot. We asked why they hadn't gone that route. The answer was consistent: the all-in-one tools were either too generic (they'd looked at Monday), required significant configuration work that their team lacked the capacity to do, or had billing and client management modules that didn't fit their specific workflow.",
+      },
+      {
+        type: "p",
+        text: "This is more common than it sounds. Off-the-shelf consolidation tools are built for the median use case. If your workflow differs from the median in even two or three significant ways, you end up doing the same kind of manual workarounds that created the sprawl problem in the first place — just within a single (more expensive) tool.",
+      },
+      {
+        type: "h2",
+        text: "What We Built: The Load Off",
+      },
+      {
+        type: "p",
+        text: "We built a single operations platform — The Load Off — that combined client management, task tracking, time logging, team messaging, and billing into one unified system with a shared data model. A project manager can log time against a task, which automatically flows into the billing run. A client record is the anchor for every task, message thread, and invoice. No data entry duplication. No context switching for routine operations.",
+      },
+      {
+        type: "p",
+        text: "The key design decision was building around their actual workflow rather than forcing them to adapt to an existing tool's model. Their billing logic — milestone-based for some clients, hourly for others, retainer for others — was unusual enough that no off-the-shelf tool handled it cleanly. That was the wedge that made custom software justified.",
+      },
+      {
+        type: "h2",
+        text: "When Custom Software Makes Business Sense",
+      },
+      {
+        type: "p",
+        text: "Custom software is not always the answer. But there are three conditions under which it usually beats SaaS tools: when the coordination cost between tools has grown large enough to quantify (not just feel), when the workflow is differentiated enough that off-the-shelf tools require significant workarounds, and when the team is large enough that a per-user SaaS subscription starts to rival a one-time build cost.",
+      },
+      {
+        type: "p",
+        text: "The break-even math for The Load Off was straightforward. The five existing subscriptions plus a realistic estimate of the coordination tax cost more annually than the build cost amortised over three years. The business case wasn't about technology — it was about eliminating a recurring operational cost that had no natural ceiling.",
+      },
+      {
+        type: "h2",
+        text: "The Practical Takeaway",
+      },
+      {
+        type: "p",
+        text: "If you're running your operations across more than three tools and your team is spending meaningful time on data reconciliation, it's worth doing the math. Add up subscription costs, estimate the hours your team spends on tool-switching and manual data transfer, and put a dollar figure on it. If that number surprises you — and it usually does — you're not looking at a technology problem. You're looking at a business problem with a technology solution.",
+      },
+    ],
+  },
+  {
     slug: "designing-multi-role-platforms-lessons-from-darren",
     title: "Designing Multi-Role Platforms: Lessons from Building Darren",
     excerpt:
@@ -7,7 +91,7 @@ export const posts = [
     category: "Product",
     date: "April 15, 2026",
     readTime: "7 min read",
-    featured: true,
+    featured: false,
     content: [
       {
         type: "p",
