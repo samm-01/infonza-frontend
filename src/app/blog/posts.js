@@ -1,5 +1,77 @@
 export const posts = [
   {
+    slug: "lessons-from-building-white-label-elearning-saas",
+    title: "What We Learned Building a White-Label E-Learning SaaS",
+    excerpt:
+      "We built a white-label e-learning platform in six weeks — video hosting, quiz engine, progress tracking, and certificates across multiple tenants. Here's what the architecture required and what the timeline forced us to prioritise.",
+    category: "Case Study",
+    date: "May 1, 2026",
+    readTime: "7 min read",
+    featured: true,
+    content: [
+      {
+        type: "p",
+        text: "When a US training company asked us to build a white-label e-learning SaaS with video hosting, a quiz engine, learner progress tracking, and certificate generation — all serving multiple corporate clients under their own branding — we had six weeks to get it to an MVP they could demo to paying clients. We'd built e-learning modules inside larger platforms before, but this was the first time we were building the platform itself. Here's what actually mattered in the architecture and what the timeline forced us to get right.",
+      },
+      {
+        type: "h2",
+        text: "White-Label Requires Multi-Tenancy from Day One",
+      },
+      {
+        type: "p",
+        text: "White-labeling sounds like a design problem — swap logos, change colors. It isn't. The moment you have multiple tenants sharing infrastructure, every table in your database needs a tenant identifier, every query needs to be scoped correctly, and every access control layer needs to enforce that boundary without exception. We evaluated two approaches for this SaaS development project: schema-per-tenant (each customer gets their own PostgreSQL schema) and row-level tenancy (a single schema with tenant_id on every table). We went with row-level tenancy. The operational overhead of managing dozens of schemas — migrations, maintenance, monitoring — wasn't worth it at MVP scale. The trade-off is that a badly written query can expose cross-tenant data. We mitigated this with mandatory tenancy middleware and database-level row security policies as a safety net. Retrofitting multi-tenancy costs roughly three times as much as building it correctly from the start — this is one decision you cannot defer.",
+      },
+      {
+        type: "h2",
+        text: "Video Hosting Is Infrastructure, Not a Feature",
+      },
+      {
+        type: "p",
+        text: "We've inherited e-learning builds where video hosting was treated as an afterthought — MP4s stored on S3, served via direct URL, done. This works until a client streams a 2GB training video over a corporate network with rate limiting. Our architecture: S3 for storage, CloudFront for distribution, and an FFmpeg-based transcoding pipeline that generates adaptive bitrate HLS streams at three quality levels. A Lambda function triggers transcoding when a new video lands in the upload bucket. Videos aren't published until transcoding completes and passes validation. These are cloud services decisions that touch every learner's experience on every device — getting them wrong means buffering failures at exactly the moment you're trying to demonstrate the platform to a paying client.",
+      },
+      {
+        type: "h2",
+        text: "Building a Quiz Engine That's Actually Useful",
+      },
+      {
+        type: "p",
+        text: "Quiz engines look simple until you build one with real requirements: multiple question types (MCQ, true/false, multi-select, fill-in-the-blank), configurable passing scores, attempt limits, and time limits. We used a flexible question schema where each question type carries a typed payload. Scoring is handled entirely server-side — client-side scoring is trivially gameable and we've seen it exploited. Attempt history is stored in full, not just the final score, because instructors need visibility into where learners are struggling, not just whether they passed. We added branching logic in week five: if a learner fails a quiz, the system routes them to a remediation module before they can advance. That feature took less than a week and made the platform significantly more defensible against competitors.",
+      },
+      {
+        type: "h2",
+        text: "Progress Tracking That Reflects Reality",
+      },
+      {
+        type: "p",
+        text: "Most e-learning platforms track completion at the module level: did the learner reach the end of this video? We modeled progress as events — video_played, video_paused, video_completed, quiz_attempted, quiz_passed — stored in append-only event tables. Completion percentage is derived from events, not stored as a mutable field. This is slower to aggregate but gives accurate data. It also enables resume-from-position: when a learner returns after three days, the video starts where they stopped, not at zero. That sounds minor. In practice, it determines whether a learner re-engages or abandons a course. Scalable architecture here means designing for the read patterns that matter — per-learner progress queries are fast; aggregate reporting across a full cohort uses a materialized view refreshed on a schedule.",
+      },
+      {
+        type: "h2",
+        text: "Certificate Generation Under Concurrent Load",
+      },
+      {
+        type: "p",
+        text: "Certificates are a compliance requirement for most corporate training programs. Learners need a PDF immediately; HR needs a verification link that works six months later. We render certificates with Puppeteer from HTML templates — this gives full design flexibility without a separate PDF library. The problem is concurrency: a large cohort completing the same course simultaneously creates a CPU spike. Certificate generation runs in a background queue with a dedicated worker pool. Learners get an in-app notification and email when their certificate is ready, typically within 30–60 seconds. Verification links are permanent and return structured metadata without exposing the PDF directly, which matters for companies that need auditable compliance records.",
+      },
+      {
+        type: "h2",
+        text: "What the Six-Week Timeline Actually Forced",
+      },
+      {
+        type: "p",
+        text: "Tight timelines are useful if you treat them as a scoping tool, not just a deadline. The six-week constraint forced explicit trade-offs that made the MVP development better. We skipped SCORM import — would have taken ten days — and built a native content authoring interface instead. We punted live session integration to phase two. We built one payment integration, not three. Every deferral was a discovery: these features weren't what the platform needed to demonstrate value on day one. Our CI/CD pipeline — GitHub Actions deploying to a staging environment with automated smoke tests before production promotion — meant we were shipping daily without manual QA bottlenecks. The client had paying enterprise clients within 30 days. Deferred features were added in sequence, prioritised by real user feedback rather than our initial assumptions.",
+      },
+      {
+        type: "h2",
+        text: "The Practical Takeaway",
+      },
+      {
+        type: "p",
+        text: "If you are planning an e-learning SaaS as part of a digital transformation initiative or as a standalone product, three decisions matter most. First, design your tenancy model before you write your first table — the cost of retrofitting it is enormous. Second, treat video infrastructure as a first-class architectural concern, not an upload widget. Third, store full learner attempt data as events, not summary scores — the analytics you can build from that data are what enterprise clients will actually pay for. The platform is not the video player and the quiz form. The platform is the data that tells a business whether their training is working.",
+      },
+    ],
+  },
+  {
     slug: "the-true-cost-of-tool-sprawl",
     title: "The True Cost of Tool Sprawl (And Why Custom Software Is Often Cheaper)",
     excerpt:
@@ -7,7 +79,7 @@ export const posts = [
     category: "Business",
     date: "April 20, 2026",
     readTime: "6 min read",
-    featured: true,
+    featured: false,
     content: [
       {
         type: "p",
