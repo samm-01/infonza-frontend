@@ -1,5 +1,93 @@
 export const posts = [
   {
+    slug: "monolith-vs-microservices-for-saas-startups",
+    title: "Monolith First: The Microservices Decision Most SaaS Teams Get Wrong",
+    excerpt:
+      "Microservices are sold as the modern default. In practice, splitting too early is one of the most expensive architectural mistakes a growing SaaS can make. Here's the framework we actually use.",
+    category: "Engineering",
+    date: "May 15, 2026",
+    readTime: "8 min read",
+    featured: true,
+    content: [
+      {
+        type: "p",
+        text: "There is a version of architectural planning that goes: we're building a SaaS, SaaS products need to scale, microservices scale well, therefore we should build microservices. It sounds like engineering discipline. It usually leads to teams spending three months wiring up service discovery and distributed tracing before they've written a single line of business logic. We've seen this pattern enough times across our custom software development work to treat it as a failure mode worth naming.",
+      },
+      {
+        type: "h2",
+        text: "The Monolith Isn't Technical Debt — It's a Starting Point",
+      },
+      {
+        type: "p",
+        text: "A well-structured monolith is not an embarrassment. It is the correct architecture for most SaaS products before they reach meaningful scale. Every successful company that now runs microservices — Shopify, Stack Overflow, GitHub — started as a monolith. The reasons are practical: a monolith is easier to develop, easier to debug, easier to deploy, and easier to reason about. Your CI/CD pipeline is one pipeline. Your data model is one database. Your team can trace a bug from HTTP request to database query without a distributed tracing dashboard. For MVP development and the early product iterations that follow, these properties matter enormously.",
+      },
+      {
+        type: "h2",
+        text: "The Real Cost of Premature Microservices",
+      },
+      {
+        type: "p",
+        text: "The operational overhead of microservices is not theoretical. Each service needs its own deployment pipeline, its own logging configuration, its own health checks, its own environment variables, and its own scaling policy. A team running twelve services has twelve surfaces where a misconfiguration can cause an outage. Cross-service debugging — finding the request that failed three hops into a chain of service calls — requires tooling that takes weeks to set up properly. And distributed transactions, which become necessary the moment two services need to agree on a state change, are genuinely hard to get right. We've inherited codebases where the microservices architecture was implemented before the product had found its market — and the complexity had accumulated into an unmaintainable system that was slower to change than a monolith would have been.",
+      },
+      {
+        type: "h2",
+        text: "What We Actually Built: Darren's Architecture Evolution",
+      },
+      {
+        type: "p",
+        text: "When we built Darren — a logistics coordination platform where cargo owners post jobs, fleet owners bid, and drivers manage deliveries with live GPS tracking — the MVP was a monolith. One Node.js application, one PostgreSQL database, one deployment. The product launched in this form, acquired real paying users, and ran cleanly for months. The decision to split came from a specific pressure: real-time GPS tracking was generating write volume that was affecting query performance for the rest of the application. GPS location updates were arriving at high frequency from driver devices, and they were competing with read queries on the same database connection pool.",
+      },
+      {
+        type: "p",
+        text: "That was the moment to extract. We pulled the location service out as a dedicated service with its own data store optimised for time-series writes. The rest of the application remained a monolith. This is the pattern that actually works: extract services when a specific, measurable problem forces it — not because the architecture diagram looks cleaner.",
+      },
+      {
+        type: "h2",
+        text: "The Signals That Tell You It's Time to Split",
+      },
+      {
+        type: "p",
+        text: "There are four signals we watch for before recommending a service extraction. First, a genuine scaling bottleneck: one part of the system needs to scale independently because its load profile is fundamentally different from the rest. Second, team-level friction: multiple teams are stepping on each other in the same codebase, creating merge conflicts and deployment coordination overhead that is measurably slowing delivery. Third, a deployment boundary that's naturally isolated: a module that changes frequently but whose failures should not affect the rest of the system. Fourth, a technical requirement that's incompatible with the monolith's stack — a computationally intensive ML inference step, for example, that wants to run in Python while the rest of the application is Node.",
+      },
+      {
+        type: "p",
+        text: "None of these signals have to do with cleanliness or theoretical elegance. They all have to do with measurable friction in the development or production operation of the system. If you're not experiencing at least one of them, you're probably not ready to split.",
+      },
+      {
+        type: "h2",
+        text: "Where to Split First (and Where Not To)",
+      },
+      {
+        type: "p",
+        text: "The first extraction should always be a service with a well-defined, stable interface — something where the API contract is unlikely to change. Notification services are the classic first extraction: they're high-frequency, relatively stateless, and their contract with the rest of the system is simple. File processing and media pipelines are another good candidate — they're compute-intensive, can run asynchronously, and isolate the failure modes of external cloud services from your core application. What you should not extract first: anything that requires synchronous communication with the core application, anything that involves complex shared state, or anything that's still being figured out. The worst microservices to extract are the ones where the bounded context isn't clear yet. You'll spend months refactoring the service boundary as the product evolves.",
+      },
+      {
+        type: "h2",
+        text: "The DevOps Reality Nobody Tells You",
+      },
+      {
+        type: "p",
+        text: "You should not attempt microservices without solid DevOps foundations in place. Specifically: containerised deployments with Docker, an orchestration layer — Kubernetes if you're operating at scale, ECS if you're in AWS and not — automated CI/CD pipelines for every service, centralised logging, and distributed tracing. Without these, microservices don't give you independent deployability and scalable architecture; they give you a distributed debugging nightmare. We build these foundations on a per-project basis before any service extraction, not as an afterthought. If setting up these systems feels like a detour, that's a signal your team isn't yet ready to operate microservices safely.",
+      },
+      {
+        type: "h2",
+        text: "The Modular Monolith as a Genuine Strategy",
+      },
+      {
+        type: "p",
+        text: "There's an intermediate architecture that deserves more respect: the modular monolith. A single deployed application, but with strict internal module boundaries — each module has its own folder structure, its own data access layer, and communicates with other modules only through defined interfaces. The advantage is that the boundaries you enforce in a modular monolith can become the service boundaries when you eventually extract microservices. You've done the hard conceptual work of identifying bounded contexts without paying the operational overhead of distributed services. Several of the SaaS development projects we've maintained over multi-year periods live here permanently — they've scaled past the point where a monolith causes friction, but not past the point where microservices are justified.",
+      },
+      {
+        type: "h2",
+        text: "The Practical Takeaway",
+      },
+      {
+        type: "p",
+        text: "Start as a monolith. If you're building for digital transformation or greenfield SaaS development, treat the monolith as the default, not the compromise. Structure it well — clear module boundaries, consistent patterns, good separation of concerns — so that extraction is possible later without a rewrite. Watch for the specific signals that force a split: scaling bottlenecks, team-level friction, incompatible technical requirements. Extract one service at a time, at the boundary where the pressure is highest. And make sure your DevOps tooling is ready before you split, not after. The teams that do this well end up with scalable architecture that evolved in response to real problems. The teams that skip straight to microservices usually end up spending six months of engineering capacity building infrastructure for a product that hasn't found product-market fit yet.",
+      },
+    ],
+  },
+  {
     slug: "lessons-from-building-white-label-elearning-saas",
     title: "What We Learned Building a White-Label E-Learning SaaS",
     excerpt:
@@ -7,7 +95,7 @@ export const posts = [
     category: "Case Study",
     date: "May 1, 2026",
     readTime: "7 min read",
-    featured: true,
+    featured: false,
     content: [
       {
         type: "p",
