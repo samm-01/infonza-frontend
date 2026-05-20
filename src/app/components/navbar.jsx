@@ -1,11 +1,16 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
+const servicesDropdown = [
+  { href: "/services", label: "All Services", desc: "Web, SaaS, CRM & automation" },
+  { href: "/data-engineering", label: "Data Engineering", desc: "Pipelines, warehouses & analytics" },
+  { href: "/staff-augmentation", label: "IT Staff Augmentation", desc: "Vetted devs across 11 stacks" },
+];
+
 const navLinks = [
-  { href: "/services", label: "Services" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/blog", label: "Blog" },
@@ -15,8 +20,11 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const pathname = usePathname();
   const isDarkPage = pathname === "/";
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -24,7 +32,19 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setServicesOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const isTransparent = isDarkPage && !scrolled;
+
+  const isServicesActive = servicesDropdown.some((l) => pathname === l.href);
 
   return (
     <header
@@ -52,6 +72,64 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
+            {/* Services dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setServicesOpen((v) => !v)}
+                className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  isServicesActive
+                    ? isTransparent
+                      ? "text-white bg-white/10"
+                      : "text-teal-600 bg-teal-50"
+                    : isTransparent
+                    ? "text-slate-200 hover:text-white hover:bg-white/10"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+                }`}
+              >
+                Services
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  fill="none"
+                  className={`transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
+                >
+                  <path
+                    d="M3 5l4 4 4-4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+
+              {servicesOpen && (
+                <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-2xl border border-slate-200 shadow-xl p-2 z-50">
+                  {servicesDropdown.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setServicesOpen(false)}
+                      className={`flex flex-col px-4 py-3 rounded-xl transition-colors hover:bg-slate-50 ${
+                        pathname === item.href ? "bg-teal-50" : ""
+                      }`}
+                    >
+                      <span
+                        className={`text-sm font-semibold ${
+                          pathname === item.href ? "text-teal-600" : "text-slate-900"
+                        }`}
+                      >
+                        {item.label}
+                      </span>
+                      <span className="text-xs text-slate-400 mt-0.5">{item.desc}</span>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Other nav links */}
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -126,6 +204,47 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-slate-100">
           <div className="px-4 py-4 space-y-1">
+            {/* Services group */}
+            <button
+              onClick={() => setMobileServicesOpen((v) => !v)}
+              className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-slate-900 transition-colors"
+            >
+              Services
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                className={`transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""}`}
+              >
+                <path
+                  d="M3 5l4 4 4-4"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+            {mobileServicesOpen && (
+              <div className="pl-4 space-y-1">
+                {servicesDropdown.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                      pathname === item.href
+                        ? "text-teal-600 bg-teal-50"
+                        : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+
             {[...navLinks, { href: "/contact", label: "Contact" }].map((link) => (
               <Link
                 key={link.href}

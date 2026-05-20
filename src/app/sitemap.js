@@ -41,6 +41,18 @@ export default function sitemap() {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/data-engineering`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/staff-augmentation`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
       url: `${baseUrl}/blog`,
       lastModified,
       changeFrequency: "weekly",
