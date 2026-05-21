@@ -1,8 +1,11 @@
 export const metadata = {
-  title: "Blog",
+  title: "Blog — Software Development Insights",
   description:
-    "Product decisions, engineering lessons, and honest takes on building software that actually works — from the team at Infonza Innovations.",
+    "Engineering lessons, product decisions, and case study deep-dives from the Infonza team. Real lessons from building production software.",
   openGraph: {
+    title: "Blog — Software Development Insights | Infonza Innovations",
+    description:
+      "Engineering lessons, product decisions, and case study deep-dives from the Infonza team. Real lessons from building production software.",
     url: "https://infonza.com/blog",
   },
   alternates: {

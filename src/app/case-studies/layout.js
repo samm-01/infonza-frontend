@@ -1,11 +1,11 @@
 export const metadata = {
-  title: "Case Studies",
+  title: "Case Studies — Real Projects, Honest Outcomes",
   description:
-    "Real client projects with measurable outcomes. Insurance CRM, construction ERP, SaaS platforms, and marketplace systems built by Infonza.",
+    "Insurance CRM, construction ERP, white-label e-learning, and a home improvement marketplace — the actual problems we solved and the measurable results.",
   openGraph: {
-    title: "Case Studies | Infonza Innovations",
+    title: "Case Studies — Real Projects, Honest Outcomes | Infonza Innovations",
     description:
-      "Real client projects with measurable outcomes. Insurance CRM, construction ERP, SaaS platforms, and marketplace systems built by Infonza.",
+      "Insurance CRM, construction ERP, white-label e-learning, and a home improvement marketplace — the actual problems we solved and the measurable results.",
     url: "https://infonza.com/case-studies",
   },
   alternates: {

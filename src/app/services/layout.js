@@ -1,11 +1,19 @@
 export const metadata = {
-  title: "Services",
+  title: "Web, SaaS, CRM & API Development Services",
   description:
-    "Custom web development, SaaS products, CRM/ERP systems, and API automation services for US-based startups, agencies, and SMEs.",
+    "Custom web applications, SaaS platforms, CRM/ERP systems, and workflow automation built for startups, agencies, and growing businesses. Book a free strategy call.",
+  keywords: [
+    "custom web development",
+    "SaaS development company",
+    "CRM ERP development",
+    "API integration services",
+    "workflow automation",
+    "software development India",
+  ],
   openGraph: {
-    title: "Services | Infonza Innovations",
+    title: "Web, SaaS, CRM & API Development Services | Infonza Innovations",
     description:
-      "Custom web development, SaaS products, CRM/ERP systems, and API automation services for US-based startups, agencies, and SMEs.",
+      "Custom web applications, SaaS platforms, CRM/ERP systems, and workflow automation built for startups, agencies, and growing businesses.",
     url: "https://infonza.com/services",
   },
   alternates: {
