@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 
@@ -11,8 +8,10 @@ const sections = [
     icon: "🏠",
     links: [
       { href: "/", title: "Home", desc: "Overview of Infonza Innovations" },
-      { href: "/about", title: "About Us", desc: "Our story, values, and products" },
+      { href: "/about", title: "About Us", desc: "Our story, values, and team" },
       { href: "/contact", title: "Contact", desc: "Book a free strategy call" },
+      { href: "/careers", title: "Careers", desc: "Join our engineering team" },
+      { href: "/portfolio", title: "Portfolio", desc: "Projects we've shipped" },
     ],
   },
   {
@@ -20,6 +19,11 @@ const sections = [
     icon: "⚙️",
     links: [
       { href: "/services", title: "All Services", desc: "Full list of what we build" },
+      { href: "/data-engineering", title: "Data Engineering", desc: "Pipelines, warehouses & analytics" },
+      { href: "/staff-augmentation", title: "IT Staff Augmentation", desc: "Hire dedicated remote developers" },
+      { href: "/cloud-solutions", title: "Cloud Solutions", desc: "AWS, Azure & GCP cloud services" },
+      { href: "/software-development", title: "Software Development", desc: "Custom software build process" },
+      { href: "/designing", title: "UI/UX Design", desc: "Product & interface design" },
       { href: "/services#web-development", title: "Web & App Development", desc: "Custom web apps and mobile-ready products" },
       { href: "/services#saas", title: "SaaS Development", desc: "End-to-end SaaS product builds" },
       { href: "/services#crm-erp", title: "CRM & ERP Systems", desc: "Business operations software" },
@@ -27,11 +31,14 @@ const sections = [
     ],
   },
   {
-    label: "Work",
+    label: "Case Studies",
     icon: "💼",
     links: [
-      { href: "/portfolio", title: "Portfolio", desc: "Projects we've shipped" },
-      { href: "/case-studies", title: "Case Studies", desc: "Deep dives into client outcomes" },
+      { href: "/case-studies", title: "All Case Studies", desc: "Deep dives into client outcomes" },
+      { href: "/case-studies/glovebox", title: "GloveBox", desc: "Insurance onboarding automation" },
+      { href: "/case-studies/readybuild", title: "ReadyBuild", desc: "Construction ERP platform" },
+      { href: "/case-studies/dnh", title: "D&H Distributing", desc: "Distribution & supply chain" },
+      { href: "/case-studies/builderwing", title: "BuilderWing", desc: "Real estate SaaS platform" },
     ],
   },
   {
@@ -57,12 +64,15 @@ const sections = [
   },
 ];
 
+const totalPages = sections.reduce((sum, s) => sum + s.links.length, 0);
+
 export default function SitemapPage() {
   return (
     <>
       <Navbar />
 
-      <section className="pt-32 pb-20 bg-white border-b border-slate-100">
+      {/* Hero */}
+      <section className="pt-32 pb-16 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 text-teal-600 text-xs font-semibold uppercase tracking-widest mb-6">
@@ -74,40 +84,42 @@ export default function SitemapPage() {
               <br />
               <span className="text-gradient">Infonza.com</span>
             </h1>
-            <p className="text-lg text-slate-500">
-              A full map of every page on this site. Find what you&apos;re looking for quickly.
+            <p className="text-lg text-slate-500 mb-3">
+              A full index of every page on this site — {sections.length} sections &middot; {totalPages} pages.
             </p>
           </div>
         </div>
       </section>
 
+      {/* Sitemap grid */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {sections.map((section, i) => (
-              <motion.div
+            {sections.map((section) => (
+              <div
                 key={section.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="bg-white rounded-2xl border border-slate-200 overflow-hidden"
               >
                 {/* Section header */}
-                <div className="px-6 py-4 border-b border-slate-100 flex items-center gap-3">
-                  <span className="text-xl">{section.icon}</span>
-                  <h2 className="text-sm font-bold text-slate-900 uppercase tracking-widest">
-                    {section.label}
-                  </h2>
+                <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xl">{section.icon}</span>
+                    <h2 className="text-sm font-bold text-slate-900 uppercase tracking-widest">
+                      {section.label}
+                    </h2>
+                  </div>
+                  <span className="text-xs font-semibold text-teal-600 bg-teal-50 border border-teal-100 rounded-full px-2.5 py-0.5">
+                    {section.links.length}
+                  </span>
                 </div>
 
                 {/* Links */}
                 <ul className="divide-y divide-slate-50">
                   {section.links.map((link) => (
-                    <li key={link.href}>
+                    <li key={link.href} className="group">
                       <Link
                         href={link.href}
-                        className="flex items-start justify-between gap-4 px-6 py-4 hover:bg-slate-50 transition-colors group"
+                        className="flex items-start justify-between gap-4 px-6 py-4 hover:bg-slate-50 transition-colors"
                       >
                         <div>
                           <p className="text-sm font-semibold text-slate-800 group-hover:text-teal-600 transition-colors">
@@ -124,7 +136,7 @@ export default function SitemapPage() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             ))}
           </div>
 
