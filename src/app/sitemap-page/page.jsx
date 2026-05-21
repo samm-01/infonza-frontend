@@ -15,19 +15,90 @@ const sections = [
     ],
   },
   {
-    label: "Services",
+    label: "AI Development",
+    icon: "🤖",
+    links: [
+      { href: "/ai-development", title: "AI Development", desc: "Custom AI solutions for enterprise" },
+      { href: "/ai-development/ai-chatbot-development", title: "AI Chatbot Development", desc: "GPT-4 & LangChain chatbots" },
+      { href: "/ai-development/ai-workflow-automation", title: "AI Workflow Automation", desc: "Automate processes with AI" },
+      { href: "/ai-development/generative-ai-development", title: "Generative AI Development", desc: "GenAI apps & content engines" },
+      { href: "/ai-development/openai-integration-services", title: "OpenAI Integration", desc: "GPT-4 & Assistants API" },
+      { href: "/ai-development/rag-development-services", title: "RAG Development", desc: "Retrieval-augmented generation" },
+      { href: "/ai-development/llm-development-company", title: "LLM Development", desc: "Custom & fine-tuned LLMs" },
+    ],
+  },
+  {
+    label: "Insurance Software",
+    icon: "🏦",
+    links: [
+      { href: "/insurance-software-development", title: "Insurance Software Development", desc: "Custom insurance technology" },
+      { href: "/insurance-software-development/insurance-crm-development", title: "Insurance CRM", desc: "Agent & policy CRM systems" },
+      { href: "/insurance-software-development/policy-management-software", title: "Policy Management Software", desc: "End-to-end policy lifecycle" },
+      { href: "/insurance-software-development/quote-comparison-platform", title: "Quote Comparison Platform", desc: "Multi-carrier real-time quoting" },
+      { href: "/insurance-software-development/insurance-agent-portal", title: "Insurance Agent Portal", desc: "Self-service agent portal" },
+      { href: "/insurance-software-development/insurance-mobile-app-development", title: "Insurance Mobile App", desc: "iOS & Android for insurers" },
+      { href: "/insurance-software-development/insurance-automation-solutions", title: "Insurance Automation", desc: "Claims & underwriting automation" },
+    ],
+  },
+  {
+    label: "ERP Development",
     icon: "⚙️",
+    links: [
+      { href: "/erp-development", title: "ERP Development", desc: "Custom ERP for every industry" },
+      { href: "/erp-development/manufacturing-erp-development", title: "Manufacturing ERP", desc: "MRP, BOM & shop floor control" },
+      { href: "/erp-development/logistics-erp-software", title: "Logistics ERP", desc: "Fleet, freight & dispatch" },
+      { href: "/erp-development/cosmetic-industry-erp", title: "Cosmetics Industry ERP", desc: "FDA-compliant beauty ERP" },
+      { href: "/erp-development/inventory-management-system", title: "Inventory Management", desc: "Real-time multi-warehouse tracking" },
+      { href: "/erp-development/warehouse-management-system", title: "Warehouse Management (WMS)", desc: "Pick-pack-ship & slot optimization" },
+      { href: "/erp-development/custom-erp-solutions", title: "Custom ERP Solutions", desc: "Fully bespoke ERP builds" },
+    ],
+  },
+  {
+    label: "Staff Augmentation",
+    icon: "👥",
+    links: [
+      { href: "/staff-augmentation", title: "IT Staff Augmentation", desc: "Hire dedicated remote developers" },
+      { href: "/staff-augmentation/hire-react-developers", title: "Hire React Developers", desc: "Senior React.js engineers" },
+      { href: "/staff-augmentation/hire-nodejs-developers", title: "Hire Node.js Developers", desc: "Backend Node.js specialists" },
+      { href: "/staff-augmentation/hire-mern-stack-developers", title: "Hire MERN Stack Developers", desc: "Full-stack MERN engineers" },
+      { href: "/staff-augmentation/hire-ai-engineers", title: "Hire AI Engineers", desc: "ML & LLM specialists" },
+      { href: "/staff-augmentation/hire-devops-engineers", title: "Hire DevOps Engineers", desc: "K8s, AWS & CI/CD experts" },
+      { href: "/staff-augmentation/dedicated-development-team", title: "Dedicated Development Team", desc: "Full managed dev team" },
+    ],
+  },
+  {
+    label: "SaaS Development",
+    icon: "☁️",
+    links: [
+      { href: "/saas-development", title: "SaaS Development", desc: "Build scalable cloud SaaS products" },
+      { href: "/saas-development/multi-tenant-saas-development", title: "Multi-Tenant SaaS", desc: "Tenant isolation & architecture" },
+      { href: "/saas-development/crm-saas-development", title: "CRM SaaS Development", desc: "Build a CRM as a SaaS product" },
+      { href: "/saas-development/b2b-saas-development", title: "B2B SaaS Development", desc: "Enterprise SaaS with SSO & audit logs" },
+      { href: "/saas-development/subscription-platform-development", title: "Subscription Platform", desc: "Billing, trials & dunning" },
+      { href: "/saas-development/cloud-saas-solutions", title: "Cloud SaaS Solutions", desc: "Serverless, microservices & autoscaling" },
+    ],
+  },
+  {
+    label: "Document Management",
+    icon: "📄",
+    links: [
+      { href: "/document-management-system", title: "Document Management System", desc: "Enterprise DMS solutions" },
+      { href: "/document-management-system/enterprise-document-management", title: "Enterprise DMS", desc: "Full-featured document repository" },
+      { href: "/document-management-system/document-workflow-automation", title: "Document Workflow Automation", desc: "Approval routing & e-signatures" },
+      { href: "/document-management-system/legal-document-management", title: "Legal Document Management", desc: "Contract & matter management" },
+      { href: "/document-management-system/cloud-document-storage", title: "Cloud Document Storage", desc: "Encrypted cloud-native storage" },
+      { href: "/document-management-system/document-approval-system", title: "Document Approval System", desc: "Multi-level approval workflows" },
+    ],
+  },
+  {
+    label: "Other Services",
+    icon: "🛠️",
     links: [
       { href: "/services", title: "All Services", desc: "Full list of what we build" },
       { href: "/data-engineering", title: "Data Engineering", desc: "Pipelines, warehouses & analytics" },
-      { href: "/staff-augmentation", title: "IT Staff Augmentation", desc: "Hire dedicated remote developers" },
-      { href: "/cloud-solutions", title: "Cloud Solutions", desc: "AWS, Azure & GCP cloud services" },
+      { href: "/cloud-solutions", title: "Cloud Solutions", desc: "AWS, Azure & GCP" },
       { href: "/software-development", title: "Software Development", desc: "Custom software build process" },
       { href: "/designing", title: "UI/UX Design", desc: "Product & interface design" },
-      { href: "/services#web-development", title: "Web & App Development", desc: "Custom web apps and mobile-ready products" },
-      { href: "/services#saas", title: "SaaS Development", desc: "End-to-end SaaS product builds" },
-      { href: "/services#crm-erp", title: "CRM & ERP Systems", desc: "Business operations software" },
-      { href: "/services#api-automation", title: "API & Automation", desc: "Integrations and workflow automation" },
     ],
   },
   {
@@ -56,7 +127,7 @@ const sections = [
   },
   {
     label: "Legal",
-    icon: "📄",
+    icon: "🔒",
     links: [
       { href: "/privacy-policy", title: "Privacy Policy", desc: "How we handle your data" },
       { href: "/terms-of-service", title: "Terms of Service", desc: "Terms governing use of our services" },
@@ -119,7 +190,7 @@ export default function SitemapPage() {
                     <li key={link.href} className="group">
                       <Link
                         href={link.href}
-                        className="flex items-start justify-between gap-4 px-6 py-4 hover:bg-slate-50 transition-colors"
+                        className="flex items-start justify-between gap-4 px-6 py-3.5 hover:bg-slate-50 transition-colors"
                       >
                         <div>
                           <p className="text-sm font-semibold text-slate-800 group-hover:text-teal-600 transition-colors">

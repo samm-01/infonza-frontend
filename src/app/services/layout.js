@@ -1,19 +1,21 @@
 export const metadata = {
-  title: "Web, SaaS, CRM & API Development Services",
+  title: "Software Development Services — AI, ERP, SaaS, Insurance & More",
   description:
-    "Custom web applications, SaaS platforms, CRM/ERP systems, and workflow automation built for startups, agencies, and growing businesses. Book a free strategy call.",
+    "Enterprise software development across 6 verticals: AI development, insurance software, ERP systems, SaaS products, IT staff augmentation, and document management. Senior engineers, transparent delivery.",
   keywords: [
-    "custom web development",
+    "software development company",
+    "AI development services",
+    "insurance software development",
+    "custom ERP development",
     "SaaS development company",
-    "CRM ERP development",
-    "API integration services",
-    "workflow automation",
-    "software development India",
+    "IT staff augmentation",
+    "document management system",
+    "enterprise software development India",
   ],
   openGraph: {
-    title: "Web, SaaS, CRM & API Development Services | Infonza Innovations",
+    title: "Software Development Services — AI, ERP, SaaS & Insurance | Infonza Innovations",
     description:
-      "Custom web applications, SaaS platforms, CRM/ERP systems, and workflow automation built for startups, agencies, and growing businesses.",
+      "Enterprise software development across 6 verticals: AI, insurance tech, ERP, SaaS, staff augmentation, and DMS. 150+ global clients, 500+ projects delivered.",
     url: "https://infonza.com/services",
   },
   alternates: {
