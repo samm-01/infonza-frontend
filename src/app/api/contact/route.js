@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const getResend = () => new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
   try {
@@ -10,7 +10,7 @@ export async function POST(request) {
       return Response.json({ error: "Missing required fields." }, { status: 400 });
     }
 
-    await resend.emails.send({
+    await getResend().emails.send({
       from: "Infonza Contact Form <onboarding@resend.dev>",
       to: "support@infonza.com",
       replyTo: email,

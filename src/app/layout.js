@@ -19,16 +19,20 @@ export const metadata = {
     "We build custom web apps, SaaS products, CRM/ERP systems, and automation workflows for US-based startups, agencies, and SMEs. Book a free strategy call.",
   keywords: [
     "custom software development",
-    "SaaS development",
-    "CRM ERP systems",
-    "web application development",
-    "API integration",
-    "workflow automation",
-    "Next.js development",
-    "React development",
-    "US software company",
-    "insurance software",
-    "construction ERP",
+    "AI development services",
+    "insurance software development",
+    "ERP development company",
+    "SaaS development company",
+    "IT staff augmentation",
+    "document management system",
+    "LLM development",
+    "RAG development",
+    "hire React developers",
+    "hire AI engineers",
+    "multi-tenant SaaS development",
+    "insurance CRM development",
+    "manufacturing ERP development",
+    "enterprise software development India",
   ],
   authors: [{ name: "Infonza Innovations" }],
   creator: "Infonza Innovations",
@@ -82,21 +86,71 @@ const organizationSchema = {
   "@type": "Organization",
   name: "Infonza Innovations",
   url: baseUrl,
-  logo: `${baseUrl}/infonza-logo.jpg`,
+  logo: {
+    "@type": "ImageObject",
+    url: `${baseUrl}/infonza-logo.jpg`,
+    width: 1200,
+    height: 630,
+  },
   description:
-    "Custom software development company building web apps, SaaS products, CRM/ERP systems, and automation workflows for US-based businesses.",
+    "Enterprise software engineering company specialising in AI development, insurance software, ERP systems, SaaS products, and IT staff augmentation for US-based businesses.",
   email: "support@infonza.com",
-  sameAs: ["https://www.linkedin.com/company/infonza-innovations/"],
-  areaServed: { "@type": "Country", name: "United States" },
+  sameAs: [
+    "https://www.linkedin.com/company/infonza-innovations/",
+  ],
+  areaServed: [
+    { "@type": "Country", name: "United States" },
+    { "@type": "Country", name: "United Kingdom" },
+    { "@type": "Country", name: "Australia" },
+    { "@type": "Country", name: "Canada" },
+  ],
   knowsAbout: [
-    "Web Application Development",
+    "AI Development",
+    "Generative AI Development",
+    "LLM Development",
+    "RAG Development",
+    "OpenAI Integration",
+    "Insurance Software Development",
+    "Insurance CRM Development",
+    "Policy Management Software",
+    "Custom ERP Development",
+    "Manufacturing ERP",
+    "Logistics ERP",
     "SaaS Product Development",
-    "CRM/ERP Systems",
+    "Multi-tenant SaaS",
+    "B2B SaaS Development",
+    "IT Staff Augmentation",
+    "Offshore Development Teams",
+    "Hire React Developers",
+    "Hire AI Engineers",
+    "Document Management Systems",
+    "Web Application Development",
     "API Integration",
     "Workflow Automation",
-    "Insurance Software",
-    "Construction ERP",
   ],
+  foundingDate: "2012",
+  numberOfEmployees: { "@type": "QuantitativeValue", value: 50 },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Infonza Innovations",
+  url: baseUrl,
+  description:
+    "Enterprise AI, ERP, insurance software, SaaS development, and IT staff augmentation company.",
+  publisher: {
+    "@type": "Organization",
+    name: "Infonza Innovations",
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${baseUrl}/blog?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -105,9 +159,11 @@ export default function RootLayout({ children }) {
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body className={`${geistSans.variable} antialiased`}>
