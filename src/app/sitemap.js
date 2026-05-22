@@ -98,9 +98,23 @@ export default function sitemap() {
 
   // ─── Programmatic SEO — Location + Intent Pages ─────────────────────────
   const programmaticPages = [
-    { url: `${baseUrl}/ai-development-company-usa`,          changeFrequency: "monthly", priority: 0.92 },
-    { url: `${baseUrl}/staff-augmentation-company-india`,    changeFrequency: "monthly", priority: 0.92 },
-    { url: `${baseUrl}/hire-react-developers-india`,         changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/ai-development-company-usa`,              changeFrequency: "monthly", priority: 0.92 },
+    { url: `${baseUrl}/staff-augmentation-company-india`,        changeFrequency: "monthly", priority: 0.92 },
+    { url: `${baseUrl}/hire-react-developers-india`,             changeFrequency: "monthly", priority: 0.90 },
+  ];
+
+  // ─── GEO SEO — India city + service pages ───────────────────────────────
+  const geoPages = [
+    { url: `${baseUrl}/software-development-company-chandigarh`, changeFrequency: "monthly", priority: 0.91 },
+    { url: `${baseUrl}/it-company-mohali`,                        changeFrequency: "monthly", priority: 0.91 },
+    { url: `${baseUrl}/ai-development-company-india`,             changeFrequency: "monthly", priority: 0.93 },
+    { url: `${baseUrl}/offshore-development-company-india`,       changeFrequency: "monthly", priority: 0.92 },
+    { url: `${baseUrl}/erp-development-company-india`,            changeFrequency: "monthly", priority: 0.91 },
+    { url: `${baseUrl}/saas-development-company-india`,           changeFrequency: "monthly", priority: 0.91 },
+    { url: `${baseUrl}/software-development-company-india`,       changeFrequency: "monthly", priority: 0.93 },
+    { url: `${baseUrl}/it-company-bangalore`,                     changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/it-company-chennai`,                       changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/software-development-company-punjab`,      changeFrequency: "monthly", priority: 0.90 },
   ];
 
   // ─── Blog ────────────────────────────────────────────────────────────────
@@ -132,6 +146,7 @@ export default function sitemap() {
     ...saasDevelopment,
     ...documentManagement,
     ...programmaticPages,
+    ...geoPages,
     ...caseStudies,
     ...blogIndex,
     ...legalRoutes,
