@@ -96,6 +96,13 @@ export default function sitemap() {
     { url: `${baseUrl}/case-studies/builderwing`,  changeFrequency: "yearly",  priority: 0.8 },
   ];
 
+  // ─── Programmatic SEO — Location + Intent Pages ─────────────────────────
+  const programmaticPages = [
+    { url: `${baseUrl}/ai-development-company-usa`,          changeFrequency: "monthly", priority: 0.92 },
+    { url: `${baseUrl}/staff-augmentation-company-india`,    changeFrequency: "monthly", priority: 0.92 },
+    { url: `${baseUrl}/hire-react-developers-india`,         changeFrequency: "monthly", priority: 0.90 },
+  ];
+
   // ─── Blog ────────────────────────────────────────────────────────────────
   const blogIndex = [
     { url: `${baseUrl}/blog`, changeFrequency: "weekly", priority: 0.7 },
@@ -124,6 +131,7 @@ export default function sitemap() {
     ...staffAugmentation,
     ...saasDevelopment,
     ...documentManagement,
+    ...programmaticPages,
     ...caseStudies,
     ...blogIndex,
     ...legalRoutes,

@@ -13,13 +13,36 @@ export const metadata = {
     "3PL warehouse software development",
   ],
   openGraph: {
+    type: "website",
+    siteName: "Infonza Innovations",
+    locale: "en_US",
     title: "Custom Warehouse Management System (WMS) Development | Infonza",
     description:
       "Build a custom WMS with directed putaway, pick-pack-ship, slot optimisation, labor management, and ERP/3PL/eCommerce integration.",
     url: "https://infonza.com/erp-development/warehouse-management-system",
+    images: [
+      {
+        url: "https://infonza.com/infonza-logo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Custom Warehouse Management System (WMS) Development | Infonza",
+      },
+    ],
+
   },
   alternates: {
     canonical: "https://infonza.com/erp-development/warehouse-management-system",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Custom Warehouse Management System (WMS) Development | Infonza",
+    description: "Build a custom WMS with directed putaway, pick-pack-ship, slot optimisation, labor management, and ERP/3PL/eCommerce integration.",
+    images: ["https://infonza.com/infonza-logo.jpg"],
   },
 };
 

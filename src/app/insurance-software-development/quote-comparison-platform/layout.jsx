@@ -13,13 +13,36 @@ export const metadata = {
     "insurtech quoting platform",
   ],
   openGraph: {
+    type: "website",
+    siteName: "Infonza Innovations",
+    locale: "en_US",
     title: "Insurance Quote Comparison Platform Development | Infonza",
     description:
       "Multi-carrier real-time quoting engine with API aggregation, side-by-side comparison, and bind-online workflow. 5× quote volume, sub-3s generation.",
     url: "https://infonza.com/insurance-software-development/quote-comparison-platform",
+    images: [
+      {
+        url: "https://infonza.com/infonza-logo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Insurance Quote Comparison Platform Development | Infonza",
+      },
+    ],
+
   },
   alternates: {
     canonical: "https://infonza.com/insurance-software-development/quote-comparison-platform",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Insurance Quote Comparison Platform Development | Infonza",
+    description: "Multi-carrier real-time quoting engine with API aggregation, side-by-side comparison, and bind-online workflow. 5× quote volume, sub-3s generation.",
+    images: ["https://infonza.com/infonza-logo.jpg"],
   },
 };
 

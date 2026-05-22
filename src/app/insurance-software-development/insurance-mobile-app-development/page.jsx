@@ -17,7 +17,7 @@ import {
   HiStar,
   HiCodeBracket,
   HiCurrencyDollar,
-  HiCameraIcon,
+  HiCamera,
   HiChatBubbleLeftRight,
   HiBellAlert,
   HiIdentification,
@@ -68,7 +68,7 @@ const FEATURES = [
     description: "State-compliant digital insurance ID cards accepted in all 50 US states and most Canadian provinces. Auto-updates when coverage renews. Shareable PDFs for verification requests.",
   },
   {
-    icon: HiCameraIcon || HiDocumentText,
+    icon: HiCamera || HiDocumentText,
     title: "Mobile FNOL — Photo Claims",
     description: "Guided First Notice of Loss flow — policyholders photograph damage, capture scene details, and submit a claim in under 5 minutes. AI damage assessment pre-populates claim fields and routes to the correct adjuster automatically.",
   },

@@ -20,7 +20,7 @@ import {
   HiGlobeAlt,
   HiCog6Tooth,
   HiLockClosed,
-  HiSwatchIcon,
+  HiSwatch,
   HiChartBar,
   HiUsers,
 } from "react-icons/hi2";
@@ -88,7 +88,7 @@ const FEATURES = [
     desc: "Self-serve signup flow with automated provisioning: data partition creation, configuration seeding, domain setup, and welcome sequences — all in under 10 seconds.",
   },
   {
-    icon: HiSwatchIcon || HiSparkles,
+    icon: HiSwatch || HiSparkles,
     title: "White-Labeling Engine",
     desc: "Custom domains, per-tenant brand theming (logo, colors, typography), white-label email, and tenant-specific feature flags — all managed via a superadmin console.",
   },

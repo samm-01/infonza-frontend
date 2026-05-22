@@ -13,13 +13,36 @@ export const metadata = {
     "multi-tenant software development",
   ],
   openGraph: {
+    type: "website",
+    siteName: "Infonza Innovations",
+    locale: "en_US",
     title: "Multi-Tenant SaaS Development — Architecture & Build | Infonza",
     description:
       "Build SaaS platforms that support 10K+ tenants with guaranteed data isolation, white-labeling, and usage metering.",
     url: "https://infonza.com/saas-development/multi-tenant-saas-development",
+    images: [
+      {
+        url: "https://infonza.com/infonza-logo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Multi-Tenant SaaS Development — Architecture & Build | Infonza",
+      },
+    ],
+
   },
   alternates: {
     canonical: "https://infonza.com/saas-development/multi-tenant-saas-development",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Multi-Tenant SaaS Development — Architecture & Build | Infonza",
+    description: "Build SaaS platforms that support 10K+ tenants with guaranteed data isolation, white-labeling, and usage metering.",
+    images: ["https://infonza.com/infonza-logo.jpg"],
   },
 };
 

@@ -13,13 +13,36 @@ export const metadata = {
     "logistics management software",
   ],
   openGraph: {
+    type: "website",
+    siteName: "Infonza Innovations",
+    locale: "en_US",
     title: "Custom Logistics ERP Software Development — Fleet & Freight Systems | Infonza",
     description:
       "Build a logistics ERP covering fleet management, route optimisation, freight billing, carrier management, and real-time tracking.",
     url: "https://infonza.com/erp-development/logistics-erp-software",
+    images: [
+      {
+        url: "https://infonza.com/infonza-logo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Custom Logistics ERP Software Development — Fleet & Freight Systems | Infonza",
+      },
+    ],
+
   },
   alternates: {
     canonical: "https://infonza.com/erp-development/logistics-erp-software",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Custom Logistics ERP Software Development — Fleet & Freight Systems | Infonza",
+    description: "Build a logistics ERP covering fleet management, route optimisation, freight billing, carrier management, and real-time tracking.",
+    images: ["https://infonza.com/infonza-logo.jpg"],
   },
 };
 

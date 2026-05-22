@@ -13,13 +13,36 @@ export const metadata = {
     "enterprise software development India",
   ],
   openGraph: {
+    type: "website",
+    siteName: "Infonza Innovations",
+    locale: "en_US",
     title: "Software Development Services — AI, ERP, SaaS & Insurance | Infonza Innovations",
     description:
       "Enterprise software development across 6 verticals: AI, insurance tech, ERP, SaaS, staff augmentation, and DMS. 150+ global clients, 500+ projects delivered.",
     url: "https://infonza.com/services",
+    images: [
+      {
+        url: "https://infonza.com/infonza-logo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Software Development Services — AI, ERP, SaaS & Insurance | Infonza Innovations",
+      },
+    ],
+
   },
   alternates: {
     canonical: "https://infonza.com/services",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Software Development Services — AI, ERP, SaaS & Insurance | Infonza Innovations",
+    description: "Enterprise software development across 6 verticals: AI, insurance tech, ERP, SaaS, staff augmentation, and DMS. 150+ global clients, 500+ projects delivered.",
+    images: ["https://infonza.com/infonza-logo.jpg"],
   },
 };
 
