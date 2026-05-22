@@ -154,6 +154,43 @@ export const GEO_LOCATIONS = {
     addressRegion: "CH",
     countryCode: "IN",
   },
+  usa: {
+    city: null,
+    state: null,
+    country: "United States",
+    region: "United States",
+    countryCode: "US",
+  },
+  new_york: {
+    city: "New York",
+    state: "New York",
+    country: "United States",
+    region: "East Coast",
+    addressLocality: "New York",
+    addressRegion: "NY",
+    postalCode: "10001",
+    countryCode: "US",
+  },
+  california: {
+    city: "California",
+    state: "California",
+    country: "United States",
+    region: "West Coast",
+    addressLocality: "San Francisco",
+    addressRegion: "CA",
+    postalCode: "94105",
+    countryCode: "US",
+  },
+  texas: {
+    city: "Texas",
+    state: "Texas",
+    country: "United States",
+    region: "South Central",
+    addressLocality: "Austin",
+    addressRegion: "TX",
+    postalCode: "78701",
+    countryCode: "US",
+  },
 };
 
 // ── Schema builders ────────────────────────────────────────────────────────
@@ -209,6 +246,32 @@ export function buildProfessionalServiceSchema({ description, url, serviceType }
       { "@type": "Country", name: "Canada" },
     ],
     serviceType,
+  };
+}
+
+// For US-targeted pages — areaServed scoped to the US state or country
+export function buildUSServiceSchema({ description, url, serviceType, stateName }) {
+  const areaServed = stateName
+    ? { "@type": "State", name: stateName, containedInPlace: { "@type": "Country", name: "United States" } }
+    : { "@type": "Country", name: "United States" };
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: COMPANY_NAME,
+    description,
+    url: `${BASE_URL}${url}`,
+    email: CONTACT_EMAIL,
+    identifier: { "@type": "PropertyValue", name: "DUNS", value: DUNS },
+    areaServed,
+    serviceType,
+    knowsAbout: [
+      "Software Development",
+      "AI Development",
+      "ERP Development",
+      "SaaS Development",
+      "IT Staff Augmentation",
+      "Insurance Software Development",
+    ],
   };
 }
 

@@ -103,6 +103,14 @@ export default function sitemap() {
     { url: `${baseUrl}/hire-react-developers-india`,             changeFrequency: "monthly", priority: 0.90 },
   ];
 
+  // ─── GEO SEO — US region pages ──────────────────────────────────────────
+  const geoUSPages = [
+    { url: `${baseUrl}/software-development-company-usa`,          changeFrequency: "monthly", priority: 0.93 },
+    { url: `${baseUrl}/software-development-company-new-york`,     changeFrequency: "monthly", priority: 0.91 },
+    { url: `${baseUrl}/software-development-company-california`,   changeFrequency: "monthly", priority: 0.91 },
+    { url: `${baseUrl}/software-development-company-texas`,        changeFrequency: "monthly", priority: 0.91 },
+  ];
+
   // ─── GEO SEO — India city + service pages ───────────────────────────────
   const geoPages = [
     { url: `${baseUrl}/software-development-company-chandigarh`, changeFrequency: "monthly", priority: 0.91 },
@@ -146,6 +154,7 @@ export default function sitemap() {
     ...saasDevelopment,
     ...documentManagement,
     ...programmaticPages,
+    ...geoUSPages,
     ...geoPages,
     ...caseStudies,
     ...blogIndex,
