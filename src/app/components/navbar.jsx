@@ -7,7 +7,6 @@ import {
   HiCpuChip,
   HiShieldCheck,
   HiCircleStack,
-  HiUsers,
   HiCloud,
   HiDocumentText,
   HiChevronDown,
@@ -19,7 +18,7 @@ import {
 
 const BOOKING_URL = "https://calendar.app.google/tCXYTm21YtV7AkXFA";
 
-/* ── Six pillar clusters ─────────────────────────────────────────────────── */
+/* ── Service pillar clusters (Services mega menu) ───────────────────────── */
 const PILLARS = [
   {
     href: "/ai-development",
@@ -64,20 +63,6 @@ const PILLARS = [
     ],
   },
   {
-    href: "/staff-augmentation",
-    label: "Staff Augmentation",
-    shortDesc: "Hire dedicated remote developers",
-    icon: HiUsers,
-    iconBg: "bg-teal-50",
-    iconColor: "text-teal-600",
-    sub: [
-      { href: "/staff-augmentation/hire-react-developers", label: "Hire React Developers" },
-      { href: "/staff-augmentation/hire-nodejs-developers", label: "Hire Node.js Developers" },
-      { href: "/staff-augmentation/hire-ai-engineers", label: "Hire AI Engineers" },
-      { href: "/staff-augmentation/dedicated-development-team", label: "Dedicated Dev Team" },
-    ],
-  },
-  {
     href: "/saas-development",
     label: "SaaS Development",
     shortDesc: "Multi-tenant cloud SaaS products",
@@ -108,6 +93,7 @@ const PILLARS = [
 ];
 
 const NAV_LINKS = [
+  { href: "/staff-augmentation", label: "Staff Augmentation" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/blog", label: "Blog" },
@@ -119,7 +105,7 @@ function MegaMenu({ open, onClose }) {
   if (!open) return null;
   return (
     <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[820px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl border border-slate-200 shadow-2xl shadow-slate-900/10 z-50 overflow-hidden">
-      {/* Grid of 6 pillars */}
+      {/* Pillar grid — add/remove entries in PILLARS array above */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-px bg-slate-100">
         {PILLARS.map((pillar) => {
           const Icon = pillar.icon;
