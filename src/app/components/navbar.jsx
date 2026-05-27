@@ -14,6 +14,14 @@ import {
   HiArrowRight,
   HiXMark,
   HiBars3,
+  /* Staff Augmentation mega menu */
+  HiServerStack,
+  HiSparkles,
+  HiCodeBracket,
+  HiUserGroup,
+  HiComputerDesktop,
+  HiDevicePhoneMobile,
+  HiWrenchScrewdriver,
 } from "react-icons/hi2";
 
 const BOOKING_URL = "https://calendar.app.google/tCXYTm21YtV7AkXFA";
@@ -92,15 +100,113 @@ const PILLARS = [
   },
 ];
 
+/* ── Staff Augmentation mega menu data ──────────────────────────────────── */
+
+/** Left panel — role-based hire cards, one per dedicated landing page */
+const HIRE_ROLES = [
+  {
+    href: "/staff-augmentation/hire-react-developers",
+    label: "Hire React Developers",
+    desc: "Senior React & Next.js engineers",
+    icon: HiCpuChip,
+    iconBg: "bg-blue-50",
+    iconColor: "text-blue-600",
+  },
+  {
+    href: "/staff-augmentation/hire-nodejs-developers",
+    label: "Hire Node.js Developers",
+    desc: "Node.js, Express & REST API experts",
+    icon: HiServerStack,
+    iconBg: "bg-green-50",
+    iconColor: "text-green-600",
+  },
+  {
+    href: "/staff-augmentation/hire-ai-engineers",
+    label: "Hire AI Engineers",
+    desc: "LLM, ML & generative AI specialists",
+    icon: HiSparkles,
+    iconBg: "bg-violet-50",
+    iconColor: "text-violet-600",
+  },
+  {
+    href: "/staff-augmentation/hire-devops-engineers",
+    label: "Hire DevOps Engineers",
+    desc: "CI/CD, Kubernetes & cloud infrastructure",
+    icon: HiCloud,
+    iconBg: "bg-orange-50",
+    iconColor: "text-orange-600",
+  },
+  {
+    href: "/staff-augmentation/hire-mern-stack-developers",
+    label: "Hire MERN Stack Developers",
+    desc: "Mongo, Express, React & Node full stack",
+    icon: HiCodeBracket,
+    iconBg: "bg-teal-50",
+    iconColor: "text-teal-600",
+  },
+  {
+    href: "/staff-augmentation/dedicated-development-team",
+    label: "Dedicated Dev Team",
+    desc: "Fully managed remote development pod",
+    icon: HiUserGroup,
+    iconBg: "bg-rose-50",
+    iconColor: "text-rose-600",
+  },
+];
+
+/** Right panel — technologies grouped by category */
+const TECH_GROUPS = [
+  {
+    label: "Frontend",
+    icon: HiComputerDesktop,
+    items: [
+      { href: "/staff-augmentation/hire-react-developers", label: "React.js" },
+      { href: "/staff-augmentation/hire-react-developers", label: "Next.js" },
+      { href: "/staff-augmentation", label: "Vue.js" },
+      { href: "/staff-augmentation", label: "Angular" },
+    ],
+  },
+  {
+    label: "Mobile",
+    icon: HiDevicePhoneMobile,
+    items: [
+      { href: "/staff-augmentation/hire-mern-stack-developers", label: "React Native" },
+      { href: "/staff-augmentation", label: "Flutter" },
+      { href: "/staff-augmentation", label: "iOS (Swift)" },
+      { href: "/staff-augmentation", label: "Android (Kotlin)" },
+    ],
+  },
+  {
+    label: "Backend",
+    icon: HiServerStack,
+    items: [
+      { href: "/staff-augmentation/hire-nodejs-developers", label: "Node.js" },
+      { href: "/staff-augmentation", label: "Python / Django" },
+      { href: "/staff-augmentation", label: "PHP / Laravel" },
+      { href: "/staff-augmentation/hire-mern-stack-developers", label: "Express.js" },
+    ],
+  },
+  {
+    label: "Others",
+    icon: HiWrenchScrewdriver,
+    items: [
+      { href: "/staff-augmentation/hire-ai-engineers", label: "AI / ML Engineers" },
+      { href: "/staff-augmentation/hire-devops-engineers", label: "DevOps Engineers" },
+      { href: "/staff-augmentation/hire-mern-stack-developers", label: "MERN Stack Devs" },
+      { href: "/staff-augmentation/dedicated-development-team", label: "Full Stack Teams" },
+    ],
+  },
+];
+
+/** Plain nav links (no mega menu) */
 const NAV_LINKS = [
-  { href: "/staff-augmentation", label: "Staff Augmentation" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
 ];
 
-/* ── MegaMenu desktop overlay ───────────────────────────────────────────── */
+/* ── Services MegaMenu (desktop overlay) ───────────────────────────────── */
 function MegaMenu({ open, onClose }) {
   if (!open) return null;
   return (
@@ -166,42 +272,202 @@ function MegaMenu({ open, onClose }) {
   );
 }
 
-/* ── Navbar component ────────────────────────────────────────────────────── */
+/* ── Staff Augmentation MegaMenu (desktop overlay) ─────────────────────── */
+function StaffAugMegaMenu({ open, onClose }) {
+  return (
+    /*
+     * Render-always + CSS transition approach:
+     *   open  → opacity-100, translate-y-0, pointer-events-auto
+     *   closed → opacity-0,  -translate-y-2, pointer-events-none
+     * This gives a smooth fade+slide without mount/unmount flicker.
+     */
+    <div
+      role="region"
+      aria-label="Staff Augmentation menu"
+      aria-hidden={!open}
+      className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[860px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl border border-slate-200 shadow-2xl shadow-slate-900/10 z-50 overflow-hidden transition-all duration-200 ease-out origin-top ${
+        open
+          ? "opacity-100 translate-y-0 pointer-events-auto"
+          : "opacity-0 -translate-y-2 pointer-events-none"
+      }`}
+    >
+      <div className="flex min-h-0">
+
+        {/* ── Left panel: Hire Talent For ─────────────────────────────── */}
+        <div className="w-[300px] flex-shrink-0 bg-slate-50/80 border-r border-slate-100 p-5">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-3 px-1">
+            Hire Talent For
+          </p>
+          <ul className="space-y-0.5">
+            {HIRE_ROLES.map((role) => {
+              const Icon = role.icon;
+              return (
+                <li key={role.href}>
+                  <Link
+                    href={role.href}
+                    onClick={onClose}
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-white hover:shadow-sm group transition-all duration-150"
+                  >
+                    <span
+                      className={`w-8 h-8 rounded-lg ${role.iconBg} flex items-center justify-center flex-shrink-0 transition-transform duration-150 group-hover:scale-110`}
+                    >
+                      <Icon className={`w-4 h-4 ${role.iconColor}`} />
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-slate-800 group-hover:text-teal-600 leading-tight transition-colors duration-150">
+                        {role.label}
+                      </p>
+                      <p className="text-xs text-slate-400 leading-snug mt-0.5">{role.desc}</p>
+                    </div>
+                    <HiArrowRight className="w-3 h-3 text-slate-300 group-hover:text-teal-400 ml-auto flex-shrink-0 transition-all duration-150 group-hover:translate-x-0.5" />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        {/* ── Right panel: Technologies ────────────────────────────────── */}
+        <div className="flex-1 p-5">
+          <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4 px-1">
+            Technologies
+          </p>
+          {/* 2×2 grid of tech groups — add/remove groups in TECH_GROUPS above */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-5">
+            {TECH_GROUPS.map((group) => {
+              const GroupIcon = group.icon;
+              return (
+                <div key={group.label}>
+                  {/* Group header */}
+                  <div className="flex items-center gap-1.5 mb-2 px-2">
+                    <GroupIcon className="w-3.5 h-3.5 text-slate-400" />
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                      {group.label}
+                    </p>
+                  </div>
+                  {/* Tech items */}
+                  <ul className="space-y-0.5">
+                    {group.items.map((item) => (
+                      <li key={`${group.label}-${item.label}`}>
+                        <Link
+                          href={item.href}
+                          onClick={onClose}
+                          className="flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs text-slate-600 hover:text-teal-600 hover:bg-teal-50 transition-colors group"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover:bg-teal-400 flex-shrink-0 transition-colors" />
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Footer strip ────────────────────────────────────────────────── */}
+      <div className="flex items-center justify-between px-6 py-3 bg-slate-50 border-t border-slate-100">
+        <Link
+          href="/staff-augmentation"
+          onClick={onClose}
+          className="text-xs font-semibold text-slate-500 hover:text-teal-600 transition-colors"
+        >
+          View all hiring options →
+        </Link>
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={onClose}
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-gradient-to-r from-teal-600 to-blue-600 px-4 py-1.5 rounded-lg hover:opacity-90 transition-opacity"
+        >
+          <HiCalendarDays className="w-3.5 h-3.5" />
+          Hire Dedicated Developers
+        </a>
+      </div>
+    </div>
+  );
+}
+
+/* ── Navbar ─────────────────────────────────────────────────────────────── */
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  // Desktop dropdown state
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [staffAugOpen, setStaffAugOpen] = useState(false);
+  // Mobile accordion state
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileStaffAugOpen, setMobileStaffAugOpen] = useState(false);
+
   const pathname = usePathname();
   const isDarkPage = pathname === "/";
-  const dropdownRef = useRef(null);
 
+  // Refs for click-outside detection
+  const servicesDropdownRef = useRef(null);
+  const staffAugDropdownRef = useRef(null);
+
+  /* scroll → sticky shadow */
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /* click outside → close whichever dropdown is open */
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(e.target)) {
         setServicesOpen(false);
+      }
+      if (staffAugDropdownRef.current && !staffAugDropdownRef.current.contains(e.target)) {
+        setStaffAugOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Close mega menu on route change
+  /* route change → close everything */
   useEffect(() => {
     setServicesOpen(false);
+    setStaffAugOpen(false);
     setMenuOpen(false);
   }, [pathname]);
 
   const isTransparent = isDarkPage && !scrolled;
+
   const isServicesActive = PILLARS.some(
     (p) => pathname === p.href || pathname.startsWith(p.href + "/")
   );
+  const isStaffAugActive =
+    pathname === "/staff-augmentation" || pathname.startsWith("/staff-augmentation/");
+
+  /** Shared button classes for desktop mega-menu triggers */
+  const triggerClass = (active) =>
+    `flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+      active
+        ? isTransparent
+          ? "text-white bg-white/10"
+          : "text-teal-600 bg-teal-50"
+        : isTransparent
+        ? "text-slate-200 hover:text-white hover:bg-white/10"
+        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+    }`;
+
+  /** Shared classes for plain desktop nav links */
+  const navLinkClass = (active) =>
+    `px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+      active
+        ? isTransparent
+          ? "text-white bg-white/10"
+          : "text-teal-600 bg-teal-50"
+        : isTransparent
+        ? "text-slate-200 hover:text-white hover:bg-white/10"
+        : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
+    }`;
 
   return (
     <header
@@ -228,53 +494,63 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          {/* ── Desktop nav ─────────────────────────────────────────────── */}
+          <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
 
             {/* Services mega menu trigger */}
-            <div className="relative" ref={dropdownRef}>
+            <div className="relative" ref={servicesDropdownRef}>
               <button
-                onClick={() => setServicesOpen((v) => !v)}
-                className={`flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  isServicesActive
-                    ? isTransparent
-                      ? "text-white bg-white/10"
-                      : "text-teal-600 bg-teal-50"
-                    : isTransparent
-                    ? "text-slate-200 hover:text-white hover:bg-white/10"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
-                }`}
+                onClick={() => {
+                  setServicesOpen((v) => !v);
+                  setStaffAugOpen(false); // mutual exclusion
+                }}
+                aria-expanded={servicesOpen}
+                aria-haspopup="true"
+                className={triggerClass(isServicesActive)}
               >
                 Services
                 <HiChevronDown
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
                 />
               </button>
-
               <MegaMenu open={servicesOpen} onClose={() => setServicesOpen(false)} />
             </div>
 
-            {/* Regular nav links */}
+            {/* Staff Augmentation mega menu trigger */}
+            <div className="relative" ref={staffAugDropdownRef}>
+              <button
+                onClick={() => {
+                  setStaffAugOpen((v) => !v);
+                  setServicesOpen(false); // mutual exclusion
+                }}
+                aria-expanded={staffAugOpen}
+                aria-haspopup="true"
+                className={triggerClass(isStaffAugActive)}
+              >
+                Staff Augmentation
+                <HiChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${staffAugOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              <StaffAugMegaMenu
+                open={staffAugOpen}
+                onClose={() => setStaffAugOpen(false)}
+              />
+            </div>
+
+            {/* Plain nav links */}
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  pathname === link.href
-                    ? isTransparent
-                      ? "text-white bg-white/10"
-                      : "text-teal-600 bg-teal-50"
-                    : isTransparent
-                    ? "text-slate-200 hover:text-white hover:bg-white/10"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
-                }`}
+                className={navLinkClass(pathname === link.href)}
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          {/* Desktop CTAs */}
+          {/* ── Desktop CTAs ─────────────────────────────────────────────── */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/contact"
@@ -295,25 +571,21 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isTransparent
-                ? "text-white hover:bg-white/10"
-                : "text-slate-600 hover:bg-slate-100"
+              isTransparent ? "text-white hover:bg-white/10" : "text-slate-600 hover:bg-slate-100"
             }`}
-            aria-label="Toggle menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
           >
-            {menuOpen
-              ? <HiXMark className="w-6 h-6" />
-              : <HiBars3 className="w-6 h-6" />
-            }
+            {menuOpen ? <HiXMark className="w-6 h-6" /> : <HiBars3 className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* ── Mobile menu ─────────────────────────────────────────────────── */}
+      {/* ── Mobile menu ──────────────────────────────────────────────────── */}
       {menuOpen && (
         <div className="lg:hidden bg-white border-t border-slate-100 max-h-[80vh] overflow-y-auto">
           <div className="px-4 py-4 space-y-1">
@@ -334,18 +606,17 @@ export default function Navbar() {
                 {PILLARS.map((pillar) => {
                   const Icon = pillar.icon;
                   return (
-                    <div key={pillar.href}>
-                      <Link
-                        href={pillar.href}
-                        onClick={() => setMenuOpen(false)}
-                        className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-teal-600 transition-colors"
-                      >
-                        <span className={`w-7 h-7 rounded-md ${pillar.iconBg} flex items-center justify-center flex-shrink-0`}>
-                          <Icon className={`w-3.5 h-3.5 ${pillar.iconColor}`} />
-                        </span>
-                        {pillar.label}
-                      </Link>
-                    </div>
+                    <Link
+                      key={pillar.href}
+                      href={pillar.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-teal-600 transition-colors"
+                    >
+                      <span className={`w-7 h-7 rounded-md ${pillar.iconBg} flex items-center justify-center flex-shrink-0`}>
+                        <Icon className={`w-3.5 h-3.5 ${pillar.iconColor}`} />
+                      </span>
+                      {pillar.label}
+                    </Link>
                   );
                 })}
                 <Link
@@ -358,7 +629,46 @@ export default function Navbar() {
               </div>
             )}
 
-            {/* Regular links */}
+            {/* Staff Augmentation accordion */}
+            <button
+              onClick={() => setMobileStaffAugOpen((v) => !v)}
+              className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+            >
+              Staff Augmentation
+              <HiChevronDown
+                className={`w-4 h-4 transition-transform duration-200 ${mobileStaffAugOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+
+            {mobileStaffAugOpen && (
+              <div className="pl-3 space-y-0.5">
+                {HIRE_ROLES.map((role) => {
+                  const Icon = role.icon;
+                  return (
+                    <Link
+                      key={role.href}
+                      href={role.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-teal-600 transition-colors"
+                    >
+                      <span className={`w-7 h-7 rounded-md ${role.iconBg} flex items-center justify-center flex-shrink-0`}>
+                        <Icon className={`w-3.5 h-3.5 ${role.iconColor}`} />
+                      </span>
+                      {role.label}
+                    </Link>
+                  );
+                })}
+                <Link
+                  href="/staff-augmentation"
+                  onClick={() => setMenuOpen(false)}
+                  className="block px-4 py-2 text-xs font-semibold text-teal-600 hover:text-teal-700 transition-colors"
+                >
+                  View all hiring options →
+                </Link>
+              </div>
+            )}
+
+            {/* Plain nav links */}
             {[...NAV_LINKS, { href: "/contact", label: "Contact" }].map((link) => (
               <Link
                 key={link.href}
