@@ -6,18 +6,12 @@ import Script from "next/script";
 import {
   HiCheckCircle,
   HiArrowRight,
-  HiCloud,
-  HiBolt,
   HiShieldCheck,
-  HiCog6Tooth,
-  HiCodeBracket,
-  HiChartBarSquare,
   HiClock,
   HiUsers,
   HiStar,
   HiCurrencyDollar,
   HiCommandLine,
-  HiServer,
 } from "react-icons/hi2";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";

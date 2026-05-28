@@ -17,7 +17,6 @@ import {
   HiRocketLaunch,
   HiChevronDown,
   HiCurrencyDollar,
-  HiSparkles,
   HiCommandLine,
   HiCpuChip,
 } from "react-icons/hi2";

@@ -7,7 +7,6 @@ import Script from "next/script";
 import {
   HiCheckCircle,
   HiArrowRight,
-  HiUsers,
   HiClock,
   HiStar,
   HiCodeBracket,
@@ -18,9 +17,7 @@ import {
   HiChevronDown,
   HiCurrencyDollar,
   HiCommandLine,
-  HiCircleStack,
   HiCube,
-  HiSparkles,
 } from "react-icons/hi2";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";

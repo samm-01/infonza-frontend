@@ -14,8 +14,6 @@ import {
   HiCodeBracket,
   HiClock,
   HiCurrencyDollar,
-  HiStar,
-  HiCommandLine,
   HiCpuChip,
   HiDevicePhoneMobile,
 } from "react-icons/hi2";
