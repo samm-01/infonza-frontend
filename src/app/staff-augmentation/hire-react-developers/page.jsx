@@ -29,6 +29,11 @@ import {
   FloatingBookingButton,
   BOOKING_URL,
 } from "../../components/booking-cta";
+import {
+  buildServiceSchema,
+  buildBreadcrumbSchema,
+  buildHowToSchema,
+} from "../_utils/schema-builders";
 
 /* ═══════════════════════════════════════════════════════════════════════════
    DATA
@@ -181,6 +186,36 @@ const fadeUp = (i = 0) => ({
   transition: { duration: 0.5, delay: i * 0.08 },
 });
 
+/* ── Structured data (module-level — no re-computation on re-render) ─────── */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const serviceSchema = buildServiceSchema({
+  slug: "hire-react-developers",
+  techDisplay: "React.js Developers",
+  heroSubtitle: "Senior React engineers — 4+ years of React 18, Next.js 14, TypeScript, Redux Toolkit, and React Query — available to join your team within 72 hours. Vetted, NDA-protected, and replaceable if not the right fit.",
+  priceNumeric: "35",
+  skills: SKILLS,
+});
+
+const breadcrumbSchema = buildBreadcrumbSchema({
+  slug: "hire-react-developers",
+  techDisplay: "React.js Developers",
+});
+
+const howToSchema = buildHowToSchema({
+  tech: "React.js",
+  techDisplay: "React.js Developers",
+  placementTime: "72h",
+});
+
 /* ═══════════════════════════════════════════════════════════════════════════
    FAQ ACCORDION
 ═══════════════════════════════════════════════════════════════════════════ */
@@ -212,22 +247,27 @@ function FAQ({ items }) {
    PAGE
 ═══════════════════════════════════════════════════════════════════════════ */
 export default function HireReactDevelopersPage() {
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: FAQS.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-
   return (
     <>
       <Script
         id="faq-jsonld-react"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Script
+        id="service-jsonld-react"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <Script
+        id="breadcrumb-jsonld-react"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="howto-jsonld-react"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <Navbar />
 

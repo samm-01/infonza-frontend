@@ -27,6 +27,11 @@ import {
   FloatingBookingButton,
   BOOKING_URL,
 } from "../../components/booking-cta";
+import {
+  buildServiceSchema,
+  buildBreadcrumbSchema,
+  buildHowToSchema,
+} from "../_utils/schema-builders";
 
 /* ═══════════════════════════════════════════════════════════════════════════
    DATA
@@ -215,6 +220,28 @@ const faqSchema = {
   })),
 };
 
+/* Flatten grouped SKILLS into a simple string array for the Service schema */
+const SKILLS_FLAT = SKILLS.flatMap((g) => g.items);
+
+const serviceSchema = buildServiceSchema({
+  slug: "hire-devops-engineers",
+  techDisplay: "DevOps Engineers",
+  heroSubtitle: "Senior DevOps engineers — AWS/GCP/Azure certified, Kubernetes experts, and CI/CD architects with real production experience managing infrastructure at scale. Available within 72 hours. NDA-protected, dedicated, and backed by a 2-week replacement guarantee.",
+  priceNumeric: "45",
+  skills: SKILLS_FLAT,
+});
+
+const breadcrumbSchema = buildBreadcrumbSchema({
+  slug: "hire-devops-engineers",
+  techDisplay: "DevOps Engineers",
+});
+
+const howToSchema = buildHowToSchema({
+  tech: "DevOps",
+  techDisplay: "DevOps Engineers",
+  placementTime: "72h",
+});
+
 const fadeUp = (i = 0) => ({
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
@@ -233,6 +260,21 @@ export default function HireDevOpsEngineersPage() {
         id="devops-faq-schema"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <Script
+        id="service-jsonld-devops"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <Script
+        id="breadcrumb-jsonld-devops"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="howto-jsonld-devops"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <Navbar />
 

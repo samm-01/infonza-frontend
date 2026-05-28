@@ -35,7 +35,13 @@ import {
   WHY_INFONZA,
   getEngagementModels,
   getProcess,
+  ALL_HIRE_LINKS,
 } from "../_config/talent-data";
+import {
+  buildServiceSchema,
+  buildBreadcrumbSchema,
+  buildHowToSchema,
+} from "../_utils/schema-builders";
 
 /* ── Animation helper ───────────────────────────────────────────────────── */
 const fadeUp = (i = 0) => ({
@@ -84,11 +90,13 @@ function FAQ({ items }) {
 ═══════════════════════════════════════════════════════════════════════════ */
 export default function TalentPageTemplate({ config }) {
   const {
+    slug,
     tech,
     techDisplay,
     techShort,
     placementTime,
     startingRate,
+    priceNumeric,
     heroSubtitle,
     devProfiles,
     results,
@@ -102,7 +110,7 @@ export default function TalentPageTemplate({ config }) {
   const engagementModels = getEngagementModels(tech);
   const process          = getProcess(tech);
 
-  /* FAQ structured data */
+  /* ── Structured data ────────────────────────────────────────────────────── */
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -113,12 +121,34 @@ export default function TalentPageTemplate({ config }) {
     })),
   };
 
+  const serviceSchema    = buildServiceSchema({ slug, techDisplay, heroSubtitle, priceNumeric, skills });
+  const breadcrumbSchema = buildBreadcrumbSchema({ slug, techDisplay });
+  const howToSchema      = buildHowToSchema({ tech, techDisplay, placementTime });
+
+  /* "Also Hiring For" links — exclude the current page */
+  const otherHireLinks = ALL_HIRE_LINKS.filter((l) => !l.href.includes(slug));
+
   return (
     <>
       <Script
-        id={`faq-jsonld-${config.slug}`}
+        id={`faq-jsonld-${slug}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Script
+        id={`service-jsonld-${slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <Script
+        id={`breadcrumb-jsonld-${slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id={`howto-jsonld-${slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <Navbar />
 
@@ -132,13 +162,21 @@ export default function TalentPageTemplate({ config }) {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm text-slate-500 mb-8 flex-wrap">
-            <Link href="/" className="hover:text-teal-400 transition-colors">Home</Link>
-            <span>/</span>
-            <Link href="/staff-augmentation" className="hover:text-teal-400 transition-colors">Staff Augmentation</Link>
-            <span>/</span>
-            <span className="text-slate-300 font-medium">Hire {techDisplay}</span>
-          </div>
+          <nav aria-label="Breadcrumb">
+            <ol className="flex items-center gap-2 text-sm text-slate-500 mb-8 flex-wrap list-none p-0">
+              <li>
+                <Link href="/" className="hover:text-teal-400 transition-colors">Home</Link>
+              </li>
+              <li aria-hidden="true"><span>/</span></li>
+              <li>
+                <Link href="/staff-augmentation" className="hover:text-teal-400 transition-colors">Staff Augmentation</Link>
+              </li>
+              <li aria-hidden="true"><span>/</span></li>
+              <li>
+                <span className="text-slate-300 font-medium" aria-current="page">Hire {techDisplay}</span>
+              </li>
+            </ol>
+          </nav>
 
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             {/* Left */}
@@ -260,7 +298,7 @@ export default function TalentPageTemplate({ config }) {
       {/* ════════════════════════════════════════════════════════════════
           SKILLS / TECH STACK
       ════════════════════════════════════════════════════════════════ */}
-      <section className="bg-dots py-20">
+      <section id="skills" className="bg-dots py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp(0)} className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
@@ -365,7 +403,7 @@ export default function TalentPageTemplate({ config }) {
       {/* ════════════════════════════════════════════════════════════════
           HIRING PROCESS
       ════════════════════════════════════════════════════════════════ */}
-      <section className="bg-white py-20">
+      <section id="process" className="bg-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp(0)} className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
@@ -479,9 +517,34 @@ export default function TalentPageTemplate({ config }) {
       </section>
 
       {/* ════════════════════════════════════════════════════════════════
+          ALSO HIRING FOR — internal linking
+      ════════════════════════════════════════════════════════════════ */}
+      <section className="bg-slate-50 py-10 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div {...fadeUp(0)}>
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4 text-center">
+              Also Hiring For
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {otherHireLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex items-center gap-1 px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-600 text-sm font-medium hover:border-teal-400 hover:text-teal-700 transition-colors shadow-sm"
+                >
+                  {link.label}
+                  <HiArrowRight className="w-3 h-3 opacity-50" />
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════════════════════════
           FAQ
       ════════════════════════════════════════════════════════════════ */}
-      <section className="bg-white py-20">
+      <section id="faq" className="bg-white py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeUp(0)} className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">

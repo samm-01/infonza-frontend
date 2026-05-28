@@ -30,6 +30,11 @@ import {
   FloatingBookingButton,
   BOOKING_URL,
 } from "../../components/booking-cta";
+import {
+  buildServiceSchema,
+  buildBreadcrumbSchema,
+  buildHowToSchema,
+} from "../_utils/schema-builders";
 
 /* ═══════════════════════════════════════════════════════════════════════════
    DATA
@@ -245,26 +250,61 @@ function FAQ({ items }) {
   );
 }
 
+/* ── Structured data ──────────────────────────────────────────────────────── */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const serviceSchema = buildServiceSchema({
+  slug: "hire-mern-stack-developers",
+  techDisplay: "MERN Stack Developers",
+  heroSubtitle: "Senior MERN Stack engineers — full-stack ownership of MongoDB, Express.js, React, and Node.js — available within 72 hours. Pre-vetted, NDA-protected, and backed by a 2-week replacement guarantee.",
+  priceNumeric: "35",
+  skills: SKILLS,
+});
+
+const breadcrumbSchema = buildBreadcrumbSchema({
+  slug: "hire-mern-stack-developers",
+  techDisplay: "MERN Stack Developers",
+});
+
+const howToSchema = buildHowToSchema({
+  tech: "MERN Stack",
+  techDisplay: "MERN Stack Developers",
+  placementTime: "72h",
+});
+
 /* ═══════════════════════════════════════════════════════════════════════════
    PAGE
 ═══════════════════════════════════════════════════════════════════════════ */
 export default function HireMernStackDevelopersPage() {
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: FAQS.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-
   return (
     <>
       <Script
         id="faq-jsonld-mern"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Script
+        id="service-jsonld-mern"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <Script
+        id="breadcrumb-jsonld-mern"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="howto-jsonld-mern"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <Navbar />
 

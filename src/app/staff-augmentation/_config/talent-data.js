@@ -141,6 +141,7 @@ export const PYTHON_CONFIG = {
   techShort: "Python",
   placementTime: "72h",
   startingRate: "$35",
+  priceNumeric: "35",
 
   heroSubtitle:
     "Senior Python engineers — 4+ years with Django, FastAPI, and data-intensive systems — available to join your team within 72 hours. Vetted, NDA-protected, and replaceable if not the right fit.",
@@ -219,6 +220,7 @@ export const VUEJS_CONFIG = {
   techShort: "Vue.js",
   placementTime: "72h",
   startingRate: "$35",
+  priceNumeric: "35",
 
   heroSubtitle:
     "Senior Vue.js engineers — 4+ years with Vue 3, Nuxt.js, and Pinia — available to join your team within 72 hours. Pre-vetted, NDA-protected, and backed by a 2-week replacement guarantee.",
@@ -297,6 +299,7 @@ export const REACT_NATIVE_CONFIG = {
   techShort: "React Native",
   placementTime: "72h",
   startingRate: "$38",
+  priceNumeric: "38",
 
   heroSubtitle:
     "Senior React Native engineers — 4+ years building iOS and Android apps with Expo, TypeScript, and native modules — available within 72 hours. Vetted, NDA-protected, and backed by a 2-week replacement guarantee.",
@@ -375,6 +378,7 @@ export const NEXTJS_CONFIG = {
   techShort: "Next.js",
   placementTime: "72h",
   startingRate: "$35",
+  priceNumeric: "35",
 
   heroSubtitle:
     "Senior Next.js engineers — 4+ years with App Router, Server Components, and full-stack deployment on Vercel and AWS — available within 72 hours. Pre-vetted, NDA-protected, and replaceable if not the right fit.",
@@ -453,6 +457,7 @@ export const FLUTTER_CONFIG = {
   techShort: "Flutter",
   placementTime: "72h",
   startingRate: "$38",
+  priceNumeric: "38",
 
   heroSubtitle:
     "Senior Flutter engineers — 4+ years building pixel-perfect cross-platform apps in Dart with BLoC, Riverpod, and Firebase — available within 72 hours. Pre-vetted, NDA-protected, and backed by a 2-week guarantee.",
@@ -531,6 +536,7 @@ export const ANGULAR_CONFIG = {
   techShort: "Angular",
   placementTime: "72h",
   startingRate: "$35",
+  priceNumeric: "35",
 
   heroSubtitle:
     "Senior Angular engineers — 4+ years with Angular 17, RxJS, and NgRx for enterprise-grade SPAs — available within 72 hours. Pre-vetted, NDA-protected, and backed by a 2-week replacement guarantee.",
@@ -609,6 +615,7 @@ export const PHP_CONFIG = {
   techShort: "PHP",
   placementTime: "72h",
   startingRate: "$30",
+  priceNumeric: "30",
 
   heroSubtitle:
     "Senior PHP and Laravel engineers — 4+ years building SaaS platforms, e-commerce backends, and RESTful APIs — available within 72 hours. Pre-vetted, NDA-protected, and backed by a 2-week replacement guarantee.",
@@ -687,6 +694,7 @@ export const IOS_CONFIG = {
   techShort: "iOS",
   placementTime: "72h",
   startingRate: "$40",
+  priceNumeric: "40",
 
   heroSubtitle:
     "Senior Swift engineers — 4+ years building native iOS apps with SwiftUI, Combine, and the full Apple SDK — available within 72 hours. Pre-vetted, NDA-protected, and backed by a 2-week replacement guarantee.",
@@ -765,6 +773,7 @@ export const ANDROID_CONFIG = {
   techShort: "Android",
   placementTime: "72h",
   startingRate: "$40",
+  priceNumeric: "40",
 
   heroSubtitle:
     "Senior Kotlin engineers — 4+ years building native Android apps with Jetpack Compose, Coroutines, and the full Android SDK — available within 72 hours. Pre-vetted, NDA-protected, and backed by a 2-week replacement guarantee.",
@@ -834,6 +843,28 @@ export const ANDROID_CONFIG = {
     twitter: { card: "summary_large_image", title: "Hire Dedicated Android Developers — 72-Hour Placement | Infonza", description: "Senior Android developers (Kotlin, Jetpack Compose, Firebase) available in 72 hours. Starting from $40/hr.", images: [`${BASE_URL}/infonza-logo.jpg`] },
   },
 };
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ALL HIRE LINKS — used for "Also Hiring For" internal link blocks
+   Covers all 15 staff augmentation pages (9 template + 6 bespoke)
+═══════════════════════════════════════════════════════════════════════════ */
+export const ALL_HIRE_LINKS = [
+  { href: "/staff-augmentation/hire-react-developers",        label: "React.js" },
+  { href: "/staff-augmentation/hire-nextjs-developers",       label: "Next.js" },
+  { href: "/staff-augmentation/hire-vuejs-developers",        label: "Vue.js" },
+  { href: "/staff-augmentation/hire-angular-developers",      label: "Angular" },
+  { href: "/staff-augmentation/hire-react-native-developers", label: "React Native" },
+  { href: "/staff-augmentation/hire-flutter-developers",      label: "Flutter" },
+  { href: "/staff-augmentation/hire-ios-developers",          label: "iOS (Swift)" },
+  { href: "/staff-augmentation/hire-android-developers",      label: "Android (Kotlin)" },
+  { href: "/staff-augmentation/hire-nodejs-developers",       label: "Node.js" },
+  { href: "/staff-augmentation/hire-python-developers",       label: "Python" },
+  { href: "/staff-augmentation/hire-php-developers",          label: "PHP / Laravel" },
+  { href: "/staff-augmentation/hire-ai-engineers",            label: "AI / ML" },
+  { href: "/staff-augmentation/hire-devops-engineers",        label: "DevOps" },
+  { href: "/staff-augmentation/hire-mern-stack-developers",   label: "MERN Stack" },
+  { href: "/staff-augmentation/dedicated-development-team",   label: "Full-Stack Teams" },
+];
 
 /* ═══════════════════════════════════════════════════════════════════════════
    CONFIG MAP — used in any place that needs to look up a config by slug

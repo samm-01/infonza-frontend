@@ -30,6 +30,11 @@ import {
   FloatingBookingButton,
   BOOKING_URL,
 } from "../../components/booking-cta";
+import {
+  buildServiceSchema,
+  buildBreadcrumbSchema,
+  buildHowToSchema,
+} from "../_utils/schema-builders";
 
 /* ═══════════════════════════════════════════════════════════════════════════
    DATA
@@ -210,6 +215,36 @@ const fadeUp = (i = 0) => ({
   transition: { duration: 0.5, delay: i * 0.08 },
 });
 
+/* ── Structured data ──────────────────────────────────────────────────────── */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const serviceSchema = buildServiceSchema({
+  slug: "hire-nodejs-developers",
+  techDisplay: "Node.js Developers",
+  heroSubtitle: "Senior Node.js engineers — 4+ years with Express, NestJS, and REST/GraphQL API development — available to join your team within 48 hours. Vetted, NDA-protected, and backed by a 2-week replacement guarantee.",
+  priceNumeric: "35",
+  skills: SKILLS,
+});
+
+const breadcrumbSchema = buildBreadcrumbSchema({
+  slug: "hire-nodejs-developers",
+  techDisplay: "Node.js Developers",
+});
+
+const howToSchema = buildHowToSchema({
+  tech: "Node.js",
+  techDisplay: "Node.js Developers",
+  placementTime: "48h",
+});
+
 function FAQ({ items }) {
   const [open, setOpen] = useState(null);
   return (
@@ -238,22 +273,27 @@ function FAQ({ items }) {
    PAGE
 ═══════════════════════════════════════════════════════════════════════════ */
 export default function HireNodejsDevelopersPage() {
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: FAQS.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-
   return (
     <>
       <Script
         id="faq-jsonld-nodejs"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Script
+        id="service-jsonld-nodejs"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <Script
+        id="breadcrumb-jsonld-nodejs"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="howto-jsonld-nodejs"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <Navbar />
 
