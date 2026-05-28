@@ -7,7 +7,6 @@ import Script from "next/script";
 import {
   HiCheckCircle,
   HiArrowRight,
-  HiUsers,
   HiClock,
   HiStar,
   HiCodeBracket,
@@ -18,9 +17,7 @@ import {
   HiChevronDown,
   HiCurrencyDollar,
   HiCommandLine,
-  HiCircleStack,
   HiCube,
-  HiSparkles,
 } from "react-icons/hi2";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
@@ -30,6 +27,11 @@ import {
   FloatingBookingButton,
   BOOKING_URL,
 } from "../../components/booking-cta";
+import {
+  buildServiceSchema,
+  buildBreadcrumbSchema,
+  buildHowToSchema,
+} from "../_utils/schema-builders";
 
 /* ═══════════════════════════════════════════════════════════════════════════
    DATA
@@ -229,6 +231,7 @@ function FAQ({ items }) {
         <motion.div key={i} {...fadeUp(i)} className="border border-slate-200 rounded-xl overflow-hidden">
           <button
             onClick={() => setOpen(open === i ? null : i)}
+            aria-expanded={open === i}
             className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors"
           >
             <span className="font-semibold text-slate-900">{item.q}</span>
@@ -245,26 +248,61 @@ function FAQ({ items }) {
   );
 }
 
+/* ── Structured data ──────────────────────────────────────────────────────── */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const serviceSchema = buildServiceSchema({
+  slug: "hire-mern-stack-developers",
+  techDisplay: "MERN Stack Developers",
+  heroSubtitle: "Senior MERN Stack engineers — full-stack ownership of MongoDB, Express.js, React, and Node.js — available within 72 hours. Pre-vetted, NDA-protected, and backed by a 2-week replacement guarantee.",
+  priceNumeric: "35",
+  skills: SKILLS,
+});
+
+const breadcrumbSchema = buildBreadcrumbSchema({
+  slug: "hire-mern-stack-developers",
+  techDisplay: "MERN Stack Developers",
+});
+
+const howToSchema = buildHowToSchema({
+  tech: "MERN Stack",
+  techDisplay: "MERN Stack Developers",
+  placementTime: "72h",
+});
+
 /* ═══════════════════════════════════════════════════════════════════════════
    PAGE
 ═══════════════════════════════════════════════════════════════════════════ */
 export default function HireMernStackDevelopersPage() {
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: FAQS.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-
   return (
     <>
       <Script
         id="faq-jsonld-mern"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Script
+        id="service-jsonld-mern"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <Script
+        id="breadcrumb-jsonld-mern"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="howto-jsonld-mern"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <Navbar />
 

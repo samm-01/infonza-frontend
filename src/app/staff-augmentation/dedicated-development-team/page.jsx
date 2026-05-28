@@ -14,8 +14,6 @@ import {
   HiCodeBracket,
   HiClock,
   HiCurrencyDollar,
-  HiStar,
-  HiCommandLine,
   HiCpuChip,
   HiDevicePhoneMobile,
 } from "react-icons/hi2";
@@ -27,6 +25,11 @@ import {
   FloatingBookingButton,
   BOOKING_URL,
 } from "../../components/booking-cta";
+import {
+  buildServiceSchema,
+  buildBreadcrumbSchema,
+  buildHowToSchema,
+} from "../_utils/schema-builders";
 
 /* ═══════════════════════════════════════════════════════════════════════════
    DATA
@@ -231,6 +234,26 @@ const faqSchema = {
   })),
 };
 
+const serviceSchema = buildServiceSchema({
+  slug: "dedicated-development-team",
+  techDisplay: "Dedicated Development Team",
+  heroSubtitle: "Hire a fully-managed dedicated development team from India — Tech Lead, developers, and QA working together in sprint cycles with daily standups and weekly demos. Assembled in 72 hours at 50% lower cost than a US in-house team.",
+  priceNumeric: null, // Custom team pricing — no fixed hourly rate
+  skills: ["React", "Node.js", "TypeScript", "PostgreSQL", "AWS", "Docker", "CI/CD", "Agile / Scrum"],
+});
+
+const breadcrumbSchema = buildBreadcrumbSchema({
+  slug: "dedicated-development-team",
+  techDisplay: "Dedicated Development Team",
+  pageLabel: "Dedicated Development Team",
+});
+
+const howToSchema = buildHowToSchema({
+  tech: "Full-Stack",
+  techDisplay: "Dedicated Development Team",
+  placementTime: "72h",
+});
+
 const fadeUp = (i = 0) => ({
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
@@ -250,10 +273,25 @@ export default function DedicatedDevelopmentTeamPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <Script
+        id="service-jsonld-ddt"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <Script
+        id="breadcrumb-jsonld-ddt"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="howto-jsonld-ddt"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
       <Navbar />
 
       {/* ── HERO ────────────────────────────────────────────────────────── */}
-      <section className="relative bg-slate-900 pt-24 pb-20 overflow-hidden">
+      <section className="relative bg-slate-900 pt-28 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="absolute top-0 right-0 w-[600px] h-[400px] bg-teal-600/10 rounded-full blur-3xl pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

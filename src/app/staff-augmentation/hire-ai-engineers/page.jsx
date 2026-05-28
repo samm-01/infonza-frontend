@@ -7,17 +7,14 @@ import Script from "next/script";
 import {
   HiCheckCircle,
   HiArrowRight,
-  HiUsers,
   HiClock,
   HiStar,
   HiCodeBracket,
   HiShieldCheck,
   HiBolt,
   HiGlobeAlt,
-  HiRocketLaunch,
   HiChevronDown,
   HiCurrencyDollar,
-  HiCommandLine,
   HiCpuChip,
   HiSparkles,
   HiCircleStack,
@@ -31,6 +28,11 @@ import {
   FloatingBookingButton,
   BOOKING_URL,
 } from "../../components/booking-cta";
+import {
+  buildServiceSchema,
+  buildBreadcrumbSchema,
+  buildHowToSchema,
+} from "../_utils/schema-builders";
 
 /* ═══════════════════════════════════════════════════════════════════════════
    DATA
@@ -217,6 +219,36 @@ const fadeUp = (i = 0) => ({
   transition: { duration: 0.5, delay: i * 0.08 },
 });
 
+/* ── Structured data ──────────────────────────────────────────────────────── */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const serviceSchema = buildServiceSchema({
+  slug: "hire-ai-engineers",
+  techDisplay: "AI Engineers",
+  heroSubtitle: "Senior AI engineers — LLM systems, RAG pipelines, MLOps, and production AI deployment — available within 48 hours. Pre-vetted, NDA-protected, and backed by a 2-week replacement guarantee.",
+  priceNumeric: "45",
+  skills: SKILLS,
+});
+
+const breadcrumbSchema = buildBreadcrumbSchema({
+  slug: "hire-ai-engineers",
+  techDisplay: "AI Engineers",
+});
+
+const howToSchema = buildHowToSchema({
+  tech: "AI / ML",
+  techDisplay: "AI Engineers",
+  placementTime: "48h",
+});
+
 function FAQ({ items }) {
   const [open, setOpen] = useState(null);
   return (
@@ -225,6 +257,7 @@ function FAQ({ items }) {
         <motion.div key={i} {...fadeUp(i)} className="border border-slate-200 rounded-xl overflow-hidden">
           <button
             onClick={() => setOpen(open === i ? null : i)}
+            aria-expanded={open === i}
             className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors"
           >
             <span className="font-semibold text-slate-900">{item.q}</span>
@@ -245,22 +278,27 @@ function FAQ({ items }) {
    PAGE
 ═══════════════════════════════════════════════════════════════════════════ */
 export default function HireAiEngineersPage() {
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: FAQS.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-
   return (
     <>
       <Script
         id="faq-jsonld-ai"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Script
+        id="service-jsonld-ai"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <Script
+        id="breadcrumb-jsonld-ai"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <Script
+        id="howto-jsonld-ai"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
       <Navbar />
 
