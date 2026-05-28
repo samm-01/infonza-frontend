@@ -293,7 +293,7 @@ export default function DedicatedDevelopmentTeamPage() {
       <Navbar />
 
       {/* ── HERO ────────────────────────────────────────────────────────── */}
-      <section className="relative bg-slate-900 pt-24 pb-20 overflow-hidden">
+      <section className="relative bg-slate-900 pt-28 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="absolute top-0 right-0 w-[600px] h-[400px] bg-teal-600/10 rounded-full blur-3xl pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

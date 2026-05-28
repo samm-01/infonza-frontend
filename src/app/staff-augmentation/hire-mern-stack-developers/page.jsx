@@ -234,6 +234,7 @@ function FAQ({ items }) {
         <motion.div key={i} {...fadeUp(i)} className="border border-slate-200 rounded-xl overflow-hidden">
           <button
             onClick={() => setOpen(open === i ? null : i)}
+            aria-expanded={open === i}
             className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left bg-white hover:bg-slate-50 transition-colors"
           >
             <span className="font-semibold text-slate-900">{item.q}</span>
