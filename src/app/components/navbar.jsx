@@ -22,6 +22,19 @@ import {
   HiComputerDesktop,
   HiDevicePhoneMobile,
   HiWrenchScrewdriver,
+  /* Industries mega menu */
+  HiAcademicCap,
+  HiBanknotes,
+  HiShoppingCart,
+  HiHome,
+  HiHeart,
+  HiTruck,
+  HiGlobeAlt,
+  HiFilm,
+  HiBeaker,
+  /* Resources dropdown */
+  HiBriefcase,
+  HiNewspaper,
 } from "react-icons/hi2";
 
 const BOOKING_URL = "https://calendar.app.google/tCXYTm21YtV7AkXFA";
@@ -160,10 +173,10 @@ const TECH_GROUPS = [
     label: "Frontend",
     icon: HiComputerDesktop,
     items: [
-      { href: "/staff-augmentation/hire-react-developers",    label: "React.js" },
-      { href: "/staff-augmentation/hire-nextjs-developers",   label: "Next.js" },
-      { href: "/staff-augmentation/hire-vuejs-developers",    label: "Vue.js" },
-      { href: "/staff-augmentation/hire-angular-developers",  label: "Angular" },
+      { href: "/staff-augmentation/hire-react-developers",   label: "React.js" },
+      { href: "/staff-augmentation/hire-nextjs-developers",  label: "Next.js" },
+      { href: "/staff-augmentation/hire-vuejs-developers",   label: "Vue.js" },
+      { href: "/staff-augmentation/hire-angular-developers", label: "Angular" },
     ],
   },
   {
@@ -180,29 +193,138 @@ const TECH_GROUPS = [
     label: "Backend",
     icon: HiServerStack,
     items: [
-      { href: "/staff-augmentation/hire-nodejs-developers",  label: "Node.js" },
-      { href: "/staff-augmentation/hire-python-developers",  label: "Python / Django" },
-      { href: "/staff-augmentation/hire-php-developers",     label: "PHP / Laravel" },
-      { href: "/staff-augmentation/hire-nodejs-developers",  label: "Express.js" },
+      { href: "/staff-augmentation/hire-nodejs-developers", label: "Node.js" },
+      { href: "/staff-augmentation/hire-python-developers", label: "Python / Django" },
+      { href: "/staff-augmentation/hire-php-developers",    label: "PHP / Laravel" },
+      { href: "/staff-augmentation/hire-nodejs-developers", label: "Express.js" },
     ],
   },
   {
     label: "Others",
     icon: HiWrenchScrewdriver,
     items: [
-      { href: "/staff-augmentation/hire-ai-engineers",              label: "AI / ML Engineers" },
-      { href: "/staff-augmentation/hire-devops-engineers",          label: "DevOps Engineers" },
-      { href: "/staff-augmentation/hire-mern-stack-developers",     label: "MERN Stack Devs" },
-      { href: "/staff-augmentation/dedicated-development-team",     label: "Full Stack Teams" },
+      { href: "/staff-augmentation/hire-ai-engineers",          label: "AI / ML Engineers" },
+      { href: "/staff-augmentation/hire-devops-engineers",      label: "DevOps Engineers" },
+      { href: "/staff-augmentation/hire-mern-stack-developers", label: "MERN Stack Devs" },
+      { href: "/staff-augmentation/dedicated-development-team", label: "Full Stack Teams" },
     ],
+  },
+];
+
+/* ── Industries mega menu data ──────────────────────────────────────────── */
+const INDUSTRIES = [
+  {
+    href: "/industries/education",
+    label: "Education",
+    desc: "EdTech platforms & LMS solutions",
+    icon: HiAcademicCap,
+    iconBg: "bg-blue-50",
+    iconColor: "text-blue-600",
+  },
+  {
+    href: "/industries/food-beverage",
+    label: "Food & Beverage",
+    desc: "Ordering, inventory & delivery apps",
+    icon: HiBeaker,
+    iconBg: "bg-orange-50",
+    iconColor: "text-orange-600",
+  },
+  {
+    href: "/industries/finance",
+    label: "Finance",
+    desc: "Fintech, banking & payment systems",
+    icon: HiBanknotes,
+    iconBg: "bg-emerald-50",
+    iconColor: "text-emerald-600",
+  },
+  {
+    href: "/industries/retail-ecommerce",
+    label: "Retail & eCommerce",
+    desc: "Storefronts, POS & commerce platforms",
+    icon: HiShoppingCart,
+    iconBg: "bg-rose-50",
+    iconColor: "text-rose-600",
+  },
+  {
+    href: "/industries/real-estate",
+    label: "Real Estate",
+    desc: "Property portals & CRM systems",
+    icon: HiHome,
+    iconBg: "bg-amber-50",
+    iconColor: "text-amber-600",
+  },
+  {
+    href: "/industries/healthcare",
+    label: "Healthcare",
+    desc: "Patient portals, HMS & telemedicine",
+    icon: HiHeart,
+    iconBg: "bg-pink-50",
+    iconColor: "text-pink-600",
+  },
+  {
+    href: "/industries/transport-logistics",
+    label: "Transport & Logistics",
+    desc: "Fleet, tracking & supply chain tools",
+    icon: HiTruck,
+    iconBg: "bg-sky-50",
+    iconColor: "text-sky-600",
+  },
+  {
+    href: "/industries/travel-hospitality",
+    label: "Travel & Hospitality",
+    desc: "Booking, CRS & guest experience apps",
+    icon: HiGlobeAlt,
+    iconBg: "bg-teal-50",
+    iconColor: "text-teal-600",
+  },
+  {
+    href: "/industries/manufacturing",
+    label: "Manufacturing",
+    desc: "ERP, QMS & production management",
+    icon: HiWrenchScrewdriver,
+    iconBg: "bg-slate-100",
+    iconColor: "text-slate-600",
+  },
+  {
+    href: "/industries/media-entertainment",
+    label: "Media & Entertainment",
+    desc: "Streaming, CMS & content platforms",
+    icon: HiFilm,
+    iconBg: "bg-violet-50",
+    iconColor: "text-violet-600",
+  },
+];
+
+/* ── Resources dropdown data ─────────────────────────────────────────────── */
+const RESOURCES = [
+  {
+    href: "/case-studies",
+    label: "Case Studies",
+    desc: "Real client success stories & outcomes",
+    icon: HiDocumentText,
+    iconBg: "bg-blue-50",
+    iconColor: "text-blue-600",
+  },
+  {
+    href: "/portfolio",
+    label: "Portfolio",
+    desc: "Products and systems we've delivered",
+    icon: HiBriefcase,
+    iconBg: "bg-violet-50",
+    iconColor: "text-violet-600",
+  },
+  {
+    href: "/blog",
+    label: "Blog",
+    desc: "Insights, engineering guides & updates",
+    icon: HiNewspaper,
+    iconBg: "bg-emerald-50",
+    iconColor: "text-emerald-600",
   },
 ];
 
 /** Plain nav links (no mega menu) */
 const NAV_LINKS = [
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
 ];
 
@@ -391,16 +513,132 @@ function StaffAugMegaMenu({ open, onClose }) {
   );
 }
 
+/* ── Industries MegaMenu (desktop overlay) ──────────────────────────────── */
+function IndustriesMegaMenu({ open, onClose }) {
+  return (
+    <div
+      role="region"
+      aria-label="Industries menu"
+      aria-hidden={!open}
+      className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[680px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl border border-slate-200 shadow-2xl shadow-slate-900/10 z-50 overflow-hidden transition-all duration-200 ease-out origin-top ${
+        open
+          ? "opacity-100 translate-y-0 pointer-events-auto"
+          : "opacity-0 -translate-y-2 pointer-events-none"
+      }`}
+    >
+      <div className="p-5">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4 px-1">
+          Industries We Serve
+        </p>
+        {/* 2-column grid — 10 industries, 5 per column */}
+        <div className="grid grid-cols-2 gap-1">
+          {INDUSTRIES.map((industry) => {
+            const Icon = industry.icon;
+            return (
+              <Link
+                key={industry.href}
+                href={industry.href}
+                onClick={onClose}
+                className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 group transition-all duration-150"
+              >
+                <span
+                  className={`w-8 h-8 rounded-lg ${industry.iconBg} flex items-center justify-center flex-shrink-0 transition-transform duration-150 group-hover:scale-110`}
+                >
+                  <Icon className={`w-4 h-4 ${industry.iconColor}`} />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-slate-800 group-hover:text-teal-600 leading-tight transition-colors duration-150">
+                    {industry.label}
+                  </p>
+                  <p className="text-xs text-slate-400 leading-snug mt-0.5">{industry.desc}</p>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Footer strip */}
+      <div className="flex items-center justify-between px-6 py-3 bg-slate-50 border-t border-slate-100">
+        <span className="text-xs text-slate-400">
+          Software solutions tailored to your industry
+        </span>
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={onClose}
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-gradient-to-r from-teal-600 to-blue-600 px-4 py-1.5 rounded-lg hover:opacity-90 transition-opacity"
+        >
+          <HiCalendarDays className="w-3.5 h-3.5" />
+          Discuss Your Industry
+        </a>
+      </div>
+    </div>
+  );
+}
+
+/* ── Resources Dropdown (desktop overlay) ───────────────────────────────── */
+function ResourcesDropdown({ open, onClose }) {
+  return (
+    <div
+      role="region"
+      aria-label="Resources menu"
+      aria-hidden={!open}
+      className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[280px] bg-white rounded-2xl border border-slate-200 shadow-2xl shadow-slate-900/10 z-50 overflow-hidden transition-all duration-200 ease-out origin-top ${
+        open
+          ? "opacity-100 translate-y-0 pointer-events-auto"
+          : "opacity-0 -translate-y-2 pointer-events-none"
+      }`}
+    >
+      <div className="p-3">
+        <ul className="space-y-0.5">
+          {RESOURCES.map((res) => {
+            const Icon = res.icon;
+            return (
+              <li key={res.href}>
+                <Link
+                  href={res.href}
+                  onClick={onClose}
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 group transition-all duration-150"
+                >
+                  <span
+                    className={`w-8 h-8 rounded-lg ${res.iconBg} flex items-center justify-center flex-shrink-0 transition-transform duration-150 group-hover:scale-110`}
+                  >
+                    <Icon className={`w-4 h-4 ${res.iconColor}`} />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-slate-800 group-hover:text-teal-600 leading-tight transition-colors duration-150">
+                      {res.label}
+                    </p>
+                    <p className="text-xs text-slate-400 leading-snug mt-0.5">{res.desc}</p>
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
 /* ── Navbar ─────────────────────────────────────────────────────────────── */
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
   // Desktop dropdown state
   const [servicesOpen, setServicesOpen] = useState(false);
   const [staffAugOpen, setStaffAugOpen] = useState(false);
+  const [industriesOpen, setIndustriesOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+
   // Mobile accordion state
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileStaffAugOpen, setMobileStaffAugOpen] = useState(false);
+  const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
 
   const pathname = usePathname();
   const isDarkPage = pathname === "/";
@@ -408,6 +646,8 @@ export default function Navbar() {
   // Refs for click-outside detection
   const servicesDropdownRef = useRef(null);
   const staffAugDropdownRef = useRef(null);
+  const industriesDropdownRef = useRef(null);
+  const resourcesDropdownRef = useRef(null);
 
   /* scroll → sticky shadow */
   useEffect(() => {
@@ -425,6 +665,12 @@ export default function Navbar() {
       if (staffAugDropdownRef.current && !staffAugDropdownRef.current.contains(e.target)) {
         setStaffAugOpen(false);
       }
+      if (industriesDropdownRef.current && !industriesDropdownRef.current.contains(e.target)) {
+        setIndustriesOpen(false);
+      }
+      if (resourcesDropdownRef.current && !resourcesDropdownRef.current.contains(e.target)) {
+        setResourcesOpen(false);
+      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -434,6 +680,8 @@ export default function Navbar() {
   useEffect(() => {
     setServicesOpen(false);
     setStaffAugOpen(false);
+    setIndustriesOpen(false);
+    setResourcesOpen(false);
     setMenuOpen(false);
   }, [pathname]);
 
@@ -444,6 +692,14 @@ export default function Navbar() {
   );
   const isStaffAugActive =
     pathname === "/staff-augmentation" || pathname.startsWith("/staff-augmentation/");
+  const isIndustriesActive = pathname.startsWith("/industries");
+  const isResourcesActive =
+    pathname === "/case-studies" ||
+    pathname.startsWith("/case-studies/") ||
+    pathname === "/portfolio" ||
+    pathname.startsWith("/portfolio/") ||
+    pathname === "/blog" ||
+    pathname.startsWith("/blog/");
 
   /** Shared button classes for desktop mega-menu triggers */
   const triggerClass = (active) =>
@@ -502,7 +758,9 @@ export default function Navbar() {
               <button
                 onClick={() => {
                   setServicesOpen((v) => !v);
-                  setStaffAugOpen(false); // mutual exclusion
+                  setStaffAugOpen(false);
+                  setIndustriesOpen(false);
+                  setResourcesOpen(false);
                 }}
                 aria-expanded={servicesOpen}
                 aria-haspopup="true"
@@ -521,7 +779,9 @@ export default function Navbar() {
               <button
                 onClick={() => {
                   setStaffAugOpen((v) => !v);
-                  setServicesOpen(false); // mutual exclusion
+                  setServicesOpen(false);
+                  setIndustriesOpen(false);
+                  setResourcesOpen(false);
                 }}
                 aria-expanded={staffAugOpen}
                 aria-haspopup="true"
@@ -538,7 +798,55 @@ export default function Navbar() {
               />
             </div>
 
-            {/* Plain nav links */}
+            {/* Industries mega menu trigger */}
+            <div className="relative" ref={industriesDropdownRef}>
+              <button
+                onClick={() => {
+                  setIndustriesOpen((v) => !v);
+                  setServicesOpen(false);
+                  setStaffAugOpen(false);
+                  setResourcesOpen(false);
+                }}
+                aria-expanded={industriesOpen}
+                aria-haspopup="true"
+                className={triggerClass(isIndustriesActive)}
+              >
+                Industries
+                <HiChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${industriesOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              <IndustriesMegaMenu
+                open={industriesOpen}
+                onClose={() => setIndustriesOpen(false)}
+              />
+            </div>
+
+            {/* Resources dropdown trigger */}
+            <div className="relative" ref={resourcesDropdownRef}>
+              <button
+                onClick={() => {
+                  setResourcesOpen((v) => !v);
+                  setServicesOpen(false);
+                  setStaffAugOpen(false);
+                  setIndustriesOpen(false);
+                }}
+                aria-expanded={resourcesOpen}
+                aria-haspopup="true"
+                className={triggerClass(isResourcesActive)}
+              >
+                Resources
+                <HiChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${resourcesOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              <ResourcesDropdown
+                open={resourcesOpen}
+                onClose={() => setResourcesOpen(false)}
+              />
+            </div>
+
+            {/* Plain nav links (About) */}
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -600,7 +908,6 @@ export default function Navbar() {
                 className={`w-4 h-4 transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""}`}
               />
             </button>
-
             {mobileServicesOpen && (
               <div className="pl-3 space-y-0.5">
                 {PILLARS.map((pillar) => {
@@ -639,7 +946,6 @@ export default function Navbar() {
                 className={`w-4 h-4 transition-transform duration-200 ${mobileStaffAugOpen ? "rotate-180" : ""}`}
               />
             </button>
-
             {mobileStaffAugOpen && (
               <div className="pl-3 space-y-0.5">
                 {HIRE_ROLES.map((role) => {
@@ -668,7 +974,69 @@ export default function Navbar() {
               </div>
             )}
 
-            {/* Plain nav links */}
+            {/* Industries accordion */}
+            <button
+              onClick={() => setMobileIndustriesOpen((v) => !v)}
+              className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+            >
+              Industries
+              <HiChevronDown
+                className={`w-4 h-4 transition-transform duration-200 ${mobileIndustriesOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {mobileIndustriesOpen && (
+              <div className="pl-3 space-y-0.5">
+                {INDUSTRIES.map((industry) => {
+                  const Icon = industry.icon;
+                  return (
+                    <Link
+                      key={industry.href}
+                      href={industry.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-teal-600 transition-colors"
+                    >
+                      <span className={`w-7 h-7 rounded-md ${industry.iconBg} flex items-center justify-center flex-shrink-0`}>
+                        <Icon className={`w-3.5 h-3.5 ${industry.iconColor}`} />
+                      </span>
+                      {industry.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Resources accordion */}
+            <button
+              onClick={() => setMobileResourcesOpen((v) => !v)}
+              className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+            >
+              Resources
+              <HiChevronDown
+                className={`w-4 h-4 transition-transform duration-200 ${mobileResourcesOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {mobileResourcesOpen && (
+              <div className="pl-3 space-y-0.5">
+                {RESOURCES.map((res) => {
+                  const Icon = res.icon;
+                  return (
+                    <Link
+                      key={res.href}
+                      href={res.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-teal-600 transition-colors"
+                    >
+                      <span className={`w-7 h-7 rounded-md ${res.iconBg} flex items-center justify-center flex-shrink-0`}>
+                        <Icon className={`w-3.5 h-3.5 ${res.iconColor}`} />
+                      </span>
+                      {res.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Plain nav links + Contact */}
             {[...NAV_LINKS, { href: "/contact", label: "Contact" }].map((link) => (
               <Link
                 key={link.href}
