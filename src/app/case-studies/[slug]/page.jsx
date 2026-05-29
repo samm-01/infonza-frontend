@@ -7,6 +7,7 @@ import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import CTABanner from "../../components/cta-banner";
 import { caseStudies } from "../data";
+import { getAttribution } from "@/lib/analytics/attribution";
 
 /* ─── PDF Download Modal ─────────────────────────────────────────────────── */
 
@@ -28,7 +29,13 @@ function PdfModal({ study, onClose }) {
       const res = await fetch("/api/case-study-download", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: form.name, email: form.email, studyId: study.id, studyTitle: study.title }),
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          studyId: study.id,
+          studyTitle: study.title,
+          attribution: getAttribution(),
+        }),
       });
       if (!res.ok) throw new Error("Request failed");
       setDone(true);
