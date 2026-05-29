@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   HiCalendarDays,
   HiPhone,
@@ -10,6 +11,7 @@ import {
   HiShieldCheck,
   HiBolt,
 } from "react-icons/hi2";
+import { events } from "@/lib/analytics/events";
 
 export const BOOKING_URL = "https://calendar.app.google/tCXYTm21YtV7AkXFA";
 
@@ -34,6 +36,8 @@ export function BookingSection({
     "Honest assessment, not a sales pitch",
   ],
 }) {
+  const pathname = usePathname();
+
   return (
     <section className="relative bg-slate-900 py-24 overflow-hidden">
       {/* Background layers */}
@@ -59,6 +63,13 @@ export function BookingSection({
             href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() =>
+              events.bookingCtaClick({
+                label: primaryCTA,
+                destination: BOOKING_URL,
+                page: pathname,
+              })
+            }
             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-teal-600 to-blue-600 text-white font-semibold hover:opacity-90 transition-all hover:shadow-2xl hover:shadow-teal-500/30 hover:-translate-y-0.5"
           >
             <HiCalendarDays className="w-5 h-5" />
@@ -66,6 +77,12 @@ export function BookingSection({
           </a>
           <Link
             href="/contact"
+            onClick={() =>
+              events.consultationRequest({
+                label: secondaryCTA,
+                page: pathname,
+              })
+            }
             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-slate-700 text-slate-300 font-semibold hover:border-slate-500 hover:text-white transition-all hover:-translate-y-0.5"
           >
             <HiPhone className="w-5 h-5" />
@@ -106,6 +123,8 @@ export function BookingBanner({
   subheading = "Get a free technical consultation from our senior engineering team.",
   cta = "Schedule Discovery Session",
 }) {
+  const pathname = usePathname();
+
   return (
     <div className="relative overflow-hidden bg-gradient-to-r from-teal-50 to-blue-50 border border-teal-200/60 rounded-2xl p-8">
       <div className="absolute top-0 right-0 w-64 h-64 bg-teal-400/10 rounded-full blur-2xl pointer-events-none" />
@@ -123,6 +142,13 @@ export function BookingBanner({
           href={BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() =>
+            events.bookingCtaClick({
+              label: cta,
+              destination: BOOKING_URL,
+              page: pathname,
+            })
+          }
           className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-teal-600 to-blue-600 text-white font-semibold hover:opacity-90 transition-all hover:shadow-lg hover:shadow-teal-500/20 hover:-translate-y-0.5 whitespace-nowrap"
         >
           <HiCalendarDays className="w-4 h-4" />
@@ -148,6 +174,8 @@ export function BookingStrip({
     { icon: HiSparkles, label: "Top 1% Engineers" },
   ],
 }) {
+  const pathname = usePathname();
+
   return (
     <div className="bg-slate-50 border-b border-slate-200 py-3">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -164,6 +192,13 @@ export function BookingStrip({
             href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() =>
+              events.bookingCtaClick({
+                label: cta,
+                destination: BOOKING_URL,
+                page: pathname,
+              })
+            }
             className="flex-shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 hover:text-teal-700 transition-colors"
           >
             <HiCalendarDays className="w-3.5 h-3.5" />
@@ -181,11 +216,20 @@ export function BookingStrip({
    Fixed mobile button — import on "use client" pages only
 ───────────────────────────────────────────────────────────────────────────── */
 export function FloatingBookingButton({ label = "Book Call" }) {
+  const pathname = usePathname();
+
   return (
     <a
       href={BOOKING_URL}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() =>
+        events.bookingCtaClick({
+          label,
+          destination: BOOKING_URL,
+          page: pathname,
+        })
+      }
       className="fixed bottom-6 right-6 z-50 md:hidden inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-teal-600 to-blue-600 text-white text-sm font-semibold shadow-2xl shadow-teal-500/40 hover:opacity-90 active:scale-95 transition-all"
     >
       <HiCalendarDays className="w-4 h-4" />

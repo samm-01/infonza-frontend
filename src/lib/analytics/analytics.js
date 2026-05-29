@@ -62,13 +62,18 @@ export function setConsent({ analytics, marketing }) {
 
 /**
  * Returns true if the user has consented to the given category.
- * Falls back to false when no decision exists yet.
+ *
+ * Pre-banner behaviour (current): returns true when no decision has been
+ * stored yet — analytics fire by default. Once the cookie banner is
+ * implemented it will call setConsent(), at which point this function
+ * will respect the stored decision. Until then, all tracking proceeds.
  *
  * @param {"analytics" | "marketing"} category
  */
 export function hasConsent(category) {
   const consent = getStoredConsent();
-  return consent ? Boolean(consent[category]) : false;
+  if (consent === null) return true; // permissive until banner is implemented
+  return Boolean(consent[category]);
 }
 
 // ─── GA4 ─────────────────────────────────────────────────────────────────────

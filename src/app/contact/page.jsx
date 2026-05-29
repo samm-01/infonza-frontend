@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { getAttribution } from "@/lib/analytics/attribution";
+import { events } from "@/lib/analytics/events";
 
 const projectTypes = [
   "Web / App Development",
@@ -75,6 +76,11 @@ export default function ContactPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong.");
       setSubmitted(true);
+      events.contactFormSubmit({
+        service: formData.projectType || undefined,
+        source: "contact_page",
+        page: "/contact",
+      });
     } catch (err) {
       setError(err.message);
     } finally {

@@ -8,6 +8,7 @@ import Footer from "../../components/footer";
 import CTABanner from "../../components/cta-banner";
 import { caseStudies } from "../data";
 import { getAttribution } from "@/lib/analytics/attribution";
+import { events } from "@/lib/analytics/events";
 
 /* ─── PDF Download Modal ─────────────────────────────────────────────────── */
 
@@ -39,6 +40,10 @@ function PdfModal({ study, onClose }) {
       });
       if (!res.ok) throw new Error("Request failed");
       setDone(true);
+      events.caseStudyDownload({
+        caseStudyTitle: study.title,
+        page: `/case-studies/${study.id}`,
+      });
       // Trigger download
       const a = document.createElement("a");
       a.href = `/case-studies/${study.id}.pdf`;

@@ -35,6 +35,7 @@ export const events = {
   },
 
   /**
+   * Primary booking CTA — opens external Google Calendar link.
    * @param {{ label?: string, destination?: string, page?: string }} props
    */
   bookingCtaClick({ label, destination, page } = {}) {
@@ -45,6 +46,19 @@ export const events = {
     if (LI_CONVERSION.BOOKING) {
       trackLinkedInConversion(LI_CONVERSION.BOOKING);
     }
+  },
+
+  /**
+   * Secondary consultation CTA — navigates to the /contact page.
+   * Distinct from bookingCtaClick so the two conversion paths are separable
+   * in GA4 reports.
+   * @param {{ label?: string, page?: string }} props
+   */
+  consultationRequest({ label, page } = {}) {
+    trackEvent({
+      name: EventName.CONSULTATION_REQUEST,
+      properties: { label, page },
+    });
   },
 
   /**
