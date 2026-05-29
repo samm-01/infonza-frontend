@@ -7,20 +7,24 @@ import { analyticsConfig } from "@/lib/analytics/config";
  * Injects GA4 and Microsoft Clarity scripts.
  *
  * Rules:
- *  - Production only. In development/test no scripts are loaded, keeping
- *    local traffic out of analytics and removing the need to block-list
- *    localhost in GA4.
- *  - One render, no conditional hooks — safe to mount unconditionally in
- *    RootLayout.
+ *  - Production Infonza domain only. Scripts are suppressed on:
+ *      • local development (NODE_ENV !== "production")
+ *      • Vercel preview / branch deployments (NEXT_PUBLIC_VERCEL_ENV !== "production")
+ *      • Any non-infonza.com hostname (runtime guard in isAnalyticsAvailable)
  *  - GA4 is initialised with send_page_view: false so NavigationEvents
  *    controls all page view calls (avoids a double-count on first load).
  *  - Clarity self-deduplicates via its own guard on window._clarity.
  */
 
-const isProduction = process.env.NODE_ENV === "production";
+// Build-time guard: NODE_ENV must be production AND, when on Vercel,
+// the environment must be "production" (not "preview" or "development").
+const isAllowedEnv =
+  process.env.NODE_ENV === "production" &&
+  (process.env.NEXT_PUBLIC_VERCEL_ENV == null ||
+    process.env.NEXT_PUBLIC_VERCEL_ENV === "production");
 
 export default function AnalyticsScripts() {
-  if (!isProduction) return null;
+  if (!isAllowedEnv) return null;
 
   return (
     <>

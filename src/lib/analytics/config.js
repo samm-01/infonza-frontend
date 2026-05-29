@@ -27,12 +27,25 @@ export const analyticsConfig = {
   },
 };
 
+/** Hostnames where analytics are permitted to fire. */
+const ALLOWED_HOSTNAMES = ["infonza.com", "www.infonza.com"];
+
 /**
- * True when at least one provider is configured and we are in a browser context.
- * Use this guard before any analytics call.
+ * True when the current page hostname is a production Infonza domain.
+ * Blocks analytics on localhost, *.vercel.app previews, and staging.
+ */
+export function isAllowedHostname() {
+  if (typeof window === "undefined") return false;
+  return ALLOWED_HOSTNAMES.includes(window.location.hostname);
+}
+
+/**
+ * True when at least one provider is configured, we are in a browser context,
+ * and the page is served from an allowed production hostname.
  */
 export function isAnalyticsAvailable() {
   if (typeof window === "undefined") return false;
+  if (!isAllowedHostname()) return false;
   return Object.values(analyticsConfig).some((p) => p.enabled);
 }
 

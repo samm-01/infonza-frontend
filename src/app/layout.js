@@ -5,6 +5,7 @@ import ISTClock from "./components/ist-clock";
 import AttributionInit from "./components/attribution-init";
 import AnalyticsScripts from "./components/AnalyticsScripts";
 import NavigationEvents from "./components/NavigationEvents";
+import CookieConsent from "./components/CookieConsent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -189,6 +190,7 @@ export default function RootLayout({ children }) {
         </Suspense>
         <ISTClock />
         <div id="main-content">{children}</div>
+        <CookieConsent />
       </body>
     </html>
   );
