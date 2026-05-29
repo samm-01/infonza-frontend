@@ -55,6 +55,12 @@ body {
   background-size: 20px 20px;
 }
 
+/* Cookie consent banner entry animation */
+@keyframes cookieBannerIn {
+  from { transform: translateY(110%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
