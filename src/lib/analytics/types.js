@@ -8,7 +8,8 @@ export const EventName = /** @type {const} */ ({
 
   // ─── Lead / conversion ────────────────────────────────────────────────────
   CONTACT_FORM_SUBMIT: "contact_form_submit",
-  BOOKING_CTA_CLICK: "booking_cta_click",
+  BOOKING_CTA_CLICK: "booking_cta_click",      // opens external calendar
+  CONSULTATION_REQUEST: "consultation_request", // navigates to /contact page
   CASE_STUDY_DOWNLOAD: "case_study_download",
 
   // ─── Engagement ───────────────────────────────────────────────────────────

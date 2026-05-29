@@ -1,7 +1,10 @@
 import { Geist } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 import ISTClock from "./components/ist-clock";
 import AttributionInit from "./components/attribution-init";
+import AnalyticsScripts from "./components/AnalyticsScripts";
+import NavigationEvents from "./components/NavigationEvents";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -178,7 +181,12 @@ export default function RootLayout({ children }) {
         >
           Skip to main content
         </a>
+        <AnalyticsScripts />
         <AttributionInit />
+        {/* useSearchParams requires Suspense in App Router */}
+        <Suspense fallback={null}>
+          <NavigationEvents />
+        </Suspense>
         <ISTClock />
         <div id="main-content">{children}</div>
       </body>
