@@ -2,9 +2,51 @@ import { Resend } from "resend";
 
 const getResend = () => new Resend(process.env.RESEND_API_KEY);
 
+/**
+ * Renders an attribution block for inclusion in notification emails.
+ * Returns an empty string when no attribution data is present.
+ *
+ * @param {object | null} attribution
+ */
+function renderAttributionBlock(attribution) {
+  if (!attribution) return "";
+
+  const rows = [
+    { label: "UTM Source",      value: attribution.utm_source },
+    { label: "UTM Medium",      value: attribution.utm_medium },
+    { label: "UTM Campaign",    value: attribution.utm_campaign },
+    { label: "UTM Content",     value: attribution.utm_content },
+    { label: "UTM Term",        value: attribution.utm_term },
+    { label: "Landing Page",    value: attribution.first_landing_page },
+    { label: "Conversion Page", value: attribution.current_page },
+    { label: "Referrer",        value: attribution.referrer },
+    { label: "First Visit",     value: attribution.first_visit_timestamp },
+  ]
+    .filter((r) => r.value)
+    .map(
+      (r) => `
+      <tr>
+        <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-size: 12px; color: #64748b; width: 140px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">${r.label}</td>
+        <td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-size: 13px; color: #334155;">${r.value}</td>
+      </tr>`
+    )
+    .join("");
+
+  if (!rows) return "";
+
+  return `
+    <div style="margin-top: 24px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 18px;">
+      <p style="font-size: 12px; color: #15803d; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px;">Lead Attribution</p>
+      <table style="width: 100%; border-collapse: collapse;">
+        ${rows}
+      </table>
+    </div>`;
+}
+
 export async function POST(request) {
   try {
-    const { name, email, company, projectType, budget, message } = await request.json();
+    const { name, email, company, projectType, budget, message, attribution } =
+      await request.json();
 
     if (!name || !email || !message) {
       return Response.json({ error: "Missing required fields." }, { status: 400 });
@@ -54,6 +96,8 @@ export async function POST(request) {
               <p style="font-size: 13px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 10px;">Message</p>
               <p style="font-size: 14px; color: #334155; line-height: 1.7; margin: 0; white-space: pre-wrap;">${message}</p>
             </div>
+
+            ${renderAttributionBlock(attribution)}
 
             <div style="margin-top: 24px; text-align: center;">
               <a href="mailto:${email}" style="display: inline-block; background: linear-gradient(135deg, #0d9488, #2563eb); color: white; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600;">

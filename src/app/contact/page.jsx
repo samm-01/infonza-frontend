@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import { getAttribution } from "@/lib/analytics/attribution";
 
 const projectTypes = [
   "Web / App Development",
@@ -66,7 +67,10 @@ export default function ContactPage() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          attribution: getAttribution(),
+        }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Something went wrong.");
