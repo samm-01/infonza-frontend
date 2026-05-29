@@ -18,6 +18,17 @@
 
 import { analyticsConfig, isAnalyticsAvailable } from "./config";
 
+// ─── Debug logging (development only) ────────────────────────────────────────
+
+function analyticsDebug(eventName, properties) {
+  if (process.env.NODE_ENV !== "development") return;
+  // Set NEXT_PUBLIC_ANALYTICS_DEBUG=false in .env.local to silence logs.
+  if (process.env.NEXT_PUBLIC_ANALYTICS_DEBUG === "false") return;
+  console.groupCollapsed(`[Analytics] Event Fired: ${eventName}`);
+  console.log("Properties:", properties ?? {});
+  console.groupEnd();
+}
+
 // ─── Consent helpers ─────────────────────────────────────────────────────────
 
 const CONSENT_KEY = "infonza_consent";
@@ -136,6 +147,7 @@ function metaTrackEvent({ name, properties = {} }) {
  * @param {string} url - The pathname + search string, e.g. "/contact?ref=hero"
  */
 export function trackPageView(url) {
+  analyticsDebug("page_view", { url });
   if (!isAnalyticsAvailable()) return;
 
   ga4PageView(url);
@@ -149,6 +161,7 @@ export function trackPageView(url) {
  * @param {{ name: string, properties?: Record<string, any> }} event
  */
 export function trackEvent(event) {
+  analyticsDebug(event.name, event.properties);
   if (!isAnalyticsAvailable()) return;
 
   ga4TrackEvent(event);
