@@ -1,6 +1,7 @@
 import { Geist } from "next/font/google";
 import "./globals.css";
 import ISTClock from "./components/ist-clock";
+import AttributionInit from "./components/attribution-init";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -78,6 +79,9 @@ export const metadata = {
   },
   alternates: {
     canonical: baseUrl,
+  },
+  verification: {
+    google: "Oxc3o7WTRYJwrFEbG84htrO0Uxp92e9UxwHzOvIbcsI",
   },
 };
 
@@ -174,6 +178,7 @@ export default function RootLayout({ children }) {
         >
           Skip to main content
         </a>
+        <AttributionInit />
         <ISTClock />
         <div id="main-content">{children}</div>
       </body>
