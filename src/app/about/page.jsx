@@ -264,6 +264,62 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Our Office */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="inline-flex items-center gap-2 text-teal-600 text-xs font-semibold uppercase tracking-widest mb-5">
+                <span className="w-8 h-px bg-teal-600" />
+                Our Home Base
+              </div>
+              <h2 className="text-4xl font-bold text-slate-900 leading-tight mb-6">
+                A real team.
+                <br />
+                <span className="text-gradient">A real office.</span>
+              </h2>
+              <div className="space-y-4 text-slate-600 leading-relaxed">
+                <p>
+                  We&apos;re not a collection of freelancers working from coffee shops. Infonza operates
+                  from a dedicated office in Abbottabad, Pakistan — a space built intentionally for
+                  focused engineering work.
+                </p>
+                <p>
+                  Our team shows up every day, works together in person, and holds itself accountable
+                  to the same standards we set for every client engagement. That consistency is
+                  what makes the difference between a vendor and a partner.
+                </p>
+                <p>
+                  When you work with Infonza, you&apos;re working with a stable, committed team —
+                  not an outsourcing marketplace.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="rounded-2xl overflow-hidden border border-slate-200 shadow-lg"
+            >
+              <Image
+                src="/images/office-exterior.jpg"
+                alt="Infonza office in Abbottabad, Pakistan"
+                width={700}
+                height={500}
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured client work */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
