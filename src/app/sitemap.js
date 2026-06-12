@@ -23,15 +23,33 @@ export default function sitemap() {
     { url: `${baseUrl}/designing`,            changeFrequency: "monthly", priority: 0.75 },
   ];
 
-  // ─── NEW: AI Development cluster ────────────────────────────────────────
+  // ─── AI Development cluster (legacy routes) ──────────────────────────────
   const aiDevelopment = [
-    { url: `${baseUrl}/ai-development`,                                         changeFrequency: "monthly", priority: 0.95 },
+    { url: `${baseUrl}/ai-development`,                                         changeFrequency: "monthly", priority: 0.90 },
     { url: `${baseUrl}/ai-development/ai-chatbot-development`,                  changeFrequency: "monthly", priority: 0.85 },
     { url: `${baseUrl}/ai-development/ai-workflow-automation`,                  changeFrequency: "monthly", priority: 0.85 },
     { url: `${baseUrl}/ai-development/generative-ai-development`,               changeFrequency: "monthly", priority: 0.85 },
     { url: `${baseUrl}/ai-development/openai-integration-services`,             changeFrequency: "monthly", priority: 0.85 },
     { url: `${baseUrl}/ai-development/rag-development-services`,                changeFrequency: "monthly", priority: 0.85 },
     { url: `${baseUrl}/ai-development/llm-development-company`,                 changeFrequency: "monthly", priority: 0.85 },
+  ];
+
+  // ─── NEW: AI Solutions hub + service pages ───────────────────────────────
+  const aiSolutions = [
+    { url: `${baseUrl}/ai-solutions`,                                            changeFrequency: "monthly", priority: 0.97 },
+    { url: `${baseUrl}/ai-solutions/ai-agents-development`,                      changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/ai-solutions/ai-voice-agents`,                            changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/ai-solutions/customer-support-automation`,                changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/ai-solutions/sales-automation`,                           changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/ai-solutions/lead-generation-automation`,                 changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/ai-solutions/document-processing`,                        changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/ai-solutions/knowledge-base-systems`,                     changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/ai-solutions/email-automation`,                           changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/ai-solutions/business-process-automation`,                changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/ai-solutions/data-extraction-solutions`,                  changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/ai-solutions/appointment-booking-agents`,                 changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/ai-solutions/crm-automation`,                             changeFrequency: "monthly", priority: 0.90 },
+    { url: `${baseUrl}/ai-solutions/ai-copilot-development`,                     changeFrequency: "monthly", priority: 0.90 },
   ];
 
   // ─── NEW: Insurance Software cluster ────────────────────────────────────
@@ -147,6 +165,7 @@ export default function sitemap() {
   const allStaticRoutes = [
     ...coreRoutes,
     ...servicesOverview,
+    ...aiSolutions,
     ...aiDevelopment,
     ...insuranceSoftware,
     ...erpDevelopment,
