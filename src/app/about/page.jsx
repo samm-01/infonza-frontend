@@ -286,7 +286,7 @@ export default function AboutPage() {
               <div className="space-y-4 text-slate-600 leading-relaxed">
                 <p>
                   We&apos;re not a collection of freelancers working from coffee shops. Infonza operates
-                  from a dedicated office in Abbottabad, Pakistan — a space built intentionally for
+                  from a dedicated office in Chandigarh, India — a space built intentionally for
                   focused engineering work.
                 </p>
                 <p>
@@ -310,7 +310,7 @@ export default function AboutPage() {
             >
               <Image
                 src="/images/office-exterior.jpg"
-                alt="Infonza office in Abbottabad, Pakistan"
+                alt="Infonza office in Chandigarh, India"
                 width={700}
                 height={500}
                 className="w-full h-full object-cover"
