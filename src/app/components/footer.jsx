@@ -145,7 +145,13 @@ export default function Footer() {
               We build software that powers business operations — from MVPs to
               enterprise ERP systems.
             </p>
-            <p className="text-xs text-slate-500 mb-5">support@infonza.com</p>
+            <p className="text-xs text-slate-500 mb-3">support@infonza.com</p>
+            <div className="flex items-start gap-2 mb-5">
+              <HiBuildingOffice2 className="w-3.5 h-3.5 text-slate-500 flex-shrink-0 mt-0.5" />
+              <p className="text-xs text-slate-500 leading-snug">
+                Chandigarh, India
+              </p>
+            </div>
             <div className="flex gap-3">
               <a
                 href="https://www.linkedin.com/company/infonza-innovations/"
