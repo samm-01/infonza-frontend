@@ -35,9 +35,42 @@ import {
   /* Resources dropdown */
   HiBriefcase,
   HiNewspaper,
+  /* AI Solutions mega menu */
+  HiChatBubbleLeftRight,
+  HiMicrophone,
+  HiChartBar,
+  HiMagnifyingGlass,
+  HiEnvelope,
+  HiCog6Tooth,
+  HiRectangleStack,
+  HiBolt,
+  HiRocketLaunch,
 } from "react-icons/hi2";
 
 const BOOKING_URL = "https://calendar.app.google/tCXYTm21YtV7AkXFA";
+
+/* ── AI Solutions top-level nav data ────────────────────────────────────── */
+const AI_SOLUTIONS_LINKS = [
+  { href: "/ai-solutions/ai-agents-development",       label: "AI Agents Development",           icon: HiCpuChip,              desc: "Autonomous agents that plan & execute tasks" },
+  { href: "/ai-development/ai-chatbot-development",    label: "AI Chatbot Development",           icon: HiChatBubbleLeftRight,  desc: "GPT-4 chatbots with RAG & omnichannel deploy" },
+  { href: "/ai-solutions/ai-voice-agents",             label: "AI Voice Agents",                  icon: HiMicrophone,           desc: "Voice AI for inbound & outbound calls" },
+  { href: "/ai-solutions/customer-support-automation", label: "AI Customer Support",              icon: HiUserGroup,            desc: "Resolve 70%+ tickets automatically" },
+  { href: "/ai-solutions/sales-automation",            label: "AI Sales Automation",              icon: HiChartBar,             desc: "Prospecting, outreach & lead qualification" },
+  { href: "/ai-solutions/lead-generation-automation",  label: "AI Lead Generation",               icon: HiMagnifyingGlass,      desc: "Scrape, qualify & sequence leads on autopilot" },
+  { href: "/ai-solutions/document-processing",         label: "AI Document Processing",           icon: HiDocumentText,         desc: "OCR, PDF extraction & document intelligence" },
+  { href: "/ai-solutions/knowledge-base-systems",      label: "AI Knowledge Base",                icon: HiCircleStack,          desc: "RAG enterprise search from your internal docs" },
+  { href: "/ai-solutions/email-automation",            label: "AI Email Automation",              icon: HiEnvelope,             desc: "Smart replies, classification & follow-ups" },
+  { href: "/ai-solutions/business-process-automation", label: "AI Business Process Automation",  icon: HiCog6Tooth,            desc: "Automate operations, HR & finance workflows" },
+  { href: "/ai-solutions/data-extraction-solutions",   label: "AI Data Extraction",               icon: HiRectangleStack,       desc: "Structured pipelines from any source" },
+  { href: "/ai-solutions/appointment-booking-agents",  label: "AI Appointment Booking",           icon: HiCalendarDays,         desc: "24/7 scheduling, reminders & rescheduling" },
+  { href: "/ai-solutions/crm-automation",              label: "AI CRM Automation",                icon: HiBolt,                 desc: "Auto-update HubSpot, Salesforce & Zoho" },
+  { href: "/ai-solutions/ai-copilot-development",      label: "AI Copilot Development",           icon: HiCodeBracket,          desc: "Internal & product-embedded AI assistants" },
+  { href: "/ai-development/generative-ai-development", label: "Generative AI Development",        icon: HiSparkles,             desc: "Custom GenAI apps & content generation" },
+  { href: "/ai-development/rag-development-services",  label: "RAG Development Services",         icon: HiCircleStack,          desc: "Ground AI in your proprietary data" },
+  { href: "/ai-development/llm-development-company",   label: "LLM Development",                  icon: HiRocketLaunch,         desc: "Fine-tuned & custom large language models" },
+  { href: "/ai-development/openai-integration-services", label: "OpenAI Integration Services",   icon: HiBolt,                 desc: "GPT-4, DALL-E & Whisper API integration" },
+  { href: "/ai-development/ai-workflow-automation",    label: "AI Workflow Automation",           icon: HiCog6Tooth,            desc: "n8n, Make & Zapier AI workflow pipelines" },
+];
 
 /* ── Service pillar clusters (Services mega menu) ───────────────────────── */
 const PILLARS = [
@@ -49,10 +82,10 @@ const PILLARS = [
     iconBg: "bg-violet-50",
     iconColor: "text-violet-600",
     sub: [
-      { href: "/ai-development/ai-chatbot-development", label: "AI Chatbot Development" },
-      { href: "/ai-development/generative-ai-development", label: "Generative AI Development" },
-      { href: "/ai-development/rag-development-services", label: "RAG Development" },
-      { href: "/ai-development/llm-development-company", label: "LLM Development" },
+      { href: "/ai-development/ai-chatbot-development",     label: "AI Chatbot Development" },
+      { href: "/ai-development/generative-ai-development",  label: "Generative AI Development" },
+      { href: "/ai-development/rag-development-services",   label: "RAG Development" },
+      { href: "/ai-development/llm-development-company",    label: "LLM Development" },
     ],
   },
   {
@@ -327,6 +360,82 @@ const RESOURCES = [
 const NAV_LINKS = [
   { href: "/about", label: "About" },
 ];
+
+/* ── AI Solutions MegaMenu (desktop overlay) ────────────────────────────── */
+function AISolutionsMegaMenu({ open, onClose }) {
+  return (
+    <div
+      role="region"
+      aria-label="AI Solutions menu"
+      aria-hidden={!open}
+      className={`absolute top-full left-0 mt-2 w-[780px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl border border-slate-200 shadow-2xl shadow-slate-900/12 z-50 overflow-hidden transition-all duration-200 ease-out origin-top-left ${
+        open
+          ? "opacity-100 translate-y-0 pointer-events-auto"
+          : "opacity-0 -translate-y-2 pointer-events-none"
+      }`}
+    >
+      {/* Header */}
+      <div className="px-5 pt-4 pb-3 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-violet-50/60 to-white">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-blue-600 flex items-center justify-center flex-shrink-0">
+            <HiSparkles className="w-4 h-4 text-white" />
+          </div>
+          <div>
+            <p className="text-sm font-bold text-slate-900 leading-tight">AI Solutions</p>
+            <p className="text-xs text-slate-400 mt-0.5">Agents, automation &amp; intelligent AI applications</p>
+          </div>
+        </div>
+        <Link
+          href="/ai-solutions"
+          onClick={onClose}
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 hover:text-teal-700 bg-teal-50 hover:bg-teal-100 px-3 py-1.5 rounded-lg transition-colors"
+        >
+          View all <HiArrowRight className="w-3 h-3" />
+        </Link>
+      </div>
+
+      {/* 3-column grid of services */}
+      <div className="p-4 grid grid-cols-3 gap-1">
+        {AI_SOLUTIONS_LINKS.map((item) => {
+          const Icon = item.icon;
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={onClose}
+              className="flex items-start gap-2.5 px-3 py-2.5 rounded-xl hover:bg-slate-50 group transition-all duration-150"
+            >
+              <span className="w-7 h-7 rounded-lg bg-violet-50 border border-violet-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-violet-100 transition-colors">
+                <Icon className="w-3.5 h-3.5 text-violet-600" />
+              </span>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold text-slate-800 group-hover:text-teal-600 leading-tight transition-colors duration-150">
+                  {item.label}
+                </p>
+                <p className="text-[11px] text-slate-400 leading-snug mt-0.5 line-clamp-1">{item.desc}</p>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+
+      {/* Footer strip */}
+      <div className="flex items-center justify-between px-5 py-3 bg-slate-50 border-t border-slate-100">
+        <p className="text-xs text-slate-400">19 AI services · end-to-end delivery</p>
+        <a
+          href={BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={onClose}
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-gradient-to-r from-teal-600 to-blue-600 px-4 py-1.5 rounded-lg hover:opacity-90 transition-opacity"
+        >
+          <HiCalendarDays className="w-3.5 h-3.5" />
+          Book AI Consultation
+        </a>
+      </div>
+    </div>
+  );
+}
 
 /* ── Services MegaMenu (desktop overlay) ───────────────────────────────── */
 function MegaMenu({ open, onClose }) {
@@ -629,12 +738,14 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Desktop dropdown state
+  const [aiSolutionsOpen, setAISolutionsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [staffAugOpen, setStaffAugOpen] = useState(false);
   const [industriesOpen, setIndustriesOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
 
   // Mobile accordion state
+  const [mobileAISolutionsOpen, setMobileAISolutionsOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileStaffAugOpen, setMobileStaffAugOpen] = useState(false);
   const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
@@ -644,6 +755,7 @@ export default function Navbar() {
   const isDarkPage = pathname === "/";
 
   // Refs for click-outside detection
+  const aiSolutionsDropdownRef = useRef(null);
   const servicesDropdownRef = useRef(null);
   const staffAugDropdownRef = useRef(null);
   const industriesDropdownRef = useRef(null);
@@ -659,6 +771,9 @@ export default function Navbar() {
   /* click outside → close whichever dropdown is open */
   useEffect(() => {
     const handleClickOutside = (e) => {
+      if (aiSolutionsDropdownRef.current && !aiSolutionsDropdownRef.current.contains(e.target)) {
+        setAISolutionsOpen(false);
+      }
       if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(e.target)) {
         setServicesOpen(false);
       }
@@ -678,6 +793,7 @@ export default function Navbar() {
 
   /* route change → close everything */
   useEffect(() => {
+    setAISolutionsOpen(false);
     setServicesOpen(false);
     setStaffAugOpen(false);
     setIndustriesOpen(false);
@@ -686,6 +802,9 @@ export default function Navbar() {
   }, [pathname]);
 
   const isTransparent = isDarkPage && !scrolled;
+
+  const isAISolutionsActive =
+    pathname === "/ai-solutions" || pathname.startsWith("/ai-solutions/");
 
   const isServicesActive = PILLARS.some(
     (p) => pathname === p.href || pathname.startsWith(p.href + "/")
@@ -758,6 +877,7 @@ export default function Navbar() {
               <button
                 onClick={() => {
                   setServicesOpen((v) => !v);
+                  setAISolutionsOpen(false);
                   setStaffAugOpen(false);
                   setIndustriesOpen(false);
                   setResourcesOpen(false);
@@ -772,6 +892,28 @@ export default function Navbar() {
                 />
               </button>
               <MegaMenu open={servicesOpen} onClose={() => setServicesOpen(false)} />
+            </div>
+
+            {/* AI Solutions mega menu trigger */}
+            <div className="relative" ref={aiSolutionsDropdownRef}>
+              <button
+                onClick={() => {
+                  setAISolutionsOpen((v) => !v);
+                  setServicesOpen(false);
+                  setStaffAugOpen(false);
+                  setIndustriesOpen(false);
+                  setResourcesOpen(false);
+                }}
+                aria-expanded={aiSolutionsOpen}
+                aria-haspopup="true"
+                className={triggerClass(isAISolutionsActive)}
+              >
+                AI Solutions
+                <HiChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${aiSolutionsOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              <AISolutionsMegaMenu open={aiSolutionsOpen} onClose={() => setAISolutionsOpen(false)} />
             </div>
 
             {/* Staff Augmentation mega menu trigger */}
@@ -860,14 +1002,6 @@ export default function Navbar() {
 
           {/* ── Desktop CTAs ─────────────────────────────────────────────── */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link
-              href="/contact"
-              className={`text-sm font-medium transition-colors ${
-                isTransparent ? "text-slate-300 hover:text-white" : "text-slate-500 hover:text-slate-900"
-              }`}
-            >
-              Contact
-            </Link>
             <a
               href={BOOKING_URL}
               target="_blank"
@@ -932,6 +1066,44 @@ export default function Navbar() {
                   className="block px-4 py-2 text-xs font-semibold text-teal-600 hover:text-teal-700 transition-colors"
                 >
                   View all services →
+                </Link>
+              </div>
+            )}
+
+            {/* AI Solutions accordion */}
+            <button
+              onClick={() => setMobileAISolutionsOpen((v) => !v)}
+              className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+            >
+              AI Solutions
+              <HiChevronDown
+                className={`w-4 h-4 transition-transform duration-200 ${mobileAISolutionsOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {mobileAISolutionsOpen && (
+              <div className="pl-3 space-y-0.5">
+                {AI_SOLUTIONS_LINKS.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-teal-600 transition-colors"
+                    >
+                      <span className="w-7 h-7 rounded-md bg-violet-50 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-3.5 h-3.5 text-violet-600" />
+                      </span>
+                      {item.label}
+                    </Link>
+                  );
+                })}
+                <Link
+                  href="/ai-solutions"
+                  onClick={() => setMenuOpen(false)}
+                  className="block px-4 py-2 text-xs font-semibold text-teal-600 hover:text-teal-700 transition-colors"
+                >
+                  View all AI solutions →
                 </Link>
               </div>
             )}

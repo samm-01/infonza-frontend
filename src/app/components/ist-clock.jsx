@@ -45,12 +45,6 @@ export default function ISTClock() {
           <span className="text-slate-400 text-sm hidden sm:block">
             Available for new projects
           </span>
-          <Link
-            href="/contact"
-            className="text-xs font-semibold text-teal-400 hover:text-teal-300 transition-colors"
-          >
-            Book a call →
-          </Link>
         </div>
       </div>
     </div>
