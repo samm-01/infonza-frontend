@@ -368,29 +368,34 @@ function AISolutionsMegaMenu({ open, onClose }) {
       role="region"
       aria-label="AI Solutions menu"
       aria-hidden={!open}
-      className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[860px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl border border-slate-200 shadow-2xl shadow-slate-900/10 z-50 overflow-hidden transition-all duration-200 ease-out origin-top ${
+      className={`absolute top-full left-0 mt-2 w-[780px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl border border-slate-200 shadow-2xl shadow-slate-900/12 z-50 overflow-hidden transition-all duration-200 ease-out origin-top-left ${
         open
           ? "opacity-100 translate-y-0 pointer-events-auto"
           : "opacity-0 -translate-y-2 pointer-events-none"
       }`}
     >
       {/* Header */}
-      <div className="px-5 pt-4 pb-3 border-b border-slate-100 flex items-center justify-between">
-        <div>
-          <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">AI Solutions</p>
-          <p className="text-xs text-slate-500 mt-0.5">Agents, automation & intelligent AI applications</p>
+      <div className="px-5 pt-4 pb-3 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-violet-50/60 to-white">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-blue-600 flex items-center justify-center flex-shrink-0">
+            <HiSparkles className="w-4 h-4 text-white" />
+          </div>
+          <div>
+            <p className="text-sm font-bold text-slate-900 leading-tight">AI Solutions</p>
+            <p className="text-xs text-slate-400 mt-0.5">Agents, automation &amp; intelligent AI applications</p>
+          </div>
         </div>
         <Link
           href="/ai-solutions"
           onClick={onClose}
-          className="inline-flex items-center gap-1 text-xs font-semibold text-teal-600 hover:text-teal-700 transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-600 hover:text-teal-700 bg-teal-50 hover:bg-teal-100 px-3 py-1.5 rounded-lg transition-colors"
         >
-          View all AI solutions <HiArrowRight className="w-3 h-3" />
+          View all <HiArrowRight className="w-3 h-3" />
         </Link>
       </div>
 
-      {/* 2-column grid of services */}
-      <div className="p-4 grid grid-cols-2 gap-0.5">
+      {/* 3-column grid of services */}
+      <div className="p-4 grid grid-cols-3 gap-1">
         {AI_SOLUTIONS_LINKS.map((item) => {
           const Icon = item.icon;
           return (
@@ -398,16 +403,16 @@ function AISolutionsMegaMenu({ open, onClose }) {
               key={item.href}
               href={item.href}
               onClick={onClose}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 group transition-all duration-150"
+              className="flex items-start gap-2.5 px-3 py-2.5 rounded-xl hover:bg-slate-50 group transition-all duration-150"
             >
-              <span className="w-8 h-8 rounded-lg bg-violet-50 flex items-center justify-center flex-shrink-0 transition-transform duration-150 group-hover:scale-110">
-                <Icon className="w-4 h-4 text-violet-600" />
+              <span className="w-7 h-7 rounded-lg bg-violet-50 border border-violet-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-violet-100 transition-colors">
+                <Icon className="w-3.5 h-3.5 text-violet-600" />
               </span>
               <div className="min-w-0">
-                <p className="text-sm font-semibold text-slate-800 group-hover:text-teal-600 leading-tight transition-colors duration-150 truncate">
+                <p className="text-xs font-semibold text-slate-800 group-hover:text-teal-600 leading-tight transition-colors duration-150">
                   {item.label}
                 </p>
-                <p className="text-xs text-slate-400 leading-snug mt-0.5 truncate">{item.desc}</p>
+                <p className="text-[11px] text-slate-400 leading-snug mt-0.5 line-clamp-1">{item.desc}</p>
               </div>
             </Link>
           );
@@ -415,14 +420,8 @@ function AISolutionsMegaMenu({ open, onClose }) {
       </div>
 
       {/* Footer strip */}
-      <div className="flex items-center justify-between px-6 py-3 bg-slate-50 border-t border-slate-100">
-        <Link
-          href="/ai-solutions"
-          onClick={onClose}
-          className="text-xs font-semibold text-slate-500 hover:text-teal-600 transition-colors"
-        >
-          View all AI solutions →
-        </Link>
+      <div className="flex items-center justify-between px-5 py-3 bg-slate-50 border-t border-slate-100">
+        <p className="text-xs text-slate-400">19 AI services · end-to-end delivery</p>
         <a
           href={BOOKING_URL}
           target="_blank"
@@ -873,28 +872,6 @@ export default function Navbar() {
           {/* ── Desktop nav ─────────────────────────────────────────────── */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
 
-            {/* AI Solutions mega menu trigger */}
-            <div className="relative" ref={aiSolutionsDropdownRef}>
-              <button
-                onClick={() => {
-                  setAISolutionsOpen((v) => !v);
-                  setServicesOpen(false);
-                  setStaffAugOpen(false);
-                  setIndustriesOpen(false);
-                  setResourcesOpen(false);
-                }}
-                aria-expanded={aiSolutionsOpen}
-                aria-haspopup="true"
-                className={triggerClass(isAISolutionsActive)}
-              >
-                AI Solutions
-                <HiChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${aiSolutionsOpen ? "rotate-180" : ""}`}
-                />
-              </button>
-              <AISolutionsMegaMenu open={aiSolutionsOpen} onClose={() => setAISolutionsOpen(false)} />
-            </div>
-
             {/* Services mega menu trigger */}
             <div className="relative" ref={servicesDropdownRef}>
               <button
@@ -915,6 +892,28 @@ export default function Navbar() {
                 />
               </button>
               <MegaMenu open={servicesOpen} onClose={() => setServicesOpen(false)} />
+            </div>
+
+            {/* AI Solutions mega menu trigger */}
+            <div className="relative" ref={aiSolutionsDropdownRef}>
+              <button
+                onClick={() => {
+                  setAISolutionsOpen((v) => !v);
+                  setServicesOpen(false);
+                  setStaffAugOpen(false);
+                  setIndustriesOpen(false);
+                  setResourcesOpen(false);
+                }}
+                aria-expanded={aiSolutionsOpen}
+                aria-haspopup="true"
+                className={triggerClass(isAISolutionsActive)}
+              >
+                AI Solutions
+                <HiChevronDown
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${aiSolutionsOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              <AISolutionsMegaMenu open={aiSolutionsOpen} onClose={() => setAISolutionsOpen(false)} />
             </div>
 
             {/* Staff Augmentation mega menu trigger */}
@@ -1003,14 +1002,6 @@ export default function Navbar() {
 
           {/* ── Desktop CTAs ─────────────────────────────────────────────── */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link
-              href="/contact"
-              className={`text-sm font-medium transition-colors ${
-                isTransparent ? "text-slate-300 hover:text-white" : "text-slate-500 hover:text-slate-900"
-              }`}
-            >
-              Contact
-            </Link>
             <a
               href={BOOKING_URL}
               target="_blank"
@@ -1040,44 +1031,6 @@ export default function Navbar() {
       {menuOpen && (
         <div className="lg:hidden bg-white border-t border-slate-100 max-h-[80vh] overflow-y-auto">
           <div className="px-4 py-4 space-y-1">
-
-            {/* AI Solutions accordion */}
-            <button
-              onClick={() => setMobileAISolutionsOpen((v) => !v)}
-              className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
-            >
-              AI Solutions
-              <HiChevronDown
-                className={`w-4 h-4 transition-transform duration-200 ${mobileAISolutionsOpen ? "rotate-180" : ""}`}
-              />
-            </button>
-            {mobileAISolutionsOpen && (
-              <div className="pl-3 space-y-0.5">
-                {AI_SOLUTIONS_LINKS.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-teal-600 transition-colors"
-                    >
-                      <span className="w-7 h-7 rounded-md bg-violet-50 flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-3.5 h-3.5 text-violet-600" />
-                      </span>
-                      {item.label}
-                    </Link>
-                  );
-                })}
-                <Link
-                  href="/ai-solutions"
-                  onClick={() => setMenuOpen(false)}
-                  className="block px-4 py-2 text-xs font-semibold text-teal-600 hover:text-teal-700 transition-colors"
-                >
-                  View all AI solutions →
-                </Link>
-              </div>
-            )}
 
             {/* Services accordion */}
             <button
@@ -1113,6 +1066,44 @@ export default function Navbar() {
                   className="block px-4 py-2 text-xs font-semibold text-teal-600 hover:text-teal-700 transition-colors"
                 >
                   View all services →
+                </Link>
+              </div>
+            )}
+
+            {/* AI Solutions accordion */}
+            <button
+              onClick={() => setMobileAISolutionsOpen((v) => !v)}
+              className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors"
+            >
+              AI Solutions
+              <HiChevronDown
+                className={`w-4 h-4 transition-transform duration-200 ${mobileAISolutionsOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {mobileAISolutionsOpen && (
+              <div className="pl-3 space-y-0.5">
+                {AI_SOLUTIONS_LINKS.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-teal-600 transition-colors"
+                    >
+                      <span className="w-7 h-7 rounded-md bg-violet-50 flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-3.5 h-3.5 text-violet-600" />
+                      </span>
+                      {item.label}
+                    </Link>
+                  );
+                })}
+                <Link
+                  href="/ai-solutions"
+                  onClick={() => setMenuOpen(false)}
+                  className="block px-4 py-2 text-xs font-semibold text-teal-600 hover:text-teal-700 transition-colors"
+                >
+                  View all AI solutions →
                 </Link>
               </div>
             )}
