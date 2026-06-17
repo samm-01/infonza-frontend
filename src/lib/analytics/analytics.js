@@ -33,8 +33,12 @@ function analyticsDebug(eventName, properties) {
 
 const CONSENT_KEY = "infonza_consent";
 
+const CONSENT_COOKIE = "infonza_consent";
+const CONSENT_COOKIE_MAX_AGE = 365 * 24 * 60 * 60; // 1 year in seconds
+
 /**
- * Reads the stored consent object from localStorage.
+ * Reads the stored consent object, checking the HTTP cookie first (survives
+ * localStorage clears), then falling back to localStorage.
  * Returns null if no decision has been made yet.
  *
  * @returns {{ analytics: boolean, marketing: boolean, updatedAt: string } | null}
@@ -42,6 +46,15 @@ const CONSENT_KEY = "infonza_consent";
 export function getStoredConsent() {
   if (typeof window === "undefined") return null;
   try {
+    // Prefer the HTTP cookie — it persists across localStorage clears
+    const cookieMatch = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith(CONSENT_COOKIE + "="));
+    if (cookieMatch) {
+      const raw = decodeURIComponent(cookieMatch.split("=").slice(1).join("="));
+      return JSON.parse(raw);
+    }
+    // Fallback to localStorage
     const raw = window.localStorage.getItem(CONSENT_KEY);
     return raw ? JSON.parse(raw) : null;
   } catch {
@@ -50,7 +63,8 @@ export function getStoredConsent() {
 }
 
 /**
- * Writes a consent decision to localStorage and updates GA4 consent mode.
+ * Writes a consent decision to both an HTTP cookie and localStorage,
+ * then updates GA4 Consent Mode v2.
  *
  * @param {{ analytics: boolean, marketing: boolean }} decision
  */
@@ -58,9 +72,15 @@ export function setConsent({ analytics, marketing }) {
   if (typeof window === "undefined") return;
 
   const consent = { analytics, marketing, updatedAt: new Date().toISOString() };
+  const encoded = encodeURIComponent(JSON.stringify(consent));
+
+  // HTTP cookie — readable by server, survives localStorage clears
+  document.cookie = `${CONSENT_COOKIE}=${encoded}; max-age=${CONSENT_COOKIE_MAX_AGE}; path=/; SameSite=Lax; Secure`;
+
+  // localStorage — quick client-side read
   window.localStorage.setItem(CONSENT_KEY, JSON.stringify(consent));
 
-  // Update GA4 Consent Mode v2 if GA4 is configured
+  // Update GA4 Consent Mode v2
   if (analyticsConfig.ga4.enabled && typeof window.gtag === "function") {
     window.gtag("consent", "update", {
       analytics_storage: analytics ? "granted" : "denied",
@@ -72,18 +92,14 @@ export function setConsent({ analytics, marketing }) {
 }
 
 /**
- * Returns true if the user has consented to the given category.
- *
- * Pre-banner behaviour (current): returns true when no decision has been
- * stored yet — analytics fire by default. Once the cookie banner is
- * implemented it will call setConsent(), at which point this function
- * will respect the stored decision. Until then, all tracking proceeds.
+ * Returns true only if the user has explicitly consented to the given category.
+ * Defaults to false (deny) when no decision has been stored — GDPR compliant.
  *
  * @param {"analytics" | "marketing"} category
  */
 export function hasConsent(category) {
   const consent = getStoredConsent();
-  if (consent === null) return true; // permissive until banner is implemented
+  if (consent === null) return false; // deny by default until user decides
   return Boolean(consent[category]);
 }
 
