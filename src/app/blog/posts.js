@@ -1,5 +1,85 @@
 export const posts = [
   {
+    slug: "when-product-analytics-outgrows-your-app-database",
+    title: "When Product Analytics Outgrows Your App Database",
+    excerpt:
+      "Every growing SaaS hits the moment when analytical queries start slowing down production. Here's the architecture for a proper data layer — and the app design decisions that make or break it.",
+    category: "Product",
+    date: "September 15, 2026",
+    readTime: "7 min read",
+    featured: true,
+    content: [
+      {
+        type: "p",
+        text: "Every growing SaaS product hits the same inflection point. A product manager asks why active user counts are down this month, an engineer writes a query to find out, and the query takes three minutes — adding visible latency to every user-facing request while it runs. Someone schedules it to run at 2am instead. The next month there are five queries like this. By the time the problem is visible, ad-hoc reporting is buried inside the production database and actively competing with the application for resources.",
+      },
+      {
+        type: "h2",
+        text: "The Operational Database Wasn't Built for This",
+      },
+      {
+        type: "p",
+        text: "PostgreSQL is excellent at what it is designed to do: fast, consistent reads and writes of individual records. It is the right foundation for almost every custom software development project in the early stages. It is a poor fit for the analytical queries that product teams actually need — full scans across millions of rows, multi-join cohort computations, time-series trend analysis across months of data. These queries don't hit indexes. They consume massive I/O. Run them against a production instance and you are using the same connection pool, the same disk I/O budget, and the same CPU as your active users. SaaS development teams routinely treat this as a temporary problem until it becomes a permanent crisis.",
+      },
+      {
+        type: "h2",
+        text: "The Signals That Tell You It's Time",
+      },
+      {
+        type: "p",
+        text: "There are four signals we watch for. First: analytical queries are consistently taking 30 seconds or more. Second: engineers are fielding one-off data requests from the business — \"can you pull users who signed up in March and haven't used the billing feature\" — more than once a week. Third: a scheduled reporting job is measurably affecting production latency. Fourth: product managers are maintaining their own spreadsheets with exported data because built-in reporting is too slow or too limited. Any one of these is a warning sign. All four together means the problem is costing you more in engineering time and decision quality than a proper data layer would.",
+      },
+      {
+        type: "h2",
+        text: "What a Data Layer Actually Looks Like",
+      },
+      {
+        type: "p",
+        text: "The architecture is three components. An ETL pipeline extracts data from the application database — and any other sources like payment processors, CRM exports, or analytics event streams — transforms it into a structure optimised for analysis, and loads it into the warehouse on a defined schedule. The data warehousing layer — Redshift, BigQuery, or Snowflake, depending on your cloud services provider and scale requirements — stores data in columnar format, which makes the analytical queries that kill a row-based database extremely fast. A BI tool sits on top: Metabase for teams that want self-serve reporting without a dedicated analyst, Looker or Tableau for organisations doing more sophisticated data modelling.",
+      },
+      {
+        type: "h2",
+        text: "Building the ETL Pipeline",
+      },
+      {
+        type: "p",
+        text: "The ETL pipeline is where most of the data engineering complexity lives. You have two primary approaches: scheduled batch extraction and change data capture. Batch extraction — dumping snapshots of tables on a schedule — is simpler to implement and sufficient for most early-stage analytics needs. Change data capture listens to the database's transaction log and streams changes in near real-time, which matters when you need analytics data that is less than an hour stale. For most product analytics use cases — retention cohorts, funnel analysis, feature adoption trends — daily batch extracts are sufficient and significantly simpler to operate. Managed ETL tools like Airbyte or Fivetran handle connectors for common data sources and reduce engineering overhead. For custom business logic in the transformation step, dbt has become the standard.",
+      },
+      {
+        type: "h2",
+        text: "How Your App Database Design Determines the Cost",
+      },
+      {
+        type: "p",
+        text: "This is the insight most teams miss until they are rebuilding their data pipeline: the structure of your application database determines how hard the ETL is to build. We have built data layers on top of applications where the same business entity is represented in three different tables across three modules — because three features were built at different times without a shared data model. Merging these into coherent warehouse fact tables requires transformation logic that is brittle and expensive to maintain. Contrast this with the learner event model we built for DNH Training, a white-label e-learning SaaS: learner progress was stored as an append-only event log from day one. The ETL for that schema is a direct load — no complex state reconciliation, no guessing at historical state from mutable records. Event-sourced designs are not just a scalable architecture pattern at the application layer; they are a gift to whoever builds the analytics layer later.",
+      },
+      {
+        type: "h2",
+        text: "What Changes When the Data Layer Is In Place",
+      },
+      {
+        type: "p",
+        text: "The operational change is as significant as the technical one. Product managers who were waiting for engineers to write queries can now run their own analysis in Metabase. Retention cohort analysis — which required a complex ad-hoc query against production before — becomes a saved dashboard that runs in seconds. Features shipped without a clear success metric can be evaluated against real usage data within a week of launch. When we added forecasting visibility to LambertLauzon, a multi-warehouse inventory system for a Canadian furniture client, the data warehouse was what made that possible: the application database held current stock levels, but the warehouse held the historical movement data that made demand patterns legible. You cannot build that kind of visibility on top of a production OLTP database without paying a serious performance cost.",
+      },
+      {
+        type: "h2",
+        text: "The Cost of Deferring This Decision",
+      },
+      {
+        type: "p",
+        text: "The argument for deferring a data warehouse is usually budget and focus — the team is small, the product is still finding its market, analytics can wait. This is often reasonable. The risk is that early decisions about the application database are hard to reverse. A schema without consistent timestamps on every table makes time-series analysis difficult. Business entities without stable identifiers create reconciliation problems across joins. Record mutations rather than event appends destroy the historical record. These are not theoretical concerns — they are the most common reasons that data engineering projects take three times longer than estimated. We have done migrations where reconstructing two years of historical state from a mutable schema took longer than building the original application.",
+      },
+      {
+        type: "h2",
+        text: "The Practical Takeaway",
+      },
+      {
+        type: "p",
+        text: "If you are building a SaaS product and you are not yet thinking about data warehousing, start thinking about it now — not because you need to build it today, but because the decisions you make now will determine how expensive it is to build later. Put consistent created_at and updated_at timestamps on every table. Design your schema with stable foreign keys. Prefer event appends to record mutations for anything you will ever want to analyse historically. When the signals appear — slow analytics queries, spreadsheet proliferation, engineers fielding data pulls instead of shipping features — treat it as a roadmap item. The teams that invest in a proper data layer at the right moment consistently make sharper product decisions and move faster than the teams that are still reconciling data six months after they should have separated their analytics infrastructure from their production database.",
+      },
+    ],
+  },
+  {
     slug: "monolith-vs-microservices-for-saas-startups",
     title: "Monolith First: The Microservices Decision Most SaaS Teams Get Wrong",
     excerpt:
@@ -7,7 +87,7 @@ export const posts = [
     category: "Engineering",
     date: "May 15, 2026",
     readTime: "8 min read",
-    featured: true,
+    featured: false,
     content: [
       {
         type: "p",
